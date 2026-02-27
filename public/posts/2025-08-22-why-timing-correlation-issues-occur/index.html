@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="monetag" content="5302b3ff6128cdd7d5e775810525a259"/>
+
+  <title>Why timing correlation issues occur between block level and top level, even with the same clock source? ~ Physical Design Interview Guide</title>
+
+  
+    <meta name="description" content="o&nbsp;&nbsp; update_io_latency not done at block level. This ensures proper clock tree built for IO paths and gives feedback to top level tree so tree is …"/>
+  
+
+  
+  <link rel="canonical" href="http://localhost:1313/posts/2025-08-22-why-timing-correlation-issues-occur/"/>
+
+  
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  
+  <link rel="dns-prefetch" href="https://nap5k.com"/>
+  <link rel="dns-prefetch" href="https://resources.infolinks.com"/>
+  <link rel="dns-prefetch" href="https://www.highperformanceformat.com"/>
+  <link rel="dns-prefetch" href="https://pl28748027.effectivegatecpm.com"/>
+
+  
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@400;500;700&display=swap"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@400;500;700&display=swap"/>
+  </noscript>
+
+  
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+  </noscript>
+
+  
+  <link rel="stylesheet" href="/css/style.css"/>
+
+  
+  <link rel="icon" href="/img/physical-design-interview-guide.jpg"/>
+
+  
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBY3XDZW01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WBY3XDZW01');
+  </script>
+
+  
+  <script>
+    var infolinks_pid  = "3443689";
+    var infolinks_wsid = 0;
+  </script>
+
+  <meta property="og:url" content="http://localhost:1313/posts/2025-08-22-why-timing-correlation-issues-occur/">
+  <meta property="og:site_name" content="Physical Design Interview Guide">
+  <meta property="og:title" content="Why timing correlation issues occur between block level and top level, even with the same clock source?">
+  <meta property="og:description" content="o   update_io_latency not done at block level. This ensures proper clock tree built for IO paths and gives feedback to top level tree so tree is balanced for io paths.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-22T00:00:00+00:00">
+
+  
+  <meta itemprop="name" content="Why timing correlation issues occur between block level and top level, even with the same clock source?">
+  <meta itemprop="description" content="o   update_io_latency not done at block level. This ensures proper clock tree built for IO paths and gives feedback to top level tree so tree is balanced for io paths.">
+  <meta itemprop="datePublished" content="2025-08-22T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-22T00:00:00+00:00">
+  <meta itemprop="wordCount" content="67">
+  <meta itemprop="keywords" content="STA">
+</head>
+
+<body>
+<div class="site-wrapper" id="page">
+
+  
+  <header class="site-header" id="masthead" role="banner">
+
+  
+  <div class="site-branding">
+    <div id="header-inner">
+      <a class="logo-link" href="http://localhost:1313/">
+        <img class="header-logo"
+             src="/img/physical-design-interview-guide.jpg"
+             alt="Physical Design Interview Guide Logo"
+             width="80" height="80"
+             fetchpriority="high"/>
+      </a>
+      <div class="titlewrapper">
+        
+          <p class="site-title"><a href="http://localhost:1313/">Physical Design Interview Guide</a></p>
+        
+        <h2 class="site-description">The Ultimate Guide to Physical Design Interview Questions</h2>
+      </div>
+    </div>
+  </div>
+
+  
+  <nav class="main-navigation" id="site-navigation" role="navigation">
+    
+    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    
+    <ul id="primary-menu">
+      
+        <li>
+          <a href="/">Home</a>
+        </li>
+      
+        <li>
+          <a href="/categories/general-concepts/">General-Concepts</a>
+        </li>
+      
+        <li>
+          <a href="/categories/pre-pnr/">Pre-PnR</a>
+        </li>
+      
+        <li>
+          <a href="/categories/floorplan/">Floorplan</a>
+        </li>
+      
+        <li>
+          <a href="/categories/power-plan/">Power-Plan</a>
+        </li>
+      
+        <li>
+          <a href="/categories/placement/">Placement</a>
+        </li>
+      
+        <li>
+          <a href="/categories/cts/">CTS</a>
+        </li>
+      
+        <li>
+          <a href="/categories/routing/">Routing</a>
+        </li>
+      
+        <li>
+          <a href="/categories/eco/">ECO</a>
+        </li>
+      
+        <li>
+          <a href="/categories/sta/">STA</a>
+        </li>
+      
+        <li>
+          <a href="/categories/signal-integrity/">SI</a>
+        </li>
+      
+        <li>
+          <a href="/categories/physical-verification/">PV</a>
+        </li>
+      
+        <li>
+          <a href="/about/">About Me</a>
+        </li>
+      
+        <li>
+          <a href="/privacy-policy/">Privacy Policy</a>
+        </li>
+      
+    </ul>
+
+    
+    <button class="theme-toggle"
+            aria-label="Toggle dark mode"
+            onclick="window.toggleTheme && window.toggleTheme()"
+            type="button">
+      <span class="sun" aria-hidden="true">☀️</span>
+      <span class="moon" aria-hidden="true">🌙</span>
+    </button>
+
+    
+    <button class="search-toggle" aria-label="Search" type="button">
+      <i class="fa fa-search"></i>
+    </button>
+  </nav>
+
+  
+  <div class="search-box-wrapper" id="search-container">
+    <form action="/search/" method="get" role="search">
+      <input type="search"
+             name="q"
+             placeholder="Search..."
+             aria-label="Search posts"/>
+    </form>
+  </div>
+
+</header>
+
+
+  
+  <div class="header-ad-wrapper">
+    <script>
+      atOptions = {
+        'key'    : '0da8ef57a8c60e7790c1a312bcedb88f',
+        'format' : 'iframe',
+        'height' : 90,
+        'width'  : 728,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/0da8ef57a8c60e7790c1a312bcedb88f/invoke.js" async></script>
+  </div>
+
+  
+  <div class="site-content" id="content">
+    <div class="content-area" id="primary">
+
+      
+      <div class="widget-area sidebar" id="secondary" role="complementary">
+
+  
+  <div class="widget">
+    <script>
+      atOptions = {
+        'key'    : '4261f622d3640c08cc16ff44391bea90',
+        'format' : 'iframe',
+        'height' : 50,
+        'width'  : 320,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/4261f622d3640c08cc16ff44391bea90/invoke.js" async></script>
+  </div>
+
+  
+  <div class="widget" id="dynamic-posts-list-container">
+    <h2 id="dynamic-list-title">All Questions</h2>
+    <ul id="dynamic-posts-list">
+      <li>Loading posts...</li>
+    </ul>
+  </div>
+
+</div>
+
+
+      
+      <main class="site-main" id="main" role="main">
+        
+<article class="post hentry">
+<div class="index-box">
+
+  
+  <header class="entry-header">
+    <h1 class="post-title entry-title" itemprop="headline">Why timing correlation issues occur between block level and top level, even with the same clock source?</h1>
+
+    <div class="entry-meta">
+      on <a href="http://localhost:1313/posts/2025-08-22-why-timing-correlation-issues-occur/" rel="bookmark">
+        <span class="published">August 22, 2025</span>
+      </a>&nbsp;
+      
+      in
+      
+        <a href="/categories/sta/" rel="tag">STA</a>
+      &nbsp;
+      
+      with <a href="#comments">No comments</a>
+    </div>
+  </header>
+
+  
+  <div class="post-body entry-content" itemprop="articleBody">
+    <p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><span style="text-indent: -18pt;">update_io_latency not done at block level. This
+ensures proper clock tree built for IO paths and gives feedback to top level
+tree so tree is balanced for io paths.</span></p>
+<p class="MsoListParagraphCxSpMiddle" style="margin-left: 18.0pt; mso-add-space: auto; mso-list: l0 level1 lfo1; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;
+</span></span></span><!--[endif]-->IO constraints like input_delay and output_delay
+is assumption. Actual delay might be different and hence misscorelation.<o:p></o:p></p>
+<p class="MsoListParagraphCxSpMiddle" style="margin-left: 18.0pt; mso-add-space: auto; mso-list: l0 level1 lfo1; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;
+</span></span></span><!--[endif]-->Different derate factors at top level or OCV
+variation?<o:p></o:p></p>
+<p class="MsoListParagraphCxSpLast" style="margin-left: 18.0pt; mso-add-space: auto; mso-list: l0 level1 lfo1; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;
+</span></span></span><!--[endif]-->May introduce additional SI effect during top
+level<o:p></o:p></p>
+<p class="MsoNormal"><span lang="EN-GB" style="mso-ansi-language: EN-GB;"><o:p>&nbsp;</o:p></span></p>
+  </div>
+
+  
+  <div id="post-ad-container"
+       data-desktop-src="https://pl28748027.effectivegatecpm.com/91a7dc313767ee1279685304c23cc0ac/invoke.js"
+       data-mobile-key="3520767e659da30b3c945eb2073db7db"
+       data-mobile-src="https://www.highperformanceformat.com/3520767e659da30b3c945eb2073db7db/invoke.js"
+       style="clear:both; margin:25px 0 15px; text-align:center;">
+  </div>
+
+  
+  <div class="post-share pbtsharethisbutt">
+    Share:
+    <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-22-why-timing-correlation-issues-occur%2f"
+       target="_blank" rel="nofollow" title="Share on Facebook">
+      <i class="fa fa-facebook"></i>
+    </a>
+    <a href="https://twitter.com/home?status=why-timing-correlation-issues-occur-between-block-level-and-top-level-even-with-the-same-clock-source+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-22-why-timing-correlation-issues-occur%2f"
+       target="_blank" rel="nofollow" title="Tweet This!">
+      <i class="fa fa-twitter"></i>
+    </a>
+  </div>
+
+  <div style="clear:both;"></div>
+
+  
+  <div class="blog-pager" id="blog-pager" style="margin-top:20px;">
+    
+    <span id="blog-pager-newer-link">
+      <a class="blog-pager-newer-link" href="http://localhost:1313/posts/2025-08-21-difference-between-vcd-and-saif-file/">&#8249; Difference between .vcd and .saif file?</a>
+    </span>
+    
+    
+    <span id="blog-pager-older-link">
+      <a class="blog-pager-older-link" href="http://localhost:1313/posts/2025-08-22-which-tool-is-used-for-sta-commands-to/">Which tool is used for STA? Commands to fix setup and hold? &#8250;</a>
+    </span>
+    
+    <a class="home-link" href="http://localhost:1313/">Home</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  
+  <div id="comments">
+    <h4>Comments</h4>
+    <p style="font-family:'Dosis',sans-serif;">
+      Comments are not yet enabled on this Hugo site.
+      To add comments, integrate
+      <a href="https://disqus.com" target="_blank">Disqus</a> or
+      <a href="https://giscus.app" target="_blank">Giscus</a> (GitHub-based, free).
+    </p>
+    
+  </div>
+
+</div>
+</article>
+
+      </main>
+
+    </div>
+  </div>
+
+  
+  <footer class="site-footer" id="colophon" role="contentinfo">
+<div id="supplementary">
+  <div class="footer-widgets" id="footer-widgets">
+
+    
+    <div class="widget popular-posts">
+      <h2>Popular Posts</h2>
+      <ul>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-can-and-gate-replace-icg-if-glitch-is/">Can an AND gate replace an ICG if glitch is handled</a></li>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-command-to-balance-two-clock-trees/">Command to balance two clock trees? Command to check latency?  Command to do useful skew?</a></li>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-different-cts-types-what-are-benefits/">Different CTS types? What are benefits of those?</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div class="widget">
+      <h2>Subscribe for more</h2>
+      <div id="mc_embed_signup">
+        <form action="https://blogspot.us8.list-manage.com/subscribe/post?u=f8ac6f0c8c94ac766b4de9c2a&amp;id=4365930274&amp;f_id=00f37fe1f0"
+              method="post"
+              id="mc-embedded-subscribe-form"
+              name="mc-embedded-subscribe-form"
+              target="_blank">
+          <div>
+            <label for="mce-EMAIL">Email Address <span>*</span></label>
+            <input type="email" name="EMAIL" id="mce-EMAIL" required/>
+          </div>
+          
+          <div style="position:absolute;left:-5000px;" aria-hidden="true">
+            <input type="text" name="b_f8ac6f0c8c94ac766b4de9c2a_4365930274" tabindex="-1" value=""/>
+          </div>
+          <div>
+            <input type="submit" value="Subscribe" name="subscribe"/>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    
+    <div class="widget">
+      <h2>Submit your questions</h2>
+      <form name="contact-form" action="mailto:your@email.com" method="post">
+        <p>
+          <label>Name<br/>
+            <input type="text" name="name" size="30"/>
+          </label>
+        </p>
+        <p>
+          <label>Email <strong>*</strong><br/>
+            <input type="email" name="email" size="30" required/>
+          </label>
+        </p>
+        <p>
+          <label>Message <strong>*</strong><br/>
+            <textarea name="message" rows="5" cols="25" required></textarea>
+          </label>
+        </p>
+        <p><input type="submit" value="Send"/></p>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="site-info">
+  Copyright &copy; <span id="creditsyear"></span>
+  <a href="http://localhost:1313/">Physical Design Interview Guide</a>
+  &nbsp;|&nbsp;
+  <a href="http://localhost:1313/posts/index.xml"
+     aria-label="RSS feed"
+     target="_blank" rel="alternate">
+    <i class="fa fa-rss" aria-hidden="true"></i>
+  </a>
+</div>
+
+</footer>
+
+
+</div>
+
+
+<script src="/js/main.js"></script>
+
+
+<div id="monetag-container" data-zone="10628900" style="display:none"></div>
+
+
+<div id="infolinks-container" style="display:none"></div>
+
+</body>
+</html>

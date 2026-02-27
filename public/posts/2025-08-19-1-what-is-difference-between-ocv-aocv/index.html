@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="monetag" content="5302b3ff6128cdd7d5e775810525a259"/>
+
+  <title>What is the difference between OCV, AOCV, and POCV? Why POCV? ~ Physical Design Interview Guide</title>
+
+  
+    <meta name="description" content="
+Sources of Variation: The primary sources of variation that necessitate derates are:
+·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PVT (Process, Voltage, …"/>
+  
+
+  
+  <link rel="canonical" href="http://localhost:1313/posts/2025-08-19-1-what-is-difference-between-ocv-aocv/"/>
+
+  
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  
+  <link rel="dns-prefetch" href="https://nap5k.com"/>
+  <link rel="dns-prefetch" href="https://resources.infolinks.com"/>
+  <link rel="dns-prefetch" href="https://www.highperformanceformat.com"/>
+  <link rel="dns-prefetch" href="https://pl28748027.effectivegatecpm.com"/>
+
+  
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@400;500;700&display=swap"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@400;500;700&display=swap"/>
+  </noscript>
+
+  
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+  </noscript>
+
+  
+  <link rel="stylesheet" href="/css/style.css"/>
+
+  
+  <link rel="icon" href="/img/physical-design-interview-guide.jpg"/>
+
+  
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBY3XDZW01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WBY3XDZW01');
+  </script>
+
+  
+  <script>
+    var infolinks_pid  = "3443689";
+    var infolinks_wsid = 0;
+  </script>
+
+  <meta property="og:url" content="http://localhost:1313/posts/2025-08-19-1-what-is-difference-between-ocv-aocv/">
+  <meta property="og:site_name" content="Physical Design Interview Guide">
+  <meta property="og:title" content="What is the difference between OCV, AOCV, and POCV? Why POCV?">
+  <meta property="og:description" content="Sources of Variation: The primary sources of variation that necessitate derates are:
+·         PVT (Process, Voltage, Temperature) Variations: These are inter-chip variations.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-19T00:00:00+00:00">
+
+  
+  <meta itemprop="name" content="What is the difference between OCV, AOCV, and POCV? Why POCV?">
+  <meta itemprop="description" content="Sources of Variation: The primary sources of variation that necessitate derates are:
+·         PVT (Process, Voltage, Temperature) Variations: These are inter-chip variations.">
+  <meta itemprop="datePublished" content="2025-08-19T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-19T00:00:00+00:00">
+  <meta itemprop="wordCount" content="482">
+  <meta itemprop="keywords" content="General-Concepts">
+</head>
+
+<body>
+<div class="site-wrapper" id="page">
+
+  
+  <header class="site-header" id="masthead" role="banner">
+
+  
+  <div class="site-branding">
+    <div id="header-inner">
+      <a class="logo-link" href="http://localhost:1313/">
+        <img class="header-logo"
+             src="/img/physical-design-interview-guide.jpg"
+             alt="Physical Design Interview Guide Logo"
+             width="80" height="80"
+             fetchpriority="high"/>
+      </a>
+      <div class="titlewrapper">
+        
+          <p class="site-title"><a href="http://localhost:1313/">Physical Design Interview Guide</a></p>
+        
+        <h2 class="site-description">The Ultimate Guide to Physical Design Interview Questions</h2>
+      </div>
+    </div>
+  </div>
+
+  
+  <nav class="main-navigation" id="site-navigation" role="navigation">
+    
+    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    
+    <ul id="primary-menu">
+      
+        <li>
+          <a href="/">Home</a>
+        </li>
+      
+        <li>
+          <a href="/categories/general-concepts/">General-Concepts</a>
+        </li>
+      
+        <li>
+          <a href="/categories/pre-pnr/">Pre-PnR</a>
+        </li>
+      
+        <li>
+          <a href="/categories/floorplan/">Floorplan</a>
+        </li>
+      
+        <li>
+          <a href="/categories/power-plan/">Power-Plan</a>
+        </li>
+      
+        <li>
+          <a href="/categories/placement/">Placement</a>
+        </li>
+      
+        <li>
+          <a href="/categories/cts/">CTS</a>
+        </li>
+      
+        <li>
+          <a href="/categories/routing/">Routing</a>
+        </li>
+      
+        <li>
+          <a href="/categories/eco/">ECO</a>
+        </li>
+      
+        <li>
+          <a href="/categories/sta/">STA</a>
+        </li>
+      
+        <li>
+          <a href="/categories/signal-integrity/">SI</a>
+        </li>
+      
+        <li>
+          <a href="/categories/physical-verification/">PV</a>
+        </li>
+      
+        <li>
+          <a href="/about/">About Me</a>
+        </li>
+      
+        <li>
+          <a href="/privacy-policy/">Privacy Policy</a>
+        </li>
+      
+    </ul>
+
+    
+    <button class="theme-toggle"
+            aria-label="Toggle dark mode"
+            onclick="window.toggleTheme && window.toggleTheme()"
+            type="button">
+      <span class="sun" aria-hidden="true">☀️</span>
+      <span class="moon" aria-hidden="true">🌙</span>
+    </button>
+
+    
+    <button class="search-toggle" aria-label="Search" type="button">
+      <i class="fa fa-search"></i>
+    </button>
+  </nav>
+
+  
+  <div class="search-box-wrapper" id="search-container">
+    <form action="/search/" method="get" role="search">
+      <input type="search"
+             name="q"
+             placeholder="Search..."
+             aria-label="Search posts"/>
+    </form>
+  </div>
+
+</header>
+
+
+  
+  <div class="header-ad-wrapper">
+    <script>
+      atOptions = {
+        'key'    : '0da8ef57a8c60e7790c1a312bcedb88f',
+        'format' : 'iframe',
+        'height' : 90,
+        'width'  : 728,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/0da8ef57a8c60e7790c1a312bcedb88f/invoke.js" async></script>
+  </div>
+
+  
+  <div class="site-content" id="content">
+    <div class="content-area" id="primary">
+
+      
+      <div class="widget-area sidebar" id="secondary" role="complementary">
+
+  
+  <div class="widget">
+    <script>
+      atOptions = {
+        'key'    : '4261f622d3640c08cc16ff44391bea90',
+        'format' : 'iframe',
+        'height' : 50,
+        'width'  : 320,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/4261f622d3640c08cc16ff44391bea90/invoke.js" async></script>
+  </div>
+
+  
+  <div class="widget" id="dynamic-posts-list-container">
+    <h2 id="dynamic-list-title">All Questions</h2>
+    <ul id="dynamic-posts-list">
+      <li>Loading posts...</li>
+    </ul>
+  </div>
+
+</div>
+
+
+      
+      <main class="site-main" id="main" role="main">
+        
+<article class="post hentry">
+<div class="index-box">
+
+  
+  <header class="entry-header">
+    <h1 class="post-title entry-title" itemprop="headline">What is the difference between OCV, AOCV, and POCV? Why POCV?</h1>
+
+    <div class="entry-meta">
+      on <a href="http://localhost:1313/posts/2025-08-19-1-what-is-difference-between-ocv-aocv/" rel="bookmark">
+        <span class="published">August 19, 2025</span>
+      </a>&nbsp;
+      
+      in
+      
+        <a href="/categories/general-concepts/" rel="tag">General-Concepts</a>
+      &nbsp;
+      
+      with <a href="#comments">No comments</a>
+    </div>
+  </header>
+
+  
+  <div class="post-body entry-content" itemprop="articleBody">
+    <p></p><div aria-label="Enter a prompt here" aria-multiline="true" class="ql-editor textarea new-input-ui" contenteditable="false" data-gramm="false" data-placeholder="Ask Gemini" role="textbox"><p></p></div><p class="MsoNormal" style="margin-left: 31.2pt;"><b>Sources of Variation:</b> The
+primary sources of variation that necessitate derates are:<o:p></o:p></p><p class="MsoNormal" style="margin-left: 49.2pt; mso-list: l1 level1 lfo1; tab-stops: list 49.2pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: Symbol; font-size: 10.0pt; line-height: 107%; mso-bidi-font-family: Symbol; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: Symbol;">·<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><!--[endif]--><b>PVT (Process, Voltage, Temperature)
+Variations:</b> These are inter-chip variations. <o:p></o:p></p><p class="MsoNormal" style="margin-left: 85.2pt; mso-list: l1 level2 lfo1; tab-stops: list 85.2pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp; </span></span><!--[endif]--><b>Process:</b>
+Variations in manufacturing (e.g., lithography wavelength, defects) can alter
+transistor parameters like oxide thickness, dopant levels, and physical
+dimensions (W/L), which in turn affect threshold voltage (Vt​) and current (I),
+and thus cell delay. Dies at the center of a wafer are more accurate than those
+at the periphery.<o:p></o:p></p><p class="MsoNormal" style="margin-left: 85.2pt; mso-list: l1 level2 lfo1; tab-stops: list 85.2pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp; </span></span><!--[endif]--><b>Voltage:</b>
+Supply voltage fluctuations (due to IR drop, supply noise, battery charge
+levels) directly impact current and cell delay. Lower technology nodes with
+lower supply voltages see a higher percentage of variation.<o:p></o:p></p><p class="MsoNormal" style="margin-left: 85.2pt; mso-list: l1 level2 lfo1; tab-stops: list 85.2pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp; </span></span><!--[endif]--><b>Temperature:</b>
+Ambient temperature and on-chip hot spots (due to high switching activity)
+affect cell delays. For deep sub-micron technologies, temperature inversion
+(where delay decreases with increasing temperature at lower voltages) can
+occur.<o:p></o:p></p><p class="MsoNormal" style="margin-left: 49.2pt; mso-list: l1 level1 lfo1; tab-stops: list 49.2pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: Symbol; font-size: 10.0pt; line-height: 107%; mso-bidi-font-family: Symbol; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: Symbol;">·<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><!--[endif]--><b>RC Variations:</b> Interconnect delay is
+increasingly dominant. Variations in CMP, photolithography, and etch processes
+affect wire dimensions, leading to RC variations.<o:p></o:p></p><p class="MsoNormal" style="margin-left: 49.2pt; mso-list: l1 level1 lfo1; tab-stops: list 49.2pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: Symbol; font-size: 10.0pt; line-height: 107%; mso-bidi-font-family: Symbol; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: Symbol;">·<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><!--[endif]--><b>OCV (On-Chip Variation) / Local Variations:</b>
+These are intra-chip variations, meaning identical cells at different locations
+on the <i>same</i> chip and in the same corner can exhibit different delays.
+Factors include IR drop, metallization mismatches, CMP effects, Vth​/mobility
+mismatches, local temperature variations, and toggling activity mismatches
+(aging). OCV is categorized into: <o:p></o:p></p><p class="MsoNormal" style="margin-left: 85.2pt; mso-list: l1 level2 lfo1; tab-stops: list 85.2pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp; </span></span><!--[endif]--><b>Random
+Variations:</b> Non-deterministic, no spatial correlation, hard to predict
+(e.g., gate oxide thickness, implant doses). Their effect tends to cancel out
+over longer path depths.<o:p></o:p></p><p class="MsoNormal" style="margin-left: 85.2pt; mso-list: l1 level2 lfo1; tab-stops: list 85.2pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp; </span></span><!--[endif]--><b>Systematic
+Variations:</b> Deterministic, can be modelled, exhibit spatial correlation
+(e.g., gate length/width, interconnect width due to proximity/density effects).
+Proportional to cell location.<o:p></o:p></p><p class="MsoNormal" style="margin-left: 54.0pt; mso-list: l0 level1 lfo2; tab-stops: list 54.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: Symbol; font-size: 10.0pt; line-height: 107%; mso-bidi-font-family: Symbol; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: Symbol;">·<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><!--[endif]--><b>Simple OCV Derates (Global Derates):</b>
+Applying a single, fixed derate percentage (e.g., +/-6%) to all cells/nets for
+late/early paths using set_timing_derate. <o:p></o:p></p><p class="MsoNormal" style="margin-left: 90.0pt; mso-list: l0 level2 lfo2; tab-stops: list 90.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp; </span></span><!--[endif]--><b>Problem:</b>
+Overly pessimistic because it applies the worst-case variation (derived from
+the most sensitive cell) to all cells, leading to over-optimization, increased
+power consumption, and longer STA cycles.<o:p></o:p></p><p class="MsoNormal" style="margin-left: 54.0pt; mso-list: l0 level1 lfo2; tab-stops: list 54.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: Symbol; font-size: 10.0pt; line-height: 107%; mso-bidi-font-family: Symbol; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: Symbol;">·<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><!--[endif]--><b>AOCV (Advanced OCV):</b> Reduces pessimism by
+applying derates based on cell type, path depth (random variations tend to
+cancel), and distance (systematic variations increase with distance). AOCV is
+more accurate than OCV, especially for nodes like 65nm and below. <o:p></o:p></p><p class="MsoNormal" style="margin-left: 90.0pt; mso-list: l0 level2 lfo2; tab-stops: list 90.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp; </span></span><!--[endif]--><b>Flaws:</b>
+AOCV often uses the worst-case timing arc for a cell's derate and doesn't
+account for variations due to input slew, output load, or operating conditions
+of side inputs, potentially being too optimistic or pessimistic.<o:p></o:p></p><p class="MsoNormal" style="margin-left: 54.0pt; mso-list: l0 level1 lfo2; tab-stops: list 54.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: Symbol; font-size: 10.0pt; line-height: 107%; mso-bidi-font-family: Symbol; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: Symbol;">·<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><!--[endif]--><b>POCV (Parametric OCV):</b> A more realistic,
+statistical approach that overcomes AOCV limitations by making OCV derate
+factors dependent on input slew and output load. <o:p></o:p></p><p class="MsoNormal" style="margin-left: 90.0pt; mso-list: l0 level2 lfo2; tab-stops: list 90.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp; </span></span><!--[endif]-->It
+assumes cell delay follows a normal distribution (Gaussian curve) around a
+nominal delay (mean, μ) with a standard deviation (σ). Typically, analysis is
+done at 3σ (covering ~99.7% of variations).<o:p></o:p></p><p class="MsoNormal" style="margin-left: 90.0pt; mso-list: l0 level2 lfo2; tab-stops: list 90.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp; </span></span><!--[endif]-->Random
+variations are modeled using this statistical approach (μ, σ) instead of
+min-max values, reducing pessimism as extreme delay values are less probable.<o:p></o:p></p><p class="MsoNormal" style="margin-left: 90.0pt; mso-list: l0 level2 lfo2; tab-stops: list 90.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp; </span></span><!--[endif]-->Systematic
+variations are still handled using distance-based derates, similar to AOCV.</p><div class="ql-clipboard" tabindex="-1"></div>
+  </div>
+
+  
+  <div id="post-ad-container"
+       data-desktop-src="https://pl28748027.effectivegatecpm.com/91a7dc313767ee1279685304c23cc0ac/invoke.js"
+       data-mobile-key="3520767e659da30b3c945eb2073db7db"
+       data-mobile-src="https://www.highperformanceformat.com/3520767e659da30b3c945eb2073db7db/invoke.js"
+       style="clear:both; margin:25px 0 15px; text-align:center;">
+  </div>
+
+  
+  <div class="post-share pbtsharethisbutt">
+    Share:
+    <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-19-1-what-is-difference-between-ocv-aocv%2f"
+       target="_blank" rel="nofollow" title="Share on Facebook">
+      <i class="fa fa-facebook"></i>
+    </a>
+    <a href="https://twitter.com/home?status=what-is-the-difference-between-ocv-aocv-and-pocv-why-pocv+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-19-1-what-is-difference-between-ocv-aocv%2f"
+       target="_blank" rel="nofollow" title="Tweet This!">
+      <i class="fa fa-twitter"></i>
+    </a>
+  </div>
+
+  <div style="clear:both;"></div>
+
+  
+  <div class="blog-pager" id="blog-pager" style="margin-top:20px;">
+    
+    
+    <span id="blog-pager-older-link">
+      <a class="blog-pager-older-link" href="http://localhost:1313/posts/2025-08-19-how-do-you-approach-aocv-in-your-design/">How do you approach AOCV in your design? What kind of library do you need for AOCV? &#8250;</a>
+    </span>
+    
+    <a class="home-link" href="http://localhost:1313/">Home</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  
+  <div id="comments">
+    <h4>Comments</h4>
+    <p style="font-family:'Dosis',sans-serif;">
+      Comments are not yet enabled on this Hugo site.
+      To add comments, integrate
+      <a href="https://disqus.com" target="_blank">Disqus</a> or
+      <a href="https://giscus.app" target="_blank">Giscus</a> (GitHub-based, free).
+    </p>
+    
+  </div>
+
+</div>
+</article>
+
+      </main>
+
+    </div>
+  </div>
+
+  
+  <footer class="site-footer" id="colophon" role="contentinfo">
+<div id="supplementary">
+  <div class="footer-widgets" id="footer-widgets">
+
+    
+    <div class="widget popular-posts">
+      <h2>Popular Posts</h2>
+      <ul>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-can-and-gate-replace-icg-if-glitch-is/">Can an AND gate replace an ICG if glitch is handled</a></li>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-command-to-balance-two-clock-trees/">Command to balance two clock trees? Command to check latency?  Command to do useful skew?</a></li>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-different-cts-types-what-are-benefits/">Different CTS types? What are benefits of those?</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div class="widget">
+      <h2>Subscribe for more</h2>
+      <div id="mc_embed_signup">
+        <form action="https://blogspot.us8.list-manage.com/subscribe/post?u=f8ac6f0c8c94ac766b4de9c2a&amp;id=4365930274&amp;f_id=00f37fe1f0"
+              method="post"
+              id="mc-embedded-subscribe-form"
+              name="mc-embedded-subscribe-form"
+              target="_blank">
+          <div>
+            <label for="mce-EMAIL">Email Address <span>*</span></label>
+            <input type="email" name="EMAIL" id="mce-EMAIL" required/>
+          </div>
+          
+          <div style="position:absolute;left:-5000px;" aria-hidden="true">
+            <input type="text" name="b_f8ac6f0c8c94ac766b4de9c2a_4365930274" tabindex="-1" value=""/>
+          </div>
+          <div>
+            <input type="submit" value="Subscribe" name="subscribe"/>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    
+    <div class="widget">
+      <h2>Submit your questions</h2>
+      <form name="contact-form" action="mailto:your@email.com" method="post">
+        <p>
+          <label>Name<br/>
+            <input type="text" name="name" size="30"/>
+          </label>
+        </p>
+        <p>
+          <label>Email <strong>*</strong><br/>
+            <input type="email" name="email" size="30" required/>
+          </label>
+        </p>
+        <p>
+          <label>Message <strong>*</strong><br/>
+            <textarea name="message" rows="5" cols="25" required></textarea>
+          </label>
+        </p>
+        <p><input type="submit" value="Send"/></p>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="site-info">
+  Copyright &copy; <span id="creditsyear"></span>
+  <a href="http://localhost:1313/">Physical Design Interview Guide</a>
+  &nbsp;|&nbsp;
+  <a href="http://localhost:1313/posts/index.xml"
+     aria-label="RSS feed"
+     target="_blank" rel="alternate">
+    <i class="fa fa-rss" aria-hidden="true"></i>
+  </a>
+</div>
+
+</footer>
+
+
+</div>
+
+
+<script src="/js/main.js"></script>
+
+
+<div id="monetag-container" data-zone="10628900" style="display:none"></div>
+
+
+<div id="infolinks-container" style="display:none"></div>
+
+</body>
+</html>

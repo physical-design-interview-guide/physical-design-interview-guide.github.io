@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="monetag" content="5302b3ff6128cdd7d5e775810525a259"/>
+
+  <title>What are the differences between lower technology nodes and higher nodes? ~ Physical Design Interview Guide</title>
+
+  
+    <meta name="description" content="&nbsp;
+Feature
+Lower Nodes (e.g., ≤7nm, 5nm, 3nm)
+"/>
+  
+
+  
+  <link rel="canonical" href="http://localhost:1313/posts/2025-08-20-what-are-differences-between-lower-tech-node/"/>
+
+  
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  
+  <link rel="dns-prefetch" href="https://nap5k.com"/>
+  <link rel="dns-prefetch" href="https://resources.infolinks.com"/>
+  <link rel="dns-prefetch" href="https://www.highperformanceformat.com"/>
+  <link rel="dns-prefetch" href="https://pl28748027.effectivegatecpm.com"/>
+
+  
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@400;500;700&display=swap"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@400;500;700&display=swap"/>
+  </noscript>
+
+  
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+  </noscript>
+
+  
+  <link rel="stylesheet" href="/css/style.css"/>
+
+  
+  <link rel="icon" href="/img/physical-design-interview-guide.jpg"/>
+
+  
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBY3XDZW01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WBY3XDZW01');
+  </script>
+
+  
+  <script>
+    var infolinks_pid  = "3443689";
+    var infolinks_wsid = 0;
+  </script>
+
+  <meta property="og:url" content="http://localhost:1313/posts/2025-08-20-what-are-differences-between-lower-tech-node/">
+  <meta property="og:site_name" content="Physical Design Interview Guide">
+  <meta property="og:title" content="What are the differences between lower technology nodes and higher nodes?">
+  <meta property="og:description" content=" 
+Feature
+Lower Nodes (e.g., ≤7nm, 5nm, 3nm)">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-20T00:00:00+00:00">
+
+  
+  <meta itemprop="name" content="What are the differences between lower technology nodes and higher nodes?">
+  <meta itemprop="description" content=" 
+Feature
+Lower Nodes (e.g., ≤7nm, 5nm, 3nm)">
+  <meta itemprop="datePublished" content="2025-08-20T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-20T00:00:00+00:00">
+  <meta itemprop="wordCount" content="455">
+  <meta itemprop="keywords" content="General-Concepts">
+</head>
+
+<body>
+<div class="site-wrapper" id="page">
+
+  
+  <header class="site-header" id="masthead" role="banner">
+
+  
+  <div class="site-branding">
+    <div id="header-inner">
+      <a class="logo-link" href="http://localhost:1313/">
+        <img class="header-logo"
+             src="/img/physical-design-interview-guide.jpg"
+             alt="Physical Design Interview Guide Logo"
+             width="80" height="80"
+             fetchpriority="high"/>
+      </a>
+      <div class="titlewrapper">
+        
+          <p class="site-title"><a href="http://localhost:1313/">Physical Design Interview Guide</a></p>
+        
+        <h2 class="site-description">The Ultimate Guide to Physical Design Interview Questions</h2>
+      </div>
+    </div>
+  </div>
+
+  
+  <nav class="main-navigation" id="site-navigation" role="navigation">
+    
+    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    
+    <ul id="primary-menu">
+      
+        <li>
+          <a href="/">Home</a>
+        </li>
+      
+        <li>
+          <a href="/categories/general-concepts/">General-Concepts</a>
+        </li>
+      
+        <li>
+          <a href="/categories/pre-pnr/">Pre-PnR</a>
+        </li>
+      
+        <li>
+          <a href="/categories/floorplan/">Floorplan</a>
+        </li>
+      
+        <li>
+          <a href="/categories/power-plan/">Power-Plan</a>
+        </li>
+      
+        <li>
+          <a href="/categories/placement/">Placement</a>
+        </li>
+      
+        <li>
+          <a href="/categories/cts/">CTS</a>
+        </li>
+      
+        <li>
+          <a href="/categories/routing/">Routing</a>
+        </li>
+      
+        <li>
+          <a href="/categories/eco/">ECO</a>
+        </li>
+      
+        <li>
+          <a href="/categories/sta/">STA</a>
+        </li>
+      
+        <li>
+          <a href="/categories/signal-integrity/">SI</a>
+        </li>
+      
+        <li>
+          <a href="/categories/physical-verification/">PV</a>
+        </li>
+      
+        <li>
+          <a href="/about/">About Me</a>
+        </li>
+      
+        <li>
+          <a href="/privacy-policy/">Privacy Policy</a>
+        </li>
+      
+    </ul>
+
+    
+    <button class="theme-toggle"
+            aria-label="Toggle dark mode"
+            onclick="window.toggleTheme && window.toggleTheme()"
+            type="button">
+      <span class="sun" aria-hidden="true">☀️</span>
+      <span class="moon" aria-hidden="true">🌙</span>
+    </button>
+
+    
+    <button class="search-toggle" aria-label="Search" type="button">
+      <i class="fa fa-search"></i>
+    </button>
+  </nav>
+
+  
+  <div class="search-box-wrapper" id="search-container">
+    <form action="/search/" method="get" role="search">
+      <input type="search"
+             name="q"
+             placeholder="Search..."
+             aria-label="Search posts"/>
+    </form>
+  </div>
+
+</header>
+
+
+  
+  <div class="header-ad-wrapper">
+    <script>
+      atOptions = {
+        'key'    : '0da8ef57a8c60e7790c1a312bcedb88f',
+        'format' : 'iframe',
+        'height' : 90,
+        'width'  : 728,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/0da8ef57a8c60e7790c1a312bcedb88f/invoke.js" async></script>
+  </div>
+
+  
+  <div class="site-content" id="content">
+    <div class="content-area" id="primary">
+
+      
+      <div class="widget-area sidebar" id="secondary" role="complementary">
+
+  
+  <div class="widget">
+    <script>
+      atOptions = {
+        'key'    : '4261f622d3640c08cc16ff44391bea90',
+        'format' : 'iframe',
+        'height' : 50,
+        'width'  : 320,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/4261f622d3640c08cc16ff44391bea90/invoke.js" async></script>
+  </div>
+
+  
+  <div class="widget" id="dynamic-posts-list-container">
+    <h2 id="dynamic-list-title">All Questions</h2>
+    <ul id="dynamic-posts-list">
+      <li>Loading posts...</li>
+    </ul>
+  </div>
+
+</div>
+
+
+      
+      <main class="site-main" id="main" role="main">
+        
+<article class="post hentry">
+<div class="index-box">
+
+  
+  <header class="entry-header">
+    <h1 class="post-title entry-title" itemprop="headline">What are the differences between lower technology nodes and higher nodes?</h1>
+
+    <div class="entry-meta">
+      on <a href="http://localhost:1313/posts/2025-08-20-what-are-differences-between-lower-tech-node/" rel="bookmark">
+        <span class="published">August 20, 2025</span>
+      </a>&nbsp;
+      
+      in
+      
+        <a href="/categories/general-concepts/" rel="tag">General-Concepts</a>
+      &nbsp;
+      
+      with <a href="#comments">No comments</a>
+    </div>
+  </header>
+
+  
+  <div class="post-body entry-content" itemprop="articleBody">
+    <p>&nbsp;</p><table border="0" cellpadding="0" cellspacing="0" class="MsoNormalTable" style="border-collapse: collapse; margin-left: 20.8pt; mso-padding-alt: 0cm 5.4pt 0cm 5.4pt; mso-yfti-tbllook: 1184; width: 605px;">
+ <tbody><tr style="height: 15pt; mso-yfti-firstrow: yes; mso-yfti-irow: 0;">
+  <td style="border: 1pt solid windowtext; height: 15pt; mso-border-alt: solid windowtext 1.0pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 114.2pt;" valign="bottom" width="152">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><b><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Feature<o:p></o:p></span></b></p>
+  </td>
+  <td style="border-left: none; border: 1pt solid windowtext; height: 15pt; mso-border-bottom-alt: solid windowtext 1.0pt; mso-border-right-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext 1.0pt; padding: 0cm 5.4pt; width: 197pt;" valign="bottom" width="263">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><b><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Lower Nodes (e.g., ≤7nm, 5nm, 3nm)<o:p></o:p></span></b></p>
+  </td>
+  <td style="border-left: none; border: 1pt solid windowtext; height: 15pt; padding: 0cm 5.4pt; width: 142.4pt;" valign="bottom" width="190">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><b><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Higher Nodes (e.g., ≥12nm, 28nm)<o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr style="height: 25.5pt; mso-yfti-irow: 1;">
+  <td style="border-top: none; border: 1pt solid windowtext; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 114.2pt;" valign="bottom" width="152">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Transistor Architecture<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 197pt;" valign="bottom" width="263">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">FinFETs, transitioning to Gate-All-Around (GAA)
+  FETs (e.g., MBCFETs) at 3nm and below. Complex 3D structures.<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 142.4pt;" valign="bottom" width="190">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Planar MOSFETs (at 28nm), early FinFETs (at
+  16/14/12nm). Simpler structures.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style="height: 38.25pt; mso-yfti-irow: 2;">
+  <td style="border-top: none; border: 1pt solid windowtext; height: 38.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 114.2pt;" valign="bottom" width="152">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Lithography &amp; Patterning<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 38.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 197pt;" valign="bottom" width="263">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">EUV (Extreme Ultraviolet) lithography for
+  critical layers is essential. Multi-patterning (e.g., SAQP) for some DUV layers
+  if EUV not fully deployed. Extremely complex and restrictive design rules.<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 38.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 142.4pt;" valign="bottom" width="190">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Primarily DUV (Deep Ultraviolet) immersion
+  lithography. Double patterning (DPT) common for critical layers. Simpler
+  design rules.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style="height: 38.25pt; mso-yfti-irow: 3;">
+  <td style="border-top: none; border: 1pt solid windowtext; height: 38.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 114.2pt;" valign="bottom" width="152">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Parasitics (RC)<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 38.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 197pt;" valign="bottom" width="263">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Interconnect Resistance (R) and Via Resistance
+  are highly dominant over Capacitance (C). Significant impact on wire delay
+  and IR drop. Higher variability in parasitics. Coupling capacitance (Cc​) is
+  still a major concern.<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 38.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 142.4pt;" valign="bottom" width="190">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Capacitance (C) was often more dominant in
+  interconnect delay compared to Resistance (R).<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style="height: 38.25pt; mso-yfti-irow: 4;">
+  <td style="border-top: none; border: 1pt solid windowtext; height: 38.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 114.2pt;" valign="bottom" width="152">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Variability (PVT, OCV)<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 38.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 197pt;" valign="bottom" width="263">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Very high impact of process variations (Random
+  Dopant Fluctuations - RDF, Line Edge Roughness - LER, Work Function
+  Variation). Statistical timing (e.g., POCV) and variation-aware design are
+  mandatory.<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 38.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 142.4pt;" valign="bottom" width="190">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Lower relative impact of process variations.
+  Deterministic timing models (OCV, AOCV) were more commonly sufficient.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style="height: 14.25pt; mso-yfti-irow: 5;">
+  <td style="border-top: none; border: 1pt solid windowtext; height: 14.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 114.2pt;" valign="bottom" width="152">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Operating Voltage (Vdd​)<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 14.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 197pt;" valign="bottom" width="263">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Significantly lower (e.g., &lt; 0.8V, approaching
+  0.5-0.7V). Smaller noise margins.<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 14.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 142.4pt;" valign="bottom" width="190">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Higher (e.g., ~0.9V to 1.V+). Larger noise
+  margins.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style="height: 25.5pt; mso-yfti-irow: 6;">
+  <td style="border-top: none; border: 1pt solid windowtext; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 114.2pt;" valign="bottom" width="152">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Leakage Current<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 197pt;" valign="bottom" width="263">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Higher relative leakage current due to smaller
+  device dimensions and lower Vt​. Complex leakage control mechanisms are
+  vital.<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 142.4pt;" valign="bottom" width="190">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Lower relative leakage current.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style="height: 25.5pt; mso-yfti-irow: 7;">
+  <td style="border-top: none; border: 1pt solid windowtext; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 114.2pt;" valign="bottom" width="152">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Power Density &amp; Thermal<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 197pt;" valign="bottom" width="263">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Much higher transistor density leads to
+  significantly increased power density and severe thermal hotspots. Thermal
+  management is a critical design constraint.<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 142.4pt;" valign="bottom" width="190">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Lower power density, thermal issues generally
+  more manageable.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style="height: 51pt; mso-yfti-irow: 8;">
+  <td style="border-top: none; border: 1pt solid windowtext; height: 51pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 114.2pt;" valign="bottom" width="152">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Design Rules &amp; DFM<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 51pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 197pt;" valign="bottom" width="263">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Extremely complex, numerous, and restrictive
+  design rules. Extensive Design for Manufacturability (DFM), Design for Yield
+  (DFY), and Design for Reliability (DFR) checks are mandatory. Litho hotspots,
+  CMP effects, stress effects are major concerns.<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 51pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 142.4pt;" valign="bottom" width="190">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">More relaxed design rules. DFM was important but
+  less acutely critical.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style="height: 25.5pt; mso-yfti-irow: 9;">
+  <td style="border-top: none; border: 1pt solid windowtext; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 114.2pt;" valign="bottom" width="152">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Interconnect Materials<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 197pt;" valign="bottom" width="263">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Exploration/use of new materials like Cobalt
+  (Co), Ruthenium (Ru) for liners, vias, or even wires to combat high
+  resistance of Cu at very small dimensions.<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 142.4pt;" valign="bottom" width="190">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Predominantly Copper (Cu) interconnects with
+  traditional barrier/liner materials (e.g., Tantalum, Titanium).<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style="height: 25.5pt; mso-yfti-irow: 10;">
+  <td style="border-top: none; border: 1pt solid windowtext; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 114.2pt;" valign="bottom" width="152">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">IR Drop &amp; Electromigration (EM)<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 197pt;" valign="bottom" width="263">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">More severe due to lower Vdd​, higher wire R, and
+  higher current densities. Requires very robust power distribution network
+  (PDN) design.<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 142.4pt;" valign="bottom" width="190">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Less severe compared to lower nodes.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style="height: 25.5pt; mso-yfti-irow: 11;">
+  <td style="border-top: none; border: 1pt solid windowtext; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 114.2pt;" valign="bottom" width="152">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Cost (Design &amp; Manufacturing)<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 197pt;" valign="bottom" width="263">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Exponentially higher NRE (Non-Recurring
+  Engineering) costs (masks, IP), more complex manufacturing processes, and
+  longer design cycles.<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 142.4pt;" valign="bottom" width="190">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">More mature processes with lower NRE costs.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style="height: 25.5pt; mso-yfti-irow: 12;">
+  <td style="border-top: none; border: 1pt solid windowtext; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 114.2pt;" valign="bottom" width="152">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Design Complexity<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 197pt;" valign="bottom" width="263">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Significantly higher, requiring more
+  sophisticated EDA tools, advanced modeling, and larger design teams.<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 25.5pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 142.4pt;" valign="bottom" width="190">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">High, but less complex than cutting-edge nodes.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style="height: 14.25pt; mso-yfti-irow: 13; mso-yfti-lastrow: yes;">
+  <td style="border-top: none; border: 1pt solid windowtext; height: 14.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 114.2pt;" valign="bottom" width="152">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Standard Cell Height<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 14.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 197pt;" valign="bottom" width="263">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Smaller (e.g., 6-track, 5-track, or even lower).
+  Tighter pin access.<o:p></o:p></span></p>
+  </td>
+  <td style="border-bottom: 1pt solid windowtext; border-left: none; border-right: 1pt solid windowtext; border-top: none; height: 14.25pt; mso-border-bottom-alt: solid windowtext .5pt; mso-border-right-alt: solid windowtext .5pt; padding: 0cm 5.4pt; width: 142.4pt;" valign="bottom" width="190">
+  <p class="MsoNormal" style="line-height: normal; margin-bottom: 0cm;"><span face="&quot;Arial&quot;,sans-serif" style="color: black; font-size: 10pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-language: EN-IN; mso-font-kerning: 0pt; mso-ligatures: none;">Larger (e.g., 9-track, 10-track, 12-track).
+  Easier pin access.<o:p></o:p></span></p>
+  </td>
+ </tr>
+</tbody></table><br /><div><br /></div><div><ul style="margin-top: 0cm;" type="circle">
+ <li class="MsoNormal" style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt;">7nm
+     Fab Challenges: <a href="https://semiengineering.com/7nm-fab-challenges/" target="_blank">https://semiengineering.com/7nm-fab-challenges/</a><o:p></o:p></li>
+ <li class="MsoNormal" style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt;">Signoff
+     Challenges at Advanced Nodes: <a href="https://www.einfochips.com/blog/sign-off-the-chip-asic-design-challenges-and-solutions-at-cutting-edge-technology/" target="_blank">https://www.einfochips.com/blog/sign-off-the-chip-asic-design-challenges-and-solutions-at-cutting-edge-technology/</a></li></ul></div>
+  </div>
+
+  
+  <div id="post-ad-container"
+       data-desktop-src="https://pl28748027.effectivegatecpm.com/91a7dc313767ee1279685304c23cc0ac/invoke.js"
+       data-mobile-key="3520767e659da30b3c945eb2073db7db"
+       data-mobile-src="https://www.highperformanceformat.com/3520767e659da30b3c945eb2073db7db/invoke.js"
+       style="clear:both; margin:25px 0 15px; text-align:center;">
+  </div>
+
+  
+  <div class="post-share pbtsharethisbutt">
+    Share:
+    <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-are-differences-between-lower-tech-node%2f"
+       target="_blank" rel="nofollow" title="Share on Facebook">
+      <i class="fa fa-facebook"></i>
+    </a>
+    <a href="https://twitter.com/home?status=what-are-the-differences-between-lower-technology-nodes-and-higher-nodes+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-are-differences-between-lower-tech-node%2f"
+       target="_blank" rel="nofollow" title="Tweet This!">
+      <i class="fa fa-twitter"></i>
+    </a>
+  </div>
+
+  <div style="clear:both;"></div>
+
+  
+  <div class="blog-pager" id="blog-pager" style="margin-top:20px;">
+    
+    <span id="blog-pager-newer-link">
+      <a class="blog-pager-newer-link" href="http://localhost:1313/posts/2025-08-20-what-are-different-types-of-placement-blockage/">&#8249; What are the different types of placement bounds/blockages?</a>
+    </span>
+    
+    
+    <span id="blog-pager-older-link">
+      <a class="blog-pager-older-link" href="http://localhost:1313/posts/2025-08-20-what-are-checks-done-after-placement/">What are the checks done after placement? &#8250;</a>
+    </span>
+    
+    <a class="home-link" href="http://localhost:1313/">Home</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  
+  <div id="comments">
+    <h4>Comments</h4>
+    <p style="font-family:'Dosis',sans-serif;">
+      Comments are not yet enabled on this Hugo site.
+      To add comments, integrate
+      <a href="https://disqus.com" target="_blank">Disqus</a> or
+      <a href="https://giscus.app" target="_blank">Giscus</a> (GitHub-based, free).
+    </p>
+    
+  </div>
+
+</div>
+</article>
+
+      </main>
+
+    </div>
+  </div>
+
+  
+  <footer class="site-footer" id="colophon" role="contentinfo">
+<div id="supplementary">
+  <div class="footer-widgets" id="footer-widgets">
+
+    
+    <div class="widget popular-posts">
+      <h2>Popular Posts</h2>
+      <ul>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-can-and-gate-replace-icg-if-glitch-is/">Can an AND gate replace an ICG if glitch is handled</a></li>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-command-to-balance-two-clock-trees/">Command to balance two clock trees? Command to check latency?  Command to do useful skew?</a></li>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-different-cts-types-what-are-benefits/">Different CTS types? What are benefits of those?</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div class="widget">
+      <h2>Subscribe for more</h2>
+      <div id="mc_embed_signup">
+        <form action="https://blogspot.us8.list-manage.com/subscribe/post?u=f8ac6f0c8c94ac766b4de9c2a&amp;id=4365930274&amp;f_id=00f37fe1f0"
+              method="post"
+              id="mc-embedded-subscribe-form"
+              name="mc-embedded-subscribe-form"
+              target="_blank">
+          <div>
+            <label for="mce-EMAIL">Email Address <span>*</span></label>
+            <input type="email" name="EMAIL" id="mce-EMAIL" required/>
+          </div>
+          
+          <div style="position:absolute;left:-5000px;" aria-hidden="true">
+            <input type="text" name="b_f8ac6f0c8c94ac766b4de9c2a_4365930274" tabindex="-1" value=""/>
+          </div>
+          <div>
+            <input type="submit" value="Subscribe" name="subscribe"/>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    
+    <div class="widget">
+      <h2>Submit your questions</h2>
+      <form name="contact-form" action="mailto:your@email.com" method="post">
+        <p>
+          <label>Name<br/>
+            <input type="text" name="name" size="30"/>
+          </label>
+        </p>
+        <p>
+          <label>Email <strong>*</strong><br/>
+            <input type="email" name="email" size="30" required/>
+          </label>
+        </p>
+        <p>
+          <label>Message <strong>*</strong><br/>
+            <textarea name="message" rows="5" cols="25" required></textarea>
+          </label>
+        </p>
+        <p><input type="submit" value="Send"/></p>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="site-info">
+  Copyright &copy; <span id="creditsyear"></span>
+  <a href="http://localhost:1313/">Physical Design Interview Guide</a>
+  &nbsp;|&nbsp;
+  <a href="http://localhost:1313/posts/index.xml"
+     aria-label="RSS feed"
+     target="_blank" rel="alternate">
+    <i class="fa fa-rss" aria-hidden="true"></i>
+  </a>
+</div>
+
+</footer>
+
+
+</div>
+
+
+<script src="/js/main.js"></script>
+
+
+<div id="monetag-container" data-zone="10628900" style="display:none"></div>
+
+
+<div id="infolinks-container" style="display:none"></div>
+
+</body>
+</html>

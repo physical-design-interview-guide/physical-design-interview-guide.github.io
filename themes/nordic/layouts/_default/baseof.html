@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="monetag" content="5302b3ff6128cdd7d5e775810525a259"/>
+
+  <title>
+    {{- if .IsHome -}}{{ .Site.Title }}
+    {{- else -}}{{ .Title }} ~ {{ .Site.Title }}
+    {{- end -}}
+  </title>
+
+  {{ if .IsHome }}
+    <meta name="description" content="{{ .Site.Params.description }}"/>
+  {{ else }}
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}"/>
+  {{ end }}
+
+  <!-- Canonical -->
+  <link rel="canonical" href="{{ .Permalink }}"/>
+
+  <!-- No-index archive/search pages -->
+  {{ if or .IsSection .Data.Term }}{{ else }}{{ end }}
+
+  <!-- Preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <!-- DNS prefetch for ad networks -->
+  <link rel="dns-prefetch" href="https://nap5k.com"/>
+  <link rel="dns-prefetch" href="https://resources.infolinks.com"/>
+  <link rel="dns-prefetch" href="https://www.highperformanceformat.com"/>
+  <link rel="dns-prefetch" href="https://pl28748027.effectivegatecpm.com"/>
+
+  <!-- Fonts: async non-blocking, display=swap so they always render -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@400;500;700&display=swap"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@400;500;700&display=swap"/>
+  </noscript>
+
+  <!-- Font Awesome 4.5 (icons for search, share etc) -->
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+  </noscript>
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="/css/style.css"/>
+
+  <!-- Favicon -->
+  <link rel="icon" href="{{ .Site.Params.favicon }}"/>
+
+  <!-- Dark mode: apply saved theme before paint to avoid flash -->
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBY3XDZW01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WBY3XDZW01');
+  </script>
+
+  <!-- Infolinks config (script loaded deferred in main.js) -->
+  <script>
+    var infolinks_pid  = {{ .Site.Params.infolinks_pid }};
+    var infolinks_wsid = 0;
+  </script>
+
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/schema.html" . }}
+</head>
+
+<body>
+<div class="site-wrapper" id="page">
+
+  <!-- ========== HEADER ========== -->
+  {{ partial "header.html" . }}
+
+  <!-- ========== AD STRIP BELOW HEADER (desktop only) ========== -->
+  <div class="header-ad-wrapper">
+    <script>
+      atOptions = {
+        'key'    : '{{ .Site.Params.adsterra_desktop_header_key }}',
+        'format' : 'iframe',
+        'height' : 90,
+        'width'  : 728,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_desktop_header_key }}/invoke.js" async></script>
+  </div>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <div class="site-content" id="content">
+    <div class="content-area" id="primary">
+
+      <!-- Left Sidebar -->
+      {{ partial "sidebar.html" . }}
+
+      <!-- Main column -->
+      <main class="site-main" id="main" role="main">
+        {{ block "main" . }}{{ end }}
+      </main>
+
+    </div><!-- .content-area -->
+  </div><!-- .site-content -->
+
+  <!-- ========== FOOTER ========== -->
+  {{ partial "footer.html" . }}
+
+</div><!-- #page -->
+
+<!-- Theme JS (dark mode, menu, search, sidebar posts, ads) -->
+<script src="/js/main.js"></script>
+
+<!-- Monetag deferred container -->
+<div id="monetag-container" data-zone="{{ .Site.Params.monetag_zone }}" style="display:none"></div>
+
+<!-- Infolinks deferred container -->
+<div id="infolinks-container" style="display:none"></div>
+
+</body>
+</html>

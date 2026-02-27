@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Placement on Physical Design Interview Guide</title>
+    <link>http://localhost:1313/categories/placement/</link>
+    <description>Recent content in Placement on Physical Design Interview Guide</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/placement/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Command for placement? Command for cell padding?</title>
+      <link>http://localhost:1313/posts/2025-08-20-command-for-placement-command-for-cell/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-08-20-command-for-placement-command-for-cell/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; text-indent: -18pt;&#34;&gt;o&lt;span style=&#34;font-family: &amp;quot;Times New Roman&amp;quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;&#34;&gt;&amp;nbsp;&amp;nbsp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;text-indent: -18pt;&#34;&gt;placeDesign / place_opt&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p class=&#34;MsoListParagraphCxSpMiddle&#34; style=&#34;margin-left: 18.0pt; mso-add-space: auto; mso-list: l0 level1 lfo1; text-indent: -18.0pt;&#34;&gt;&lt;!--[if !supportLists]--&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; mso-fareast-font-family: &amp;quot;Courier New&amp;quot;;&#34;&gt;&lt;span style=&#34;mso-list: Ignore;&#34;&gt;o&lt;span style=&#34;font: 7.0pt &amp;quot;Times New Roman&amp;quot;;&#34;&gt;&amp;nbsp;&amp;nbsp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;!--[endif]--&gt;setPlaceMode -cell_padding &amp;lt;value&amp;gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How do we do power recovery (other than VT swapping)?</title>
+      <link>http://localhost:1313/posts/2025-08-20-how-do-we-do-power-recovery-other-than/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-08-20-how-do-we-do-power-recovery-other-than/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;&lt;p class=&#34;MsoNormal&#34; style=&#34;margin-left: 18.0pt; mso-list: l0 level1 lfo1; tab-stops: list -17.7pt 18.0pt; text-indent: -18.0pt;&#34;&gt;&lt;!--[if !supportLists]--&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; mso-fareast-font-family: &amp;quot;Courier New&amp;quot;;&#34;&gt;&lt;span style=&#34;mso-list: Ignore;&#34;&gt;o&lt;span style=&#34;font: 7.0pt &amp;quot;Times New Roman&amp;quot;;&#34;&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;!--[endif]--&gt;&lt;b&gt;Cell&#xA;Sizing / (Downsizing):&lt;/b&gt; Replace cells on non-critical timing paths with&#xA;smaller drive-strength variants (e.g., X4 -&amp;gt; X2 -&amp;gt; X1).&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&#xA;&lt;p class=&#34;MsoNormal&#34; style=&#34;margin-left: 18.0pt; mso-list: l0 level1 lfo1; tab-stops: list -17.7pt 18.0pt; text-indent: -18.0pt;&#34;&gt;&lt;!--[if !supportLists]--&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; mso-fareast-font-family: &amp;quot;Courier New&amp;quot;;&#34;&gt;&lt;span style=&#34;mso-list: Ignore;&#34;&gt;o&lt;span style=&#34;font: 7.0pt &amp;quot;Times New Roman&amp;quot;;&#34;&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;!--[endif]--&gt;&lt;b&gt;Removing&#xA;unnecessary buf/inverters:&lt;/b&gt; If added on short nets, may not be really&#xA;required and can be deleted.&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How do you fix setup violations at the placement stage?</title>
+      <link>http://localhost:1313/posts/2025-08-20-how-do-you-fix-setup-violations-at/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-08-20-how-do-you-fix-setup-violations-at/</guid>
+      <description>&lt;p&gt;Cell Sizing, VT Swap to allowed VT at placement, Buffer&#xA;insertion, Logic optimization, These optimizations are typically performed&#xA;automatically by the place_opt / optDesign -preCTS commands based on the timing&#xA;constraints (SDC) and available libraries and don’t use settings.&lt;/p&gt;&#xA;&lt;p class=&#34;MsoListParagraphCxSpFirst&#34; style=&#34;margin-left: 18.0pt; mso-add-space: auto; mso-list: l0 level1 lfo1; text-indent: -18.0pt;&#34;&gt;&lt;!--[if !supportLists]--&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; mso-fareast-font-family: &amp;quot;Courier New&amp;quot;;&#34;&gt;&lt;span style=&#34;mso-list: Ignore;&#34;&gt;o&lt;span style=&#34;font: 7.0pt &amp;quot;Times New Roman&amp;quot;;&#34;&gt;&amp;nbsp;&amp;nbsp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;!--[endif]--&gt;Need manual observation of critical paths,&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How to Analyze and Fix Post-Placement Congestion?</title>
+      <link>http://localhost:1313/posts/2025-08-20-how-do-you-analyse-and-fix-congestion/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-08-20-how-do-you-analyse-and-fix-congestion/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; text-indent: -18pt;&#34;&gt;o&lt;span style=&#34;font-family: &amp;quot;Times New Roman&amp;quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;&#34;&gt;&amp;nbsp;&amp;nbsp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;b style=&#34;text-indent: -18pt;&#34;&gt;Congestion Maps:&lt;/b&gt;&lt;span style=&#34;text-indent: -18pt;&#34;&gt; Use the PnR tool&#39;s GUI&#xA;to visualize the congestion map generated after trial/global routing. Identify&#xA;hotspots (high overflow areas, usually color-coded red/orange). Check both&#xA;horizontal and vertical layer congestion.&lt;/span&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How to decide how many site rows needed for cell padding?</title>
+      <link>http://localhost:1313/posts/2025-08-20-how-to-decide-how-many-site-rows-needed/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-08-20-how-to-decide-how-many-site-rows-needed/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; text-indent: -18pt;&#34;&gt;o&lt;span style=&#34;font-family: &amp;quot;Times New Roman&amp;quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;&#34;&gt;&amp;nbsp;&amp;nbsp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;text-indent: -18pt;&#34;&gt;Usually iterative to find best value for padding&#xA;but can be generalise like,&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p class=&#34;MsoListParagraphCxSpMiddle&#34; style=&#34;margin-left: 18.0pt; mso-add-space: auto; mso-list: l0 level1 lfo1; text-indent: -18.0pt;&#34;&gt;&lt;!--[if !supportLists]--&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; mso-fareast-font-family: &amp;quot;Courier New&amp;quot;;&#34;&gt;&lt;span style=&#34;mso-list: Ignore;&#34;&gt;o&lt;span style=&#34;font: 7.0pt &amp;quot;Times New Roman&amp;quot;;&#34;&gt;&amp;nbsp;&amp;nbsp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;!--[endif]--&gt;If local congestion in one module, depending on&#xA;congestion %, we can increase.&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How to handle congestion in vertical blocks (H &gt; W)?</title>
+      <link>http://localhost:1313/posts/2025-08-20-how-to-handle-congestion-in-vertical/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-08-20-how-to-handle-congestion-in-vertical/</guid>
+      <description>&lt;p&gt;If height is more, block has longer vertical tracks but less&#xA;in number. Block has more number of horizontal tracks available. Chances are&#xA;there will be higher congestion on vertical tracks. So place pins and macros&#xA;such that it utilises more number of horizontal tracks.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How to solve congestion if uniform density spread is not working?</title>
+      <link>http://localhost:1313/posts/2025-08-20-how-to-solve-congestion-if-uniform/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-08-20-how-to-solve-congestion-if-uniform/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; text-indent: -18pt;&#34;&gt;o&lt;span style=&#34;font-family: &amp;quot;Times New Roman&amp;quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;&#34;&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;&lt;b style=&#34;text-indent: -18pt;&#34;&gt;Identify&#xA;the Bottleneck:&lt;/b&gt;&lt;span style=&#34;text-indent: -18pt;&#34;&gt; Determine &lt;/span&gt;&lt;i style=&#34;text-indent: -18pt;&#34;&gt;why&lt;/i&gt;&lt;span style=&#34;text-indent: -18pt;&#34;&gt; the hotspot exists even with uniform&#xA;density targets. Is it due to:&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p class=&#34;MsoNormal&#34; style=&#34;margin-left: 90.0pt; mso-list: l0 level3 lfo1; tab-stops: list 90.0pt; text-indent: -18.0pt;&#34;&gt;&lt;!--[if !supportLists]--&gt;&lt;span style=&#34;font-family: Wingdings; font-size: 10.0pt; line-height: 107%; mso-bidi-font-family: Wingdings; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: Wingdings;&#34;&gt;&lt;span style=&#34;mso-list: Ignore;&#34;&gt;§&lt;span style=&#34;font: 7.0pt &amp;quot;Times New Roman&amp;quot;;&#34;&gt;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;!--[endif]--&gt;Macro&#xA;pin congestion?&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How will you handle high utilization?</title>
+      <link>http://localhost:1313/posts/2025-08-20-how-will-you-handle-high-utilization/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-08-20-how-will-you-handle-high-utilization/</guid>
+      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p class=&#34;MsoNormal&#34; style=&#34;margin-left: 17.85pt;&#34;&gt;Use area aware synthesis and&#xA;placement.&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&#xA;&lt;p class=&#34;MsoNormal&#34; style=&#34;margin-left: 17.85pt;&#34;&gt;Place macros carefully to give&#xA;maximum std cell placeable area. Use congestion driven placement to reduce high&#xA;utilization impact on congestion.&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>If cells are sitting at the corner in a partial blockage (not spread), what can be done?</title>
+      <link>http://localhost:1313/posts/2025-08-20-if-cells-are-sitting-at-corner-in/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-08-20-if-cells-are-sitting-at-corner-in/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; text-indent: -18pt;&#34;&gt;o&lt;span style=&#34;font-family: &amp;quot;Times New Roman&amp;quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;&#34;&gt;&amp;nbsp;&amp;nbsp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;text-indent: -18pt;&#34;&gt;Ensure that partial blockages are not too&#xA;restrictive. If a region is 50% blocked, and nearby area is full, cells may&#xA;crowd into corners.&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p class=&#34;MsoListParagraphCxSpMiddle&#34; style=&#34;margin-left: 18.0pt; mso-add-space: auto; mso-list: l0 level1 lfo1; text-indent: -18.0pt;&#34;&gt;&lt;!--[if !supportLists]--&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; mso-fareast-font-family: &amp;quot;Courier New&amp;quot;;&#34;&gt;&lt;span style=&#34;mso-list: Ignore;&#34;&gt;o&lt;span style=&#34;font: 7.0pt &amp;quot;Times New Roman&amp;quot;;&#34;&gt;&amp;nbsp;&amp;nbsp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;!--[endif]--&gt;Create blockage in distributed area. &lt;a href=&#34;https://support.cadence.com/apex/ArticleAttachmentPortal?id=a1O3w000009mFGeEAM&amp;amp;pageName=ArticleContent&#34;&gt;https://support.cadence.com/apex/ArticleAttachmentPortal?id=a1O3w000009mFGeEAM&amp;amp;pageName=ArticleContent&lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>If my utilization is 70% except optimization and physical cells what things we should consider in estimated utilization at route?</title>
+      <link>http://localhost:1313/posts/2025-08-20-if-my-utilization-is-70-except/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-08-20-if-my-utilization-is-70-except/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; text-indent: -18pt;&#34;&gt;o&lt;span style=&#34;font-family: &amp;quot;Times New Roman&amp;quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;&#34;&gt;&amp;nbsp;&amp;nbsp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;text-indent: -18pt;&#34;&gt;Buffers/inverters for optimization&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p class=&#34;MsoListParagraphCxSpMiddle&#34; style=&#34;margin-left: 18.0pt; mso-add-space: auto; mso-list: l0 level1 lfo1; text-indent: -18.0pt;&#34;&gt;&lt;!--[if !supportLists]--&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; mso-fareast-font-family: &amp;quot;Courier New&amp;quot;;&#34;&gt;&lt;span style=&#34;mso-list: Ignore;&#34;&gt;o&lt;span style=&#34;font: 7.0pt &amp;quot;Times New Roman&amp;quot;;&#34;&gt;&amp;nbsp;&amp;nbsp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;!--[endif]--&gt;Physical only cells added like decap, endcaps,&#xA;well taps etc.&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>What are the checks done after placement?</title>
+      <link>http://localhost:1313/posts/2025-08-20-what-are-checks-done-after-placement/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-08-20-what-are-checks-done-after-placement/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; text-indent: -18pt;&#34;&gt;o&lt;span style=&#34;font-family: &amp;quot;Times New Roman&amp;quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;&#34;&gt;&amp;nbsp;&amp;nbsp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;b style=&#34;text-indent: -18pt;&#34;&gt;Placement Legality:&lt;/b&gt;&lt;span style=&#34;text-indent: -18pt;&#34;&gt; check for &lt;/span&gt;&lt;b style=&#34;text-indent: -18pt;&#34;&gt;Overlaps:&lt;/b&gt;&lt;span style=&#34;text-indent: -18pt;&#34;&gt;&#xA;Verify that no standard cells overlap each other (checkPlace, checkLegality).&#xA;All cells must occupy legal sites defined by the floorplan rows.&lt;/span&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>What can cause bad timing at the placement stage?</title>
+      <link>http://localhost:1313/posts/2025-08-20-what-can-cause-bad-timing-at-placement/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-08-20-what-can-cause-bad-timing-at-placement/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; text-indent: -18pt;&#34;&gt;o&lt;span style=&#34;font-family: &amp;quot;Times New Roman&amp;quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;&#34;&gt;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;&lt;b style=&#34;text-indent: -18pt;&#34;&gt;Inaccurate&#xA;Wire Load Models (WLMs) in Synthesis:&lt;/b&gt;&lt;span style=&#34;text-indent: -18pt;&#34;&gt; Synthesis often uses statistical WLMs&#xA;to estimate interconnect delay, which can be highly inaccurate compared to the&#xA;actual delays based on physical placement.&lt;/span&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>What if timing is critical and spreading isn&#39;t an option?</title>
+      <link>http://localhost:1313/posts/2025-08-20-what-if-timing-is-critical-and/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-08-20-what-if-timing-is-critical-and/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;&lt;p class=&#34;MsoNormal&#34;&gt;Delay is due to cell and interconnect. When area is&#xA;congested, when tool calculates timing, it may consider detour routes, adding&#xA;more delay.&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&#xA;&lt;p class=&#34;MsoNormal&#34;&gt;When cells are spreaded just enough to solve congestion, it&#xA;may reduce route length as well, helping in congestion and timing both.&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&#xA;&lt;p class=&#34;MsoNormal&#34;&gt;Instead of broad spreading, use more localized techniques:&#xA;Apply partial blockages with lower blockage percentages (e.g., 10%) only in the&#xA;absolute peak congestion GCells, rather than large areas.&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why don&#39;t we check hold during placement?</title>
+      <link>http://localhost:1313/posts/2025-08-20-why-dont-we-check-hold-during-placement/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2025-08-20-why-dont-we-check-hold-during-placement/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; text-indent: -18pt;&#34;&gt;o&lt;span style=&#34;font-family: &amp;quot;Times New Roman&amp;quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;&#34;&gt;&amp;nbsp;&amp;nbsp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;b style=&#34;text-indent: -18pt;&#34;&gt;Ideal Clock Network:&lt;/b&gt;&lt;span style=&#34;text-indent: -18pt;&#34;&gt; During placement&#xA;(pre-CTS), the PnR tool assumes an &#34;ideal&#34; clock network. This means:&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p class=&#34;MsoNormal&#34; style=&#34;margin-left: 54.0pt; mso-list: l0 level2 lfo1; text-indent: -18.0pt;&#34;&gt;&lt;!--[if !supportLists]--&gt;&lt;span style=&#34;font-family: &amp;quot;Courier New&amp;quot;; mso-fareast-font-family: &amp;quot;Courier New&amp;quot;;&#34;&gt;&lt;span style=&#34;mso-list: Ignore;&#34;&gt;o&lt;span style=&#34;font: 7.0pt &amp;quot;Times New Roman&amp;quot;;&#34;&gt;&amp;nbsp;&amp;nbsp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;!--[endif]--&gt;&lt;b&gt;Zero Skew:&lt;/b&gt; All flip-flops receive the&#xA;clock edge at the exact same time.&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

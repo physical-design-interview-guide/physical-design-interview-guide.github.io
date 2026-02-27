@@ -1,0 +1,81 @@
+{{ define "main" }}
+<article class="post hentry">
+<div class="index-box">
+
+  <!-- Post header -->
+  <header class="entry-header">
+    <h1 class="post-title entry-title" itemprop="headline">{{ .Title }}</h1>
+
+    <div class="entry-meta">
+      on <a href="{{ .Permalink }}" rel="bookmark">
+        <span class="published">{{ .Date.Format "January 02, 2006" }}</span>
+      </a>&nbsp;
+      {{ with .Params.categories }}
+      in
+      {{ range . }}
+        <a href="/categories/{{ . | urlize }}/" rel="tag">{{ . }}</a>
+      {{ end }}&nbsp;
+      {{ end }}
+      with <a href="#comments">No comments</a>
+    </div>
+  </header>
+
+  <!-- Post body -->
+  <div class="post-body entry-content" itemprop="articleBody">
+    {{ .Content }}
+  </div>
+
+  <!-- ===== AD BELOW POST (one script, device-conditional via JS) ===== -->
+  <div id="post-ad-container"
+       data-desktop-src="https://pl28748027.effectivegatecpm.com/91a7dc313767ee1279685304c23cc0ac/invoke.js"
+       data-mobile-key="{{ .Site.Params.adsterra_mobile_post_key }}"
+       data-mobile-src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_mobile_post_key }}/invoke.js"
+       style="clear:both; margin:25px 0 15px; text-align:center;">
+  </div>
+
+  <!-- Share buttons -->
+  <div class="post-share pbtsharethisbutt">
+    Share:
+    <a href="https://www.facebook.com/share.php?u={{ .Permalink }}"
+       target="_blank" rel="nofollow" title="Share on Facebook">
+      <i class="fa fa-facebook"></i>
+    </a>
+    <a href="https://twitter.com/home?status={{ .Title | urlize }}+--+{{ .Permalink }}"
+       target="_blank" rel="nofollow" title="Tweet This!">
+      <i class="fa fa-twitter"></i>
+    </a>
+  </div>
+
+  <div style="clear:both;"></div>
+
+  <!-- Prev / Next post navigation -->
+  <div class="blog-pager" id="blog-pager" style="margin-top:20px;">
+    {{ with .PrevInSection }}
+    <span id="blog-pager-newer-link">
+      <a class="blog-pager-newer-link" href="{{ .Permalink }}">&#8249; {{ .Title }}</a>
+    </span>
+    {{ end }}
+    {{ with .NextInSection }}
+    <span id="blog-pager-older-link">
+      <a class="blog-pager-older-link" href="{{ .Permalink }}">{{ .Title }} &#8250;</a>
+    </span>
+    {{ end }}
+    <a class="home-link" href="{{ .Site.BaseURL }}">Home</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <!-- Comments section -->
+  <div id="comments">
+    <h4>Comments</h4>
+    <p style="font-family:'Dosis',sans-serif;">
+      Comments are not yet enabled on this Hugo site.
+      To add comments, integrate
+      <a href="https://disqus.com" target="_blank">Disqus</a> or
+      <a href="https://giscus.app" target="_blank">Giscus</a> (GitHub-based, free).
+    </p>
+    <!-- PASTE YOUR DISQUS/GISCUS SNIPPET HERE when ready -->
+  </div>
+
+</div>
+</article>
+{{ end }}

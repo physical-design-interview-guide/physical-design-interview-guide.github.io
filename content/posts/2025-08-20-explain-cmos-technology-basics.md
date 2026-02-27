@@ -1,0 +1,34 @@
+---
+title: "Explain CMOS technology basics"
+date: 2025-08-20
+draft: false
+categories: ["General-Concepts"]
+description: ""
+---
+
+<p>&nbsp;<span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><b style="text-indent: -18pt;">CMOS</b><span style="text-indent: -18pt;"> stands for </span><b style="text-indent: -18pt;">Complementary
+Metal-Oxide-Semiconductor</b><span style="text-indent: -18pt;">. It's the dominant technology for constructing
+integrated circuits.</span></p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><b style="text-indent: -18pt;">Complementary:</b><span style="text-indent: -18pt;"> It uses both NMOS
+(N-channel Metal-Oxide-Semiconductor) and PMOS (P-channel
+Metal-Oxide-Semiconductor) transistors, typically paired together.</span></p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><b style="text-indent: -18pt;">Structure:</b></p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;"><span>&nbsp;&nbsp; &nbsp;</span>o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><b style="text-indent: -18pt;">NMOS:</b><span style="text-indent: -18pt;"> Conducts current (electrons) when
+its gate voltage is high (logic '1'). </span><span style="text-indent: -18pt;">&nbsp;</span><span style="text-indent: -18pt;">Built
+on a P-type substrate.</span></p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;"><span>&nbsp;&nbsp; &nbsp;</span>o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><b style="text-indent: -18pt;">PMOS:</b><span style="text-indent: -18pt;"> Conducts current (holes) when its
+gate voltage is low (logic '0'). Built on an N-type substrate (or N-well).</span></p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><b style="text-indent: -18pt;">Basic Inverter:</b><span style="text-indent: -18pt;"> The fundamental CMOS gate
+is the inverter. It consists of one PMOS transistor connecting the output to
+VDD (power supply) and one NMOS transistor connecting the output to VSS
+(ground).</span></p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;"><span>&nbsp;&nbsp; &nbsp;</span>o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><span style="text-indent: -18pt;">Input '1': PMOS is OFF, NMOS is ON -&gt; Output
+is pulled to VSS ('0').</span></p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;"><span>&nbsp;&nbsp; &nbsp;</span>o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><span style="text-indent: -18pt;">Input '0': PMOS is ON, NMOS is OFF -&gt; Output
+is pulled to VDD ('1').</span></p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><b style="text-indent: -18pt;">Key Advantage:</b><span style="text-indent: -18pt;"> In steady state (input is
+stable '0' or '1'), one of the transistors (either PMOS or NMOS) is always OFF.
+This means there is ideally </span><i style="text-indent: -18pt;">no static current path</i><span style="text-indent: -18pt;"> from VDD to VSS,
+resulting in very low static power consumption. Power is primarily consumed
+during switching.</span></p>

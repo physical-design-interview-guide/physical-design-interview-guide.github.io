@@ -1,0 +1,83 @@
+{{ define "main" }}
+<div class="blog-posts">
+
+  {{ range .Paginator.Pages }}
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      <!-- Date header (hidden via CSS like Blogger, kept for semantics) -->
+      <div class="post-date">{{ .Date.Format "02/01/2006" }}</div>
+
+      <!-- Post title -->
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </h2>
+
+        <!-- Meta: date + category labels -->
+        <div class="entry-meta">
+          on <a href="{{ .Permalink }}" rel="bookmark">
+            <span class="published">{{ .Date.Format "January 02, 2006" }}</span>
+          </a>&nbsp;
+          {{ with .Params.categories }}
+          in
+          {{ range . }}
+            <a href="/categories/{{ . | urlize }}/" rel="tag">{{ . }}</a>
+          {{ end }}&nbsp;
+          {{ end }}
+          with <a href="{{ .Permalink }}#comments">No comments</a>
+        </div>
+      </header>
+
+      <!-- Post summary / excerpt -->
+      <div class="post-body entry-content">
+        <p>{{ .Summary }}</p>
+      </div>
+
+      <!-- Share + Read More -->
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u={{ .Permalink }}"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status={{ .Title | urlize }}+--+{{ .Permalink }}"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="{{ .Permalink }}">
+          Read More <span class="sr-only">about {{ .Title }}</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  {{ end }}
+
+  <!-- Pagination — mirrors Blogger's older/newer links -->
+  {{ if gt .Paginator.TotalPages 1 }}
+  <div class="blog-pager" id="blog-pager">
+    {{ if .Paginator.HasPrev }}
+    <span id="blog-pager-newer-link">
+      <a class="blog-pager-newer-link"
+         href="{{ .Paginator.Prev.URL }}">&#8249; Newer Posts</a>
+    </span>
+    {{ end }}
+    {{ if .Paginator.HasNext }}
+    <span id="blog-pager-older-link">
+      <a class="blog-pager-older-link"
+         href="{{ .Paginator.Next.URL }}">Older Posts &#8250;</a>
+    </span>
+    {{ end }}
+    <div style="clear:both;"></div>
+  </div>
+  {{ end }}
+
+</div><!-- .blog-posts -->
+{{ end }}

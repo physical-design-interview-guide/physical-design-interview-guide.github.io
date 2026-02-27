@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+	<meta name="generator" content="Hugo 0.157.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="monetag" content="5302b3ff6128cdd7d5e775810525a259"/>
+
+  <title>Physical Design Interview Guide</title>
+
+  
+    <meta name="description" content="The Ultimate Guide to Physical Design Interview Questions"/>
+  
+
+  
+  <link rel="canonical" href="http://localhost:1313/"/>
+
+  
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  
+  <link rel="dns-prefetch" href="https://nap5k.com"/>
+  <link rel="dns-prefetch" href="https://resources.infolinks.com"/>
+  <link rel="dns-prefetch" href="https://www.highperformanceformat.com"/>
+  <link rel="dns-prefetch" href="https://pl28748027.effectivegatecpm.com"/>
+
+  
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@400;500;700&display=swap"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@400;500;700&display=swap"/>
+  </noscript>
+
+  
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+  </noscript>
+
+  
+  <link rel="stylesheet" href="/css/style.css"/>
+
+  
+  <link rel="icon" href="/img/physical-design-interview-guide.jpg"/>
+
+  
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBY3XDZW01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WBY3XDZW01');
+  </script>
+
+  
+  <script>
+    var infolinks_pid  = "3443689";
+    var infolinks_wsid = 0;
+  </script>
+
+  <meta property="og:url" content="http://localhost:1313/">
+  <meta property="og:site_name" content="Physical Design Interview Guide">
+  <meta property="og:title" content="Physical Design Interview Guide">
+  <meta property="og:description" content="The Ultimate Guide to Physical Design Interview Questions">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+
+  
+  <meta itemprop="name" content="Physical Design Interview Guide">
+  <meta itemprop="description" content="The Ultimate Guide to Physical Design Interview Questions">
+  <meta itemprop="datePublished" content="2025-08-23T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-23T00:00:00+00:00">
+</head>
+
+<body>
+<div class="site-wrapper" id="page">
+
+  
+  <header class="site-header" id="masthead" role="banner">
+
+  
+  <div class="site-branding">
+    <div id="header-inner">
+      <a class="logo-link" href="http://localhost:1313/">
+        <img class="header-logo"
+             src="/img/physical-design-interview-guide.jpg"
+             alt="Physical Design Interview Guide Logo"
+             width="80" height="80"
+             fetchpriority="high"/>
+      </a>
+      <div class="titlewrapper">
+        
+          <h1 class="site-title"><a href="http://localhost:1313/">Physical Design Interview Guide</a></h1>
+        
+        <h2 class="site-description">The Ultimate Guide to Physical Design Interview Questions</h2>
+      </div>
+    </div>
+  </div>
+
+  
+  <nav class="main-navigation" id="site-navigation" role="navigation">
+    
+    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    
+    <ul id="primary-menu">
+      
+        <li>
+          <a href="/">Home</a>
+        </li>
+      
+        <li>
+          <a href="/categories/general-concepts/">General-Concepts</a>
+        </li>
+      
+        <li>
+          <a href="/categories/pre-pnr/">Pre-PnR</a>
+        </li>
+      
+        <li>
+          <a href="/categories/floorplan/">Floorplan</a>
+        </li>
+      
+        <li>
+          <a href="/categories/power-plan/">Power-Plan</a>
+        </li>
+      
+        <li>
+          <a href="/categories/placement/">Placement</a>
+        </li>
+      
+        <li>
+          <a href="/categories/cts/">CTS</a>
+        </li>
+      
+        <li>
+          <a href="/categories/routing/">Routing</a>
+        </li>
+      
+        <li>
+          <a href="/categories/eco/">ECO</a>
+        </li>
+      
+        <li>
+          <a href="/categories/sta/">STA</a>
+        </li>
+      
+        <li>
+          <a href="/categories/signal-integrity/">SI</a>
+        </li>
+      
+        <li>
+          <a href="/categories/physical-verification/">PV</a>
+        </li>
+      
+        <li>
+          <a href="/about/">About Me</a>
+        </li>
+      
+        <li>
+          <a href="/privacy-policy/">Privacy Policy</a>
+        </li>
+      
+    </ul>
+
+    
+    <button class="theme-toggle"
+            aria-label="Toggle dark mode"
+            onclick="window.toggleTheme && window.toggleTheme()"
+            type="button">
+      <span class="sun" aria-hidden="true">☀️</span>
+      <span class="moon" aria-hidden="true">🌙</span>
+    </button>
+
+    
+    <button class="search-toggle" aria-label="Search" type="button">
+      <i class="fa fa-search"></i>
+    </button>
+  </nav>
+
+  
+  <div class="search-box-wrapper" id="search-container">
+    <form action="/search/" method="get" role="search">
+      <input type="search"
+             name="q"
+             placeholder="Search..."
+             aria-label="Search posts"/>
+    </form>
+  </div>
+
+</header>
+
+
+  
+  <div class="header-ad-wrapper">
+    <script>
+      atOptions = {
+        'key'    : '0da8ef57a8c60e7790c1a312bcedb88f',
+        'format' : 'iframe',
+        'height' : 90,
+        'width'  : 728,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/0da8ef57a8c60e7790c1a312bcedb88f/invoke.js" async></script>
+  </div>
+
+  
+  <div class="site-content" id="content">
+    <div class="content-area" id="primary">
+
+      
+      <div class="widget-area sidebar" id="secondary" role="complementary">
+
+  
+  <div class="widget">
+    <script>
+      atOptions = {
+        'key'    : '4261f622d3640c08cc16ff44391bea90',
+        'format' : 'iframe',
+        'height' : 50,
+        'width'  : 320,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/4261f622d3640c08cc16ff44391bea90/invoke.js" async></script>
+  </div>
+
+  
+  <div class="widget" id="dynamic-posts-list-container">
+    <h2 id="dynamic-list-title">All Questions</h2>
+    <ul id="dynamic-posts-list">
+      <li>Loading posts...</li>
+    </ul>
+  </div>
+
+</div>
+
+
+      
+      <main class="site-main" id="main" role="main">
+        
+<div class="blog-posts">
+
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-what-extra-care-is-needed-in-lower-nodes/">What extra care is needed in lower nodes?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-what-extra-care-is-needed-in-lower-nodes/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/general-concepts/" rel="tag">General-Concepts</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-what-extra-care-is-needed-in-lower-nodes/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp; </span></span><b style="text-indent: -18pt;">Variability
+Management:</b><span style="text-indent: -18pt;"> Use advanced modeling (AOCV/POCV) and variation-aware design
+techniques. Statistical timing and yield analysis become crucial.</span></p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp; </span></span><b style="text-indent: -18pt;">Complex
+Design Rules:</b><span style="text-indent: -18pt;"> multi-patterning rules (coloring, masks), pitch restrictions,
+via rules, and DFM (Design for Manufacturability) requirements like dummy fill,
+via ladders, etc.</span></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-extra-care-is-needed-in-lower-nodes%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=what-extra-care-is-needed-in-lower-nodes+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-extra-care-is-needed-in-lower-nodes%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-what-extra-care-is-needed-in-lower-nodes/">
+          Read More <span class="sr-only">about What extra care is needed in lower nodes?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-what-if-timing-is-critical-and/">What if timing is critical and spreading isn&#39;t an option?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-what-if-timing-is-critical-and/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/placement/" rel="tag">Placement</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-what-if-timing-is-critical-and/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p></p><p class="MsoNormal">Delay is due to cell and interconnect. When area is
+congested, when tool calculates timing, it may consider detour routes, adding
+more delay.<o:p></o:p></p>
+<p class="MsoNormal">When cells are spreaded just enough to solve congestion, it
+may reduce route length as well, helping in congestion and timing both.<o:p></o:p></p>
+<p class="MsoNormal">Instead of broad spreading, use more localized techniques:
+Apply partial blockages with lower blockage percentages (e.g., 10%) only in the
+absolute peak congestion GCells, rather than large areas.<o:p></o:p></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-if-timing-is-critical-and%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=what-if-timing-is-critical-and-spreading-isnt-an-option+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-if-timing-is-critical-and%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-what-if-timing-is-critical-and/">
+          Read More <span class="sr-only">about What if timing is critical and spreading isn&#39;t an option?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-what-is-cell-delay-and-why-is-max/">What is cell delay and why is max transition important?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-what-is-cell-delay-and-why-is-max/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/general-concepts/" rel="tag">General-Concepts</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-what-is-cell-delay-and-why-is-max/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp; </span></span><b style="text-indent: -18pt;">Cell
+Delay:</b><span style="text-indent: -18pt;"> </span><span style="text-indent: -18pt;">&nbsp;</span><span style="text-indent: -18pt;">the time it takes for a
+signal change at the input of a standard cell (like an AND gate, OR gate,
+flip-flop) to propagate and cause a corresponding change at its output. It's
+typically measured between the 50% voltage points of the input and output waveforms.
+Cell delay depends on:</span></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-is-cell-delay-and-why-is-max%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=what-is-cell-delay-and-why-is-max-transition-important+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-is-cell-delay-and-why-is-max%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-what-is-cell-delay-and-why-is-max/">
+          Read More <span class="sr-only">about What is cell delay and why is max transition important?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-what-is-content-inside-sdc-file-how-is/">What is the content inside an SDC file? How is the clock defined? Why is delay defined on IO ports?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-what-is-content-inside-sdc-file-how-is/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/pre-pnr/" rel="tag">Pre-PnR</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-what-is-content-inside-sdc-file-how-is/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p>&nbsp;<span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><b style="text-indent: -18pt;">SDC Version:</b><span style="text-indent: -18pt;"> Specifies the SDC standard
+version used (e.g., set sdc_version 2.1).</span></p>
+<p class="MsoNormal" style="margin-left: 18.0pt; mso-list: l0 level1 lfo1; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;
+</span></span></span><!--[endif]--><b>Units:</b> Defines units for time,
+capacitance, resistance, voltage, current, power (e.g., set_units -time ns
+...).<o:p></o:p></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-is-content-inside-sdc-file-how-is%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=what-is-the-content-inside-an-sdc-file-how-is-the-clock-defined-why-is-delay-defined-on-io-ports+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-is-content-inside-sdc-file-how-is%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-what-is-content-inside-sdc-file-how-is/">
+          Read More <span class="sr-only">about What is the content inside an SDC file? How is the clock defined? Why is delay defined on IO ports?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-what-is-difference-between-std-cell-lef/">What is the difference between std. cell LEF and tech LEF? What content is in tech LEF?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-what-is-difference-between-std-cell-lef/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/general-concepts/" rel="tag">General-Concepts</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-what-is-difference-between-std-cell-lef/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp; </span></span><b style="text-indent: -18pt;">Technology
+LEF (</b><span style="text-indent: -18pt;">tech.lef</span><b style="text-indent: -18pt;">):</b><span style="text-indent: -18pt;"> Defines the process technology rules and properties.
+It contains information common to the entire chip manufacturing process,
+independent of specific standard cells.</span></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-is-difference-between-std-cell-lef%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=what-is-the-difference-between-std.-cell-lef-and-tech-lef-what-content-is-in-tech-lef+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-is-difference-between-std-cell-lef%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-what-is-difference-between-std-cell-lef/">
+          Read More <span class="sr-only">about What is the difference between std. cell LEF and tech LEF? What content is in tech LEF?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-what-is-your-reg2reg-wnstns-in-final/">What is your Reg2Reg WNS/TNS in the final netlist? What if it&#39;s extremely high? What about ICG WNS?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-what-is-your-reg2reg-wnstns-in-final/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/pre-pnr/" rel="tag">Pre-PnR</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-what-is-your-reg2reg-wnstns-in-final/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p>&nbsp;<span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><b style="text-indent: -18pt;">Reg2Reg WNS/TNS:</b></p>
+<p class="MsoNormal" style="margin-left: 39.95pt; mso-list: l0 level2 lfo1; tab-stops: list 39.95pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><b>Acceptable:</b>
+A small negative WNS (e.g., -50ps to -200ps for a multi-GHz design, perhaps
+-10% to -20% of the clock period) might be considered acceptable as a starting
+point for PnR. TNS should ideally be manageable.<o:p></o:p></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-is-your-reg2reg-wnstns-in-final%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=what-is-your-reg2reg-wns%2ftns-in-the-final-netlist-what-if-its-extremely-high-what-about-icg-wns+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-is-your-reg2reg-wnstns-in-final%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-what-is-your-reg2reg-wnstns-in-final/">
+          Read More <span class="sr-only">about What is your Reg2Reg WNS/TNS in the final netlist? What if it&#39;s extremely high? What about ICG WNS?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-sanity-checks-before-floorplan/">What sanity checks are performed before starting floorplan / after receiving the synthesized netlist?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-sanity-checks-before-floorplan/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/pre-pnr/" rel="tag">Pre-PnR</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-sanity-checks-before-floorplan/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p class="MsoListParagraph" style="margin-left: 18.0pt; mso-add-space: auto; mso-list: l1 level1 lfo2; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><!--[endif]--><b>Netlist Checks:</b> <o:p></o:p></p><p class="MsoNormal" style="margin-left: 39.95pt; mso-list: l0 level2 lfo1; tab-stops: list 39.95pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;&nbsp; </span></span><!--[endif]--><b>Syntactic
+Correctness:</b> Ensure the Verilog netlist format is correct and parsable by
+the PnR tool.<o:p></o:p></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-sanity-checks-before-floorplan%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=what-sanity-checks-are-performed-before-starting-floorplan-%2f-after-receiving-the-synthesized-netlist+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-sanity-checks-before-floorplan%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-sanity-checks-before-floorplan/">
+          Read More <span class="sr-only">about What sanity checks are performed before starting floorplan / after receiving the synthesized netlist?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-what-utilization-do-you-target-at-start/">What utilization do you target at the start? Considering a design with 70% vs 50% utilization, which would you take?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-what-utilization-do-you-target-at-start/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/floorplan/" rel="tag">Floorplan</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-what-utilization-do-you-target-at-start/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p>&nbsp;<span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp; </span></span><b style="text-indent: -18pt;">Target
+Utilization at Start:</b><span style="text-indent: -18pt;"> The initial target core utilization for PnR typically
+ranges from </span><b style="text-indent: -18pt;">50% to 70%</b><span style="text-indent: -18pt;">.</span></p>
+<p class="MsoNormal" style="margin-left: 57.8pt; mso-list: l0 level2 lfo1; tab-stops: list 57.8pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]-->Lower
+utilization (e.g., 50-60%) provides more whitespace, making routing easier,
+reducing congestion, potentially improving timing (less detour), and offering
+more flexibility for CTS and ECOs. This is often preferred for high-performance
+designs or designs with known congestion challenges.<o:p></o:p></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-utilization-do-you-target-at-start%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=what-utilization-do-you-target-at-the-start-considering-a-design-with-70-vs-50-utilization-which-would-you-take+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-utilization-do-you-target-at-start%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-what-utilization-do-you-target-at-start/">
+          Read More <span class="sr-only">about What utilization do you target at the start? Considering a design with 70% vs 50% utilization, which would you take?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-which-state-switching-or-not-switching/">Which state (switching or not switching) consumes more power? Which VT leaks more (HVT vs LVT)?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-which-state-switching-or-not-switching/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/general-concepts/" rel="tag">General-Concepts</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-which-state-switching-or-not-switching/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><b style="text-indent: -18pt;">Switching State:</b><span style="text-indent: -18pt;"> The </span><b style="text-indent: -18pt;">switching state</b><span style="text-indent: -18pt;">
+consumes significantly more power in CMOS circuits. This is called </span><b style="text-indent: -18pt;">dynamic
+power</b><span style="text-indent: -18pt;"> and has two main components:</span></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-which-state-switching-or-not-switching%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=which-state-switching-or-not-switching-consumes-more-power-which-vt-leaks-more-hvt-vs-lvt+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-which-state-switching-or-not-switching%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-which-state-switching-or-not-switching/">
+          Read More <span class="sr-only">about Which state (switching or not switching) consumes more power? Which VT leaks more (HVT vs LVT)?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-which-type-of-switches-are-used-in-low/">Which type of switches are used in low power domains?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-which-type-of-switches-are-used-in-low/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/power-plan/" rel="tag">Power-Plan</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-which-type-of-switches-are-used-in-low/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><b style="text-indent: -18pt;">Header Switches:</b><span style="text-indent: -18pt;"> Use </span><b style="text-indent: -18pt;">PMOS</b><span style="text-indent: -18pt;">
+transistors placed between the main VDD grid (always-on supply) and the
+switchable VDD rail of the power domain (VDD_SW). The PMOS gate is controlled
+by the sleep/enable signal. When OFF (sleep signal asserted), they disconnect
+the domain from VDD.</span></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-which-type-of-switches-are-used-in-low%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=which-type-of-switches-are-used-in-low-power-domains+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-which-type-of-switches-are-used-in-low%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-which-type-of-switches-are-used-in-low/">
+          Read More <span class="sr-only">about Which type of switches are used in low power domains?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+
+  
+  
+  <div class="blog-pager" id="blog-pager">
+    
+    <span id="blog-pager-newer-link">
+      <a class="blog-pager-newer-link"
+         href="/page/14/">&#8249; Newer Posts</a>
+    </span>
+    
+    
+    <span id="blog-pager-older-link">
+      <a class="blog-pager-older-link"
+         href="/page/16/">Older Posts &#8250;</a>
+    </span>
+    
+    <div style="clear:both;"></div>
+  </div>
+  
+
+</div>
+
+      </main>
+
+    </div>
+  </div>
+
+  
+  <footer class="site-footer" id="colophon" role="contentinfo">
+<div id="supplementary">
+  <div class="footer-widgets" id="footer-widgets">
+
+    
+    <div class="widget popular-posts">
+      <h2>Popular Posts</h2>
+      <ul>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-can-and-gate-replace-icg-if-glitch-is/">Can an AND gate replace an ICG if glitch is handled</a></li>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-command-to-balance-two-clock-trees/">Command to balance two clock trees? Command to check latency?  Command to do useful skew?</a></li>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-different-cts-types-what-are-benefits/">Different CTS types? What are benefits of those?</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div class="widget">
+      <h2>Subscribe for more</h2>
+      <div id="mc_embed_signup">
+        <form action="https://blogspot.us8.list-manage.com/subscribe/post?u=f8ac6f0c8c94ac766b4de9c2a&amp;id=4365930274&amp;f_id=00f37fe1f0"
+              method="post"
+              id="mc-embedded-subscribe-form"
+              name="mc-embedded-subscribe-form"
+              target="_blank">
+          <div>
+            <label for="mce-EMAIL">Email Address <span>*</span></label>
+            <input type="email" name="EMAIL" id="mce-EMAIL" required/>
+          </div>
+          
+          <div style="position:absolute;left:-5000px;" aria-hidden="true">
+            <input type="text" name="b_f8ac6f0c8c94ac766b4de9c2a_4365930274" tabindex="-1" value=""/>
+          </div>
+          <div>
+            <input type="submit" value="Subscribe" name="subscribe"/>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    
+    <div class="widget">
+      <h2>Submit your questions</h2>
+      <form name="contact-form" action="mailto:your@email.com" method="post">
+        <p>
+          <label>Name<br/>
+            <input type="text" name="name" size="30"/>
+          </label>
+        </p>
+        <p>
+          <label>Email <strong>*</strong><br/>
+            <input type="email" name="email" size="30" required/>
+          </label>
+        </p>
+        <p>
+          <label>Message <strong>*</strong><br/>
+            <textarea name="message" rows="5" cols="25" required></textarea>
+          </label>
+        </p>
+        <p><input type="submit" value="Send"/></p>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="site-info">
+  Copyright &copy; <span id="creditsyear"></span>
+  <a href="http://localhost:1313/">Physical Design Interview Guide</a>
+  &nbsp;|&nbsp;
+  <a href="http://localhost:1313/posts/index.xml"
+     aria-label="RSS feed"
+     target="_blank" rel="alternate">
+    <i class="fa fa-rss" aria-hidden="true"></i>
+  </a>
+</div>
+
+</footer>
+
+
+</div>
+
+
+<script src="/js/main.js"></script>
+
+
+<div id="monetag-container" data-zone="10628900" style="display:none"></div>
+
+
+<div id="infolinks-container" style="display:none"></div>
+
+</body>
+</html>

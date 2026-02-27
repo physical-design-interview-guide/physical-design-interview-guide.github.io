@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="monetag" content="5302b3ff6128cdd7d5e775810525a259"/>
+
+  <title>What are the different types of placement bounds/blockages? ~ Physical Design Interview Guide</title>
+
+  
+    <meta name="description" content="o&nbsp; Placement blockage of type &#34;Hard&#34; means that placeDesign will not place any cells in this area. Use this blockage type to totally restrict standard …"/>
+  
+
+  
+  <link rel="canonical" href="http://localhost:1313/posts/2025-08-20-what-are-different-types-of-placement-blockage/"/>
+
+  
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  
+  <link rel="dns-prefetch" href="https://nap5k.com"/>
+  <link rel="dns-prefetch" href="https://resources.infolinks.com"/>
+  <link rel="dns-prefetch" href="https://www.highperformanceformat.com"/>
+  <link rel="dns-prefetch" href="https://pl28748027.effectivegatecpm.com"/>
+
+  
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@400;500;700&display=swap"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@400;500;700&display=swap"/>
+  </noscript>
+
+  
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+  </noscript>
+
+  
+  <link rel="stylesheet" href="/css/style.css"/>
+
+  
+  <link rel="icon" href="/img/physical-design-interview-guide.jpg"/>
+
+  
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBY3XDZW01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WBY3XDZW01');
+  </script>
+
+  
+  <script>
+    var infolinks_pid  = "3443689";
+    var infolinks_wsid = 0;
+  </script>
+
+  <meta property="og:url" content="http://localhost:1313/posts/2025-08-20-what-are-different-types-of-placement-blockage/">
+  <meta property="og:site_name" content="Physical Design Interview Guide">
+  <meta property="og:title" content="What are the different types of placement bounds/blockages?">
+  <meta property="og:description" content="o  Placement blockage of type &#34;Hard&#34; means that placeDesign will not place any cells in this area. Use this blockage type to totally restrict standard cells from being placed here.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-20T00:00:00+00:00">
+
+  
+  <meta itemprop="name" content="What are the different types of placement bounds/blockages?">
+  <meta itemprop="description" content="o  Placement blockage of type &#34;Hard&#34; means that placeDesign will not place any cells in this area. Use this blockage type to totally restrict standard cells from being placed here.">
+  <meta itemprop="datePublished" content="2025-08-20T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-20T00:00:00+00:00">
+  <meta itemprop="wordCount" content="538">
+  <meta itemprop="keywords" content="Floorplan">
+</head>
+
+<body>
+<div class="site-wrapper" id="page">
+
+  
+  <header class="site-header" id="masthead" role="banner">
+
+  
+  <div class="site-branding">
+    <div id="header-inner">
+      <a class="logo-link" href="http://localhost:1313/">
+        <img class="header-logo"
+             src="/img/physical-design-interview-guide.jpg"
+             alt="Physical Design Interview Guide Logo"
+             width="80" height="80"
+             fetchpriority="high"/>
+      </a>
+      <div class="titlewrapper">
+        
+          <p class="site-title"><a href="http://localhost:1313/">Physical Design Interview Guide</a></p>
+        
+        <h2 class="site-description">The Ultimate Guide to Physical Design Interview Questions</h2>
+      </div>
+    </div>
+  </div>
+
+  
+  <nav class="main-navigation" id="site-navigation" role="navigation">
+    
+    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    
+    <ul id="primary-menu">
+      
+        <li>
+          <a href="/">Home</a>
+        </li>
+      
+        <li>
+          <a href="/categories/general-concepts/">General-Concepts</a>
+        </li>
+      
+        <li>
+          <a href="/categories/pre-pnr/">Pre-PnR</a>
+        </li>
+      
+        <li>
+          <a href="/categories/floorplan/">Floorplan</a>
+        </li>
+      
+        <li>
+          <a href="/categories/power-plan/">Power-Plan</a>
+        </li>
+      
+        <li>
+          <a href="/categories/placement/">Placement</a>
+        </li>
+      
+        <li>
+          <a href="/categories/cts/">CTS</a>
+        </li>
+      
+        <li>
+          <a href="/categories/routing/">Routing</a>
+        </li>
+      
+        <li>
+          <a href="/categories/eco/">ECO</a>
+        </li>
+      
+        <li>
+          <a href="/categories/sta/">STA</a>
+        </li>
+      
+        <li>
+          <a href="/categories/signal-integrity/">SI</a>
+        </li>
+      
+        <li>
+          <a href="/categories/physical-verification/">PV</a>
+        </li>
+      
+        <li>
+          <a href="/about/">About Me</a>
+        </li>
+      
+        <li>
+          <a href="/privacy-policy/">Privacy Policy</a>
+        </li>
+      
+    </ul>
+
+    
+    <button class="theme-toggle"
+            aria-label="Toggle dark mode"
+            onclick="window.toggleTheme && window.toggleTheme()"
+            type="button">
+      <span class="sun" aria-hidden="true">☀️</span>
+      <span class="moon" aria-hidden="true">🌙</span>
+    </button>
+
+    
+    <button class="search-toggle" aria-label="Search" type="button">
+      <i class="fa fa-search"></i>
+    </button>
+  </nav>
+
+  
+  <div class="search-box-wrapper" id="search-container">
+    <form action="/search/" method="get" role="search">
+      <input type="search"
+             name="q"
+             placeholder="Search..."
+             aria-label="Search posts"/>
+    </form>
+  </div>
+
+</header>
+
+
+  
+  <div class="header-ad-wrapper">
+    <script>
+      atOptions = {
+        'key'    : '0da8ef57a8c60e7790c1a312bcedb88f',
+        'format' : 'iframe',
+        'height' : 90,
+        'width'  : 728,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/0da8ef57a8c60e7790c1a312bcedb88f/invoke.js" async></script>
+  </div>
+
+  
+  <div class="site-content" id="content">
+    <div class="content-area" id="primary">
+
+      
+      <div class="widget-area sidebar" id="secondary" role="complementary">
+
+  
+  <div class="widget">
+    <script>
+      atOptions = {
+        'key'    : '4261f622d3640c08cc16ff44391bea90',
+        'format' : 'iframe',
+        'height' : 50,
+        'width'  : 320,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/4261f622d3640c08cc16ff44391bea90/invoke.js" async></script>
+  </div>
+
+  
+  <div class="widget" id="dynamic-posts-list-container">
+    <h2 id="dynamic-list-title">All Questions</h2>
+    <ul id="dynamic-posts-list">
+      <li>Loading posts...</li>
+    </ul>
+  </div>
+
+</div>
+
+
+      
+      <main class="site-main" id="main" role="main">
+        
+<article class="post hentry">
+<div class="index-box">
+
+  
+  <header class="entry-header">
+    <h1 class="post-title entry-title" itemprop="headline">What are the different types of placement bounds/blockages?</h1>
+
+    <div class="entry-meta">
+      on <a href="http://localhost:1313/posts/2025-08-20-what-are-different-types-of-placement-blockage/" rel="bookmark">
+        <span class="published">August 20, 2025</span>
+      </a>&nbsp;
+      
+      in
+      
+        <a href="/categories/floorplan/" rel="tag">Floorplan</a>
+      &nbsp;
+      
+      with <a href="#comments">No comments</a>
+    </div>
+  </header>
+
+  
+  <div class="post-body entry-content" itemprop="articleBody">
+    <p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp; </span></span><span style="text-indent: -18pt;">Placement
+blockage of type </span><b style="text-indent: -18pt;">"Hard</b><span style="text-indent: -18pt;">" means that placeDesign will not place
+any cells in this area. Use this blockage type to totally restrict standard
+cells from being placed here.</span></p>
+<p class="MsoNormal" style="margin-left: 18.0pt; mso-list: l0 level1 lfo1; tab-stops: list 18.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp; </span></span></span><!--[endif]-->A
+placement blockage of type <b>"Soft"</b> means that placeDesign will
+not place any cells in this region. However, placement legalization, timing
+optimization, and clock tree synthesis (CTS) can place buffers/inverters in
+this area. This blockage type is often used to block channels between macros.
+It prevents the placer from placing standard cells in this area, thus avoiding
+congestion problems. However, optimization is allowed to insert
+buffers/inverters in these channels, which is useful when buffering long nets
+and can improve timing and routability.<o:p></o:p></p>
+<p class="MsoNormal" style="margin-left: 57.8pt; mso-list: l0 level2 lfo1; tab-stops: list 57.8pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style="mso-spacerun: yes;">&nbsp;</span>Global placer - soft-blockage is seen by
+global place as hard-blockage - but incremental placer does not move any
+existing instance from soft blockage area, just no instances can be moved into
+that area.<o:p></o:p></p>
+<p class="MsoNormal" style="margin-left: 57.8pt; mso-list: l0 level2 lfo1; tab-stops: list 57.8pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]-->Detail
+placer -<span style="mso-spacerun: yes;">&nbsp; </span>only allow buffers, invertors,
+and clk-gate inside soft blockage. Any other complex cell instance will see a
+soft-blockage as hard blockage. Exception are instances within regions covered
+by soft-blockage also ignore the soft-blockage.<o:p></o:p></p>
+<p class="MsoNormal" style="margin-left: 18.0pt; mso-list: l0 level1 lfo1; tab-stops: list 18.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp; </span></span></span><!--[endif]-->A
+placement blockage of type "<b>Partial</b>" (also referred to as
+density screens) means that only a certain percentage of the specified area is
+available for global placement. This partial area available to<span style="mso-spacerun: yes;">&nbsp; </span>global placement is specified when defining the
+Partial blockage. So, a Partial blockage of 30% , i.e. 70% of the specified
+area can be used for global placement, can be defined using the following
+syntax:<o:p></o:p></p>
+<p class="MsoNormal" style="margin-left: 18.0pt; mso-list: l0 level1 lfo1; tab-stops: list 18.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp; </span></span></span><!--[endif]-->createPlaceBlockage
+-type partial -density 70 -box {776.711 756.060 1162.058 558.509}<o:p></o:p></p>
+<p class="MsoNormal" style="margin-left: 18.0pt; mso-list: l0 level1 lfo1; tab-stops: list 18.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp; </span></span></span><!--[endif]-->The
+30% blockage is of type "Soft"; that is, timing optimization and CTS
+can use this area.<o:p></o:p></p>
+<p class="MsoNormal" style="margin-left: 18.0pt;"><o:p>&nbsp;</o:p></p>
+<p class="MsoNormal" style="margin-left: 18.0pt; mso-list: l0 level1 lfo1; tab-stops: list 18.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp; </span></span></span><!--[endif]--><b>Placement
+Bounds: (Regions/Guides/Fences):</b> These define areas where specific groups
+of cells <i>should</i> be placed. <o:p></o:p></p>
+<p class="MsoNormal" style="margin-left: 57.8pt; mso-list: l0 level2 lfo1; tab-stops: list 57.8pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><b>Soft
+Guide:</b> same as Guide, except no location is given. This provides a stronger
+grouping for the instances under the same soft guide. The soft guide constraint
+is not as restrictive as a fence or a region constraint, so some instances
+might be placed further away if these have connections to other modules.<o:p></o:p></p>
+<p class="MsoNormal" style="margin-left: 57.8pt; mso-list: l0 level2 lfo1; tab-stops: list 57.8pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><b>Guide:</b>
+A soft constraint. The placer tries to place the assigned cells within the
+guide but may place them outside if utilization is high or other constraints
+conflict. Useful for influencing placement without strict boundaries.<o:p></o:p></p>
+<p class="MsoNormal" style="margin-left: 57.8pt; mso-list: l0 level2 lfo1; tab-stops: list 57.8pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><b>Region:</b>
+When a region is defined, it requires all the cells of the modules contained in
+the defined region to be placed in the specified region area. If there is an
+extra space in the region, other cells from other modules may be brought inside<o:p></o:p></p>
+<p class="MsoNormal" style="margin-left: 57.8pt; mso-list: l0 level2 lfo1; tab-stops: list 57.8pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><b>Fence:</b>
+A hard constraint. Cells assigned to a fence <i>must</i> be placed within that
+boundary. No other cells will be placed inside fence.<o:p></o:p></p>
+<p class="MsoNormal" style="margin-left: 57.8pt;"><o:p>&nbsp;</o:p></p>
+<p class="MsoNormal" style="margin-left: 18.0pt; mso-list: l0 level1 lfo1; tab-stops: list 18.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp; </span></span></span><!--[endif]--><b>Partial
+Blockage Impact:</b> <o:p></o:p></p>
+<p class="MsoNormal" style="margin-left: 57.8pt; mso-list: l0 level2 lfo1; tab-stops: list 57.8pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><b>Congestion
+Relief:</b> Reduces the number of cells in a specific area, freeing up local
+routing resources and mitigating congestion.<o:p></o:p></p>
+<p class="MsoNormal" style="margin-left: 57.8pt; mso-list: l0 level2 lfo1; tab-stops: list 57.8pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; font-size: 10.0pt; line-height: 107%; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><b>Density
+Control:</b> Helps achieve more uniform density distribution, which is
+beneficial for routability and manufacturability (CMP).<o:p></o:p></p>
+<p class="MsoNormal"><b>Timing:</b> Can potentially worsen timing slightly if
+cells that were optimally placed close together are forced further apart due to
+the density restriction. However, by reducing congestion, it can also improve
+timing by enabling shorter routing paths later.<o:p></o:p></p>
+  </div>
+
+  
+  <div id="post-ad-container"
+       data-desktop-src="https://pl28748027.effectivegatecpm.com/91a7dc313767ee1279685304c23cc0ac/invoke.js"
+       data-mobile-key="3520767e659da30b3c945eb2073db7db"
+       data-mobile-src="https://www.highperformanceformat.com/3520767e659da30b3c945eb2073db7db/invoke.js"
+       style="clear:both; margin:25px 0 15px; text-align:center;">
+  </div>
+
+  
+  <div class="post-share pbtsharethisbutt">
+    Share:
+    <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-are-different-types-of-placement-blockage%2f"
+       target="_blank" rel="nofollow" title="Share on Facebook">
+      <i class="fa fa-facebook"></i>
+    </a>
+    <a href="https://twitter.com/home?status=what-are-the-different-types-of-placement-bounds%2fblockages+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-what-are-different-types-of-placement-blockage%2f"
+       target="_blank" rel="nofollow" title="Tweet This!">
+      <i class="fa fa-twitter"></i>
+    </a>
+  </div>
+
+  <div style="clear:both;"></div>
+
+  
+  <div class="blog-pager" id="blog-pager" style="margin-top:20px;">
+    
+    <span id="blog-pager-newer-link">
+      <a class="blog-pager-newer-link" href="http://localhost:1313/posts/2025-08-20-what-are-inputs-required-at-start-of-pnr/">&#8249; What are the inputs required at the start of PnR?</a>
+    </span>
+    
+    
+    <span id="blog-pager-older-link">
+      <a class="blog-pager-older-link" href="http://localhost:1313/posts/2025-08-20-what-are-differences-between-lower-tech-node/">What are the differences between lower technology nodes and higher nodes? &#8250;</a>
+    </span>
+    
+    <a class="home-link" href="http://localhost:1313/">Home</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  
+  <div id="comments">
+    <h4>Comments</h4>
+    <p style="font-family:'Dosis',sans-serif;">
+      Comments are not yet enabled on this Hugo site.
+      To add comments, integrate
+      <a href="https://disqus.com" target="_blank">Disqus</a> or
+      <a href="https://giscus.app" target="_blank">Giscus</a> (GitHub-based, free).
+    </p>
+    
+  </div>
+
+</div>
+</article>
+
+      </main>
+
+    </div>
+  </div>
+
+  
+  <footer class="site-footer" id="colophon" role="contentinfo">
+<div id="supplementary">
+  <div class="footer-widgets" id="footer-widgets">
+
+    
+    <div class="widget popular-posts">
+      <h2>Popular Posts</h2>
+      <ul>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-can-and-gate-replace-icg-if-glitch-is/">Can an AND gate replace an ICG if glitch is handled</a></li>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-command-to-balance-two-clock-trees/">Command to balance two clock trees? Command to check latency?  Command to do useful skew?</a></li>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-different-cts-types-what-are-benefits/">Different CTS types? What are benefits of those?</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div class="widget">
+      <h2>Subscribe for more</h2>
+      <div id="mc_embed_signup">
+        <form action="https://blogspot.us8.list-manage.com/subscribe/post?u=f8ac6f0c8c94ac766b4de9c2a&amp;id=4365930274&amp;f_id=00f37fe1f0"
+              method="post"
+              id="mc-embedded-subscribe-form"
+              name="mc-embedded-subscribe-form"
+              target="_blank">
+          <div>
+            <label for="mce-EMAIL">Email Address <span>*</span></label>
+            <input type="email" name="EMAIL" id="mce-EMAIL" required/>
+          </div>
+          
+          <div style="position:absolute;left:-5000px;" aria-hidden="true">
+            <input type="text" name="b_f8ac6f0c8c94ac766b4de9c2a_4365930274" tabindex="-1" value=""/>
+          </div>
+          <div>
+            <input type="submit" value="Subscribe" name="subscribe"/>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    
+    <div class="widget">
+      <h2>Submit your questions</h2>
+      <form name="contact-form" action="mailto:your@email.com" method="post">
+        <p>
+          <label>Name<br/>
+            <input type="text" name="name" size="30"/>
+          </label>
+        </p>
+        <p>
+          <label>Email <strong>*</strong><br/>
+            <input type="email" name="email" size="30" required/>
+          </label>
+        </p>
+        <p>
+          <label>Message <strong>*</strong><br/>
+            <textarea name="message" rows="5" cols="25" required></textarea>
+          </label>
+        </p>
+        <p><input type="submit" value="Send"/></p>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="site-info">
+  Copyright &copy; <span id="creditsyear"></span>
+  <a href="http://localhost:1313/">Physical Design Interview Guide</a>
+  &nbsp;|&nbsp;
+  <a href="http://localhost:1313/posts/index.xml"
+     aria-label="RSS feed"
+     target="_blank" rel="alternate">
+    <i class="fa fa-rss" aria-hidden="true"></i>
+  </a>
+</div>
+
+</footer>
+
+
+</div>
+
+
+<script src="/js/main.js"></script>
+
+
+<div id="monetag-container" data-zone="10628900" style="display:none"></div>
+
+
+<div id="infolinks-container" style="display:none"></div>
+
+</body>
+</html>

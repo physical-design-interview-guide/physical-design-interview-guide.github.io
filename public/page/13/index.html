@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+	<meta name="generator" content="Hugo 0.157.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="monetag" content="5302b3ff6128cdd7d5e775810525a259"/>
+
+  <title>Physical Design Interview Guide</title>
+
+  
+    <meta name="description" content="The Ultimate Guide to Physical Design Interview Questions"/>
+  
+
+  
+  <link rel="canonical" href="http://localhost:1313/"/>
+
+  
+  
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  
+  <link rel="dns-prefetch" href="https://nap5k.com"/>
+  <link rel="dns-prefetch" href="https://resources.infolinks.com"/>
+  <link rel="dns-prefetch" href="https://www.highperformanceformat.com"/>
+  <link rel="dns-prefetch" href="https://pl28748027.effectivegatecpm.com"/>
+
+  
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@400;500;700&display=swap"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@400;500;700&display=swap"/>
+  </noscript>
+
+  
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+        media="print" onload="this.media='all'"/>
+  <noscript>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+  </noscript>
+
+  
+  <link rel="stylesheet" href="/css/style.css"/>
+
+  
+  <link rel="icon" href="/img/physical-design-interview-guide.jpg"/>
+
+  
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBY3XDZW01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WBY3XDZW01');
+  </script>
+
+  
+  <script>
+    var infolinks_pid  = "3443689";
+    var infolinks_wsid = 0;
+  </script>
+
+  <meta property="og:url" content="http://localhost:1313/">
+  <meta property="og:site_name" content="Physical Design Interview Guide">
+  <meta property="og:title" content="Physical Design Interview Guide">
+  <meta property="og:description" content="The Ultimate Guide to Physical Design Interview Questions">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+
+  
+  <meta itemprop="name" content="Physical Design Interview Guide">
+  <meta itemprop="description" content="The Ultimate Guide to Physical Design Interview Questions">
+  <meta itemprop="datePublished" content="2025-08-23T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-23T00:00:00+00:00">
+</head>
+
+<body>
+<div class="site-wrapper" id="page">
+
+  
+  <header class="site-header" id="masthead" role="banner">
+
+  
+  <div class="site-branding">
+    <div id="header-inner">
+      <a class="logo-link" href="http://localhost:1313/">
+        <img class="header-logo"
+             src="/img/physical-design-interview-guide.jpg"
+             alt="Physical Design Interview Guide Logo"
+             width="80" height="80"
+             fetchpriority="high"/>
+      </a>
+      <div class="titlewrapper">
+        
+          <h1 class="site-title"><a href="http://localhost:1313/">Physical Design Interview Guide</a></h1>
+        
+        <h2 class="site-description">The Ultimate Guide to Physical Design Interview Questions</h2>
+      </div>
+    </div>
+  </div>
+
+  
+  <nav class="main-navigation" id="site-navigation" role="navigation">
+    
+    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    
+    <ul id="primary-menu">
+      
+        <li>
+          <a href="/">Home</a>
+        </li>
+      
+        <li>
+          <a href="/categories/general-concepts/">General-Concepts</a>
+        </li>
+      
+        <li>
+          <a href="/categories/pre-pnr/">Pre-PnR</a>
+        </li>
+      
+        <li>
+          <a href="/categories/floorplan/">Floorplan</a>
+        </li>
+      
+        <li>
+          <a href="/categories/power-plan/">Power-Plan</a>
+        </li>
+      
+        <li>
+          <a href="/categories/placement/">Placement</a>
+        </li>
+      
+        <li>
+          <a href="/categories/cts/">CTS</a>
+        </li>
+      
+        <li>
+          <a href="/categories/routing/">Routing</a>
+        </li>
+      
+        <li>
+          <a href="/categories/eco/">ECO</a>
+        </li>
+      
+        <li>
+          <a href="/categories/sta/">STA</a>
+        </li>
+      
+        <li>
+          <a href="/categories/signal-integrity/">SI</a>
+        </li>
+      
+        <li>
+          <a href="/categories/physical-verification/">PV</a>
+        </li>
+      
+        <li>
+          <a href="/about/">About Me</a>
+        </li>
+      
+        <li>
+          <a href="/privacy-policy/">Privacy Policy</a>
+        </li>
+      
+    </ul>
+
+    
+    <button class="theme-toggle"
+            aria-label="Toggle dark mode"
+            onclick="window.toggleTheme && window.toggleTheme()"
+            type="button">
+      <span class="sun" aria-hidden="true">☀️</span>
+      <span class="moon" aria-hidden="true">🌙</span>
+    </button>
+
+    
+    <button class="search-toggle" aria-label="Search" type="button">
+      <i class="fa fa-search"></i>
+    </button>
+  </nav>
+
+  
+  <div class="search-box-wrapper" id="search-container">
+    <form action="/search/" method="get" role="search">
+      <input type="search"
+             name="q"
+             placeholder="Search..."
+             aria-label="Search posts"/>
+    </form>
+  </div>
+
+</header>
+
+
+  
+  <div class="header-ad-wrapper">
+    <script>
+      atOptions = {
+        'key'    : '0da8ef57a8c60e7790c1a312bcedb88f',
+        'format' : 'iframe',
+        'height' : 90,
+        'width'  : 728,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/0da8ef57a8c60e7790c1a312bcedb88f/invoke.js" async></script>
+  </div>
+
+  
+  <div class="site-content" id="content">
+    <div class="content-area" id="primary">
+
+      
+      <div class="widget-area sidebar" id="secondary" role="complementary">
+
+  
+  <div class="widget">
+    <script>
+      atOptions = {
+        'key'    : '4261f622d3640c08cc16ff44391bea90',
+        'format' : 'iframe',
+        'height' : 50,
+        'width'  : 320,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/4261f622d3640c08cc16ff44391bea90/invoke.js" async></script>
+  </div>
+
+  
+  <div class="widget" id="dynamic-posts-list-container">
+    <h2 id="dynamic-list-title">All Questions</h2>
+    <ul id="dynamic-posts-list">
+      <li>Loading posts...</li>
+    </ul>
+  </div>
+
+</div>
+
+
+      
+      <main class="site-main" id="main" role="main">
+        
+<div class="blog-posts">
+
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-how-do-you-analyse-and-fix-congestion/">How to Analyze and Fix Post-Placement Congestion?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-how-do-you-analyse-and-fix-congestion/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/placement/" rel="tag">Placement</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-how-do-you-analyse-and-fix-congestion/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><b style="text-indent: -18pt;">Congestion Maps:</b><span style="text-indent: -18pt;"> Use the PnR tool's GUI
+to visualize the congestion map generated after trial/global routing. Identify
+hotspots (high overflow areas, usually color-coded red/orange). Check both
+horizontal and vertical layer congestion.</span></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-how-do-you-analyse-and-fix-congestion%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=how-to-analyze-and-fix-post-placement-congestion+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-how-do-you-analyse-and-fix-congestion%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-how-do-you-analyse-and-fix-congestion/">
+          Read More <span class="sr-only">about How to Analyze and Fix Post-Placement Congestion?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-how-to-decide-how-many-site-rows-needed/">How to decide how many site rows needed for cell padding?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-how-to-decide-how-many-site-rows-needed/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/placement/" rel="tag">Placement</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-how-to-decide-how-many-site-rows-needed/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><span style="text-indent: -18pt;">Usually iterative to find best value for padding
+but can be generalise like,</span></p>
+<p class="MsoListParagraphCxSpMiddle" style="margin-left: 18.0pt; mso-add-space: auto; mso-list: l0 level1 lfo1; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;
+</span></span></span><!--[endif]-->If local congestion in one module, depending on
+congestion %, we can increase.<o:p></o:p></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-how-to-decide-how-many-site-rows-needed%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=how-to-decide-how-many-site-rows-needed-for-cell-padding+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-how-to-decide-how-many-site-rows-needed%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-how-to-decide-how-many-site-rows-needed/">
+          Read More <span class="sr-only">about How to decide how many site rows needed for cell padding?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-how-to-decide-power-domain-area/">How to decide power domain area?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-how-to-decide-power-domain-area/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/power-plan/" rel="tag">Power-Plan</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-how-to-decide-power-domain-area/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p></p><p class="MsoListParagraphCxSpFirst" style="margin-left: 18.0pt; mso-add-space: auto; mso-list: l0 level1 lfo1; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;
+</span></span></span><!--[endif]--><b>Logical Grouping (UPF </b>create_power_domain
+-elements<b>):</b> All instances specified as elements of a power domain
+ideally need to be placed together physically.<o:p></o:p></p>
+<p class="MsoListParagraphCxSpMiddle" style="margin-left: 18.0pt; mso-add-space: auto; mso-list: l0 level1 lfo1; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;
+</span></span></span><!--[endif]--><b>Area Estimation:</b> Estimate the total area
+required for all the standard cells and macros belonging to the power domain. Add
+margin for internal routing, CTS buffers, and special cells (power switches,
+isolation cells often placed at the boundary).<o:p></o:p></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-how-to-decide-power-domain-area%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=how-to-decide-power-domain-area+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-how-to-decide-power-domain-area%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-how-to-decide-power-domain-area/">
+          Read More <span class="sr-only">about How to decide power domain area?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-how-to-handle-congestion-in-vertical/">How to handle congestion in vertical blocks (H &gt; W)?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-how-to-handle-congestion-in-vertical/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/placement/" rel="tag">Placement</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-how-to-handle-congestion-in-vertical/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p>If height is more, block has longer vertical tracks but less
+in number. Block has more number of horizontal tracks available. Chances are
+there will be higher congestion on vertical tracks. So place pins and macros
+such that it utilises more number of horizontal tracks.</p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-how-to-handle-congestion-in-vertical%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=how-to-handle-congestion-in-vertical-blocks-h-w+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-how-to-handle-congestion-in-vertical%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-how-to-handle-congestion-in-vertical/">
+          Read More <span class="sr-only">about How to handle congestion in vertical blocks (H &gt; W)?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-how-to-place-macros/">How to place macros?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-how-to-place-macros/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/floorplan/" rel="tag">Floorplan</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-how-to-place-macros/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p>&nbsp;<span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><b style="text-indent: -18pt;">Analyze Connectivity (Flylines) – all fanin,
+all_fanout.</b></p>
+<p class="MsoListParagraphCxSpLast" style="margin-left: 18.0pt; mso-add-space: auto; mso-list: l1 level1 lfo3; tab-stops: list 18.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;
+</span></span></span><!--[endif]--><b>Use trace macro feature of Innovus.</b><o:p></o:p></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-how-to-place-macros%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=how-to-place-macros+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-how-to-place-macros%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-how-to-place-macros/">
+          Read More <span class="sr-only">about How to place macros?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-how-to-solve-congestion-if-uniform/">How to solve congestion if uniform density spread is not working?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-how-to-solve-congestion-if-uniform/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/placement/" rel="tag">Placement</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-how-to-solve-congestion-if-uniform/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp; </span></span><b style="text-indent: -18pt;">Identify
+the Bottleneck:</b><span style="text-indent: -18pt;"> Determine </span><i style="text-indent: -18pt;">why</i><span style="text-indent: -18pt;"> the hotspot exists even with uniform
+density targets. Is it due to:</span></p>
+<p class="MsoNormal" style="margin-left: 90.0pt; mso-list: l0 level3 lfo1; tab-stops: list 90.0pt; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: Wingdings; font-size: 10.0pt; line-height: 107%; mso-bidi-font-family: Wingdings; mso-bidi-font-size: 11.0pt; mso-fareast-font-family: Wingdings;"><span style="mso-list: Ignore;">§<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp; </span></span></span><!--[endif]-->Macro
+pin congestion?<o:p></o:p></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-how-to-solve-congestion-if-uniform%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=how-to-solve-congestion-if-uniform-density-spread-is-not-working+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-how-to-solve-congestion-if-uniform%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-how-to-solve-congestion-if-uniform/">
+          Read More <span class="sr-only">about How to solve congestion if uniform density spread is not working?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-how-will-you-handle-high-utilization/">How will you handle high utilization?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-how-will-you-handle-high-utilization/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/placement/" rel="tag">Placement</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-how-will-you-handle-high-utilization/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p>&nbsp;</p><p class="MsoNormal" style="margin-left: 17.85pt;">Use area aware synthesis and
+placement.<o:p></o:p></p>
+<p class="MsoNormal" style="margin-left: 17.85pt;">Place macros carefully to give
+maximum std cell placeable area. Use congestion driven placement to reduce high
+utilization impact on congestion.<o:p></o:p></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-how-will-you-handle-high-utilization%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=how-will-you-handle-high-utilization+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-how-will-you-handle-high-utilization%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-how-will-you-handle-high-utilization/">
+          Read More <span class="sr-only">about How will you handle high utilization?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-if-cells-are-sitting-at-corner-in/">If cells are sitting at the corner in a partial blockage (not spread), what can be done?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-if-cells-are-sitting-at-corner-in/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/placement/" rel="tag">Placement</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-if-cells-are-sitting-at-corner-in/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><span style="text-indent: -18pt;">Ensure that partial blockages are not too
+restrictive. If a region is 50% blocked, and nearby area is full, cells may
+crowd into corners.</span></p>
+<p class="MsoListParagraphCxSpMiddle" style="margin-left: 18.0pt; mso-add-space: auto; mso-list: l0 level1 lfo1; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;
+</span></span></span><!--[endif]-->Create blockage in distributed area. <a href="https://support.cadence.com/apex/ArticleAttachmentPortal?id=a1O3w000009mFGeEAM&amp;pageName=ArticleContent">https://support.cadence.com/apex/ArticleAttachmentPortal?id=a1O3w000009mFGeEAM&amp;pageName=ArticleContent</a><o:p></o:p></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-if-cells-are-sitting-at-corner-in%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=if-cells-are-sitting-at-the-corner-in-a-partial-blockage-not-spread-what-can-be-done+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-if-cells-are-sitting-at-corner-in%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-if-cells-are-sitting-at-corner-in/">
+          Read More <span class="sr-only">about If cells are sitting at the corner in a partial blockage (not spread), what can be done?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-if-macros-are-placed-in-core-area-what/">If macros are placed in the core area, what issues might be observed?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-if-macros-are-placed-in-core-area-what/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/floorplan/" rel="tag">Floorplan</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-if-macros-are-placed-in-core-area-what/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><b style="text-indent: -18pt;">Routing Congestion</b><span style="text-indent: -18pt;">: Macros create
+"pinch points" or areas of high congestion around the corners and
+between adjacent macros, making it difficult for the router to connect signals.
+And creates Routing Detours resulting in longer wire lengths, increased delay,
+and potentially new timing violations.</span></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-if-macros-are-placed-in-core-area-what%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=if-macros-are-placed-in-the-core-area-what-issues-might-be-observed+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-if-macros-are-placed-in-core-area-what%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-if-macros-are-placed-in-core-area-what/">
+          Read More <span class="sr-only">about If macros are placed in the core area, what issues might be observed?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      
+      <div class="post-date">20/08/2025</div>
+
+      
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="http://localhost:1313/posts/2025-08-20-if-my-utilization-is-70-except/">If my utilization is 70% except optimization and physical cells what things we should consider in estimated utilization at route?</a>
+        </h2>
+
+        
+        <div class="entry-meta">
+          on <a href="http://localhost:1313/posts/2025-08-20-if-my-utilization-is-70-except/" rel="bookmark">
+            <span class="published">August 20, 2025</span>
+          </a>&nbsp;
+          
+          in
+          
+            <a href="/categories/placement/" rel="tag">Placement</a>
+          &nbsp;
+          
+          with <a href="http://localhost:1313/posts/2025-08-20-if-my-utilization-is-70-except/#comments">No comments</a>
+        </div>
+      </header>
+
+      
+      <div class="post-body entry-content">
+        <p><p><span style="font-family: &quot;Courier New&quot;; text-indent: -18pt;">o<span style="font-family: &quot;Times New Roman&quot;; font-feature-settings: normal; font-kerning: auto; font-optical-sizing: auto; font-size-adjust: none; font-size: 7pt; font-stretch: normal; font-variant-alternates: normal; font-variant-east-asian: normal; font-variant-emoji: normal; font-variant-numeric: normal; font-variant-position: normal; font-variation-settings: normal; line-height: normal;">&nbsp;&nbsp;
+</span></span><span style="text-indent: -18pt;">Buffers/inverters for optimization</span></p>
+<p class="MsoListParagraphCxSpMiddle" style="margin-left: 18.0pt; mso-add-space: auto; mso-list: l0 level1 lfo1; text-indent: -18.0pt;"><!--[if !supportLists]--><span style="font-family: &quot;Courier New&quot;; mso-fareast-font-family: &quot;Courier New&quot;;"><span style="mso-list: Ignore;">o<span style="font: 7.0pt &quot;Times New Roman&quot;;">&nbsp;&nbsp;
+</span></span></span><!--[endif]-->Physical only cells added like decap, endcaps,
+well taps etc.<o:p></o:p></p></p>
+      </div>
+
+      
+      <div class="post-share pbtsharethisbutt">
+        Share:
+        <a href="https://www.facebook.com/share.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-if-my-utilization-is-70-except%2f"
+           target="_blank" rel="nofollow" title="Share on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/home?status=if-my-utilization-is-70-except-optimization-and-physical-cells-what-things-we-should-consider-in-estimated-utilization-at-route+--+http%3a%2f%2flocalhost%3a1313%2fposts%2f2025-08-20-if-my-utilization-is-70-except%2f"
+           target="_blank" rel="nofollow" title="Tweet This!">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </div>
+
+      <div style="float:right; padding-right:0; margin-top:15px;">
+        <a class="read-more" href="http://localhost:1313/posts/2025-08-20-if-my-utilization-is-70-except/">
+          Read More <span class="sr-only">about If my utilization is 70% except optimization and physical cells what things we should consider in estimated utilization at route?</span>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  
+
+  
+  
+  <div class="blog-pager" id="blog-pager">
+    
+    <span id="blog-pager-newer-link">
+      <a class="blog-pager-newer-link"
+         href="/page/12/">&#8249; Newer Posts</a>
+    </span>
+    
+    
+    <span id="blog-pager-older-link">
+      <a class="blog-pager-older-link"
+         href="/page/14/">Older Posts &#8250;</a>
+    </span>
+    
+    <div style="clear:both;"></div>
+  </div>
+  
+
+</div>
+
+      </main>
+
+    </div>
+  </div>
+
+  
+  <footer class="site-footer" id="colophon" role="contentinfo">
+<div id="supplementary">
+  <div class="footer-widgets" id="footer-widgets">
+
+    
+    <div class="widget popular-posts">
+      <h2>Popular Posts</h2>
+      <ul>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-can-and-gate-replace-icg-if-glitch-is/">Can an AND gate replace an ICG if glitch is handled</a></li>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-command-to-balance-two-clock-trees/">Command to balance two clock trees? Command to check latency?  Command to do useful skew?</a></li>
+        
+          <li><a href="http://localhost:1313/posts/2025-08-23-different-cts-types-what-are-benefits/">Different CTS types? What are benefits of those?</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div class="widget">
+      <h2>Subscribe for more</h2>
+      <div id="mc_embed_signup">
+        <form action="https://blogspot.us8.list-manage.com/subscribe/post?u=f8ac6f0c8c94ac766b4de9c2a&amp;id=4365930274&amp;f_id=00f37fe1f0"
+              method="post"
+              id="mc-embedded-subscribe-form"
+              name="mc-embedded-subscribe-form"
+              target="_blank">
+          <div>
+            <label for="mce-EMAIL">Email Address <span>*</span></label>
+            <input type="email" name="EMAIL" id="mce-EMAIL" required/>
+          </div>
+          
+          <div style="position:absolute;left:-5000px;" aria-hidden="true">
+            <input type="text" name="b_f8ac6f0c8c94ac766b4de9c2a_4365930274" tabindex="-1" value=""/>
+          </div>
+          <div>
+            <input type="submit" value="Subscribe" name="subscribe"/>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    
+    <div class="widget">
+      <h2>Submit your questions</h2>
+      <form name="contact-form" action="mailto:your@email.com" method="post">
+        <p>
+          <label>Name<br/>
+            <input type="text" name="name" size="30"/>
+          </label>
+        </p>
+        <p>
+          <label>Email <strong>*</strong><br/>
+            <input type="email" name="email" size="30" required/>
+          </label>
+        </p>
+        <p>
+          <label>Message <strong>*</strong><br/>
+            <textarea name="message" rows="5" cols="25" required></textarea>
+          </label>
+        </p>
+        <p><input type="submit" value="Send"/></p>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="site-info">
+  Copyright &copy; <span id="creditsyear"></span>
+  <a href="http://localhost:1313/">Physical Design Interview Guide</a>
+  &nbsp;|&nbsp;
+  <a href="http://localhost:1313/posts/index.xml"
+     aria-label="RSS feed"
+     target="_blank" rel="alternate">
+    <i class="fa fa-rss" aria-hidden="true"></i>
+  </a>
+</div>
+
+</footer>
+
+
+</div>
+
+
+<script src="/js/main.js"></script>
+
+
+<div id="monetag-container" data-zone="10628900" style="display:none"></div>
+
+
+<div id="infolinks-container" style="display:none"></div>
+
+</body>
+</html>

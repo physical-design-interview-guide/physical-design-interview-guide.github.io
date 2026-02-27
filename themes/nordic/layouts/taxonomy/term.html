@@ -1,0 +1,56 @@
+{{ define "main" }}
+<div class="blog-posts">
+
+  <h1 class="category-page-title">{{ .Title }}</h1>
+
+  {{ range .Paginator.Pages }}
+  <div class="post-outer">
+  <article class="post hentry">
+    <div class="index-box">
+
+      <div class="post-date">{{ .Date.Format "02/01/2006" }}</div>
+
+      <header class="entry-header">
+        <h2 class="entry-title post-title">
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </h2>
+        <div class="entry-meta">
+          on <a href="{{ .Permalink }}" rel="bookmark">
+            <span class="published">{{ .Date.Format "January 02, 2006" }}</span>
+          </a>
+        </div>
+      </header>
+
+      <div class="post-body entry-content">
+        <p>{{ .Summary }}</p>
+      </div>
+
+      <div style="float:right; margin-top:15px;">
+        <a class="read-more" href="{{ .Permalink }}">
+          Read More <span class="sr-only">about {{ .Title }}</span>
+        </a>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </article>
+  </div>
+  {{ end }}
+
+  {{ if gt .Paginator.TotalPages 1 }}
+  <div class="blog-pager" id="blog-pager">
+    {{ if .Paginator.HasPrev }}
+    <span id="blog-pager-newer-link">
+      <a href="{{ .Paginator.Prev.URL }}">&#8249; Newer Posts</a>
+    </span>
+    {{ end }}
+    {{ if .Paginator.HasNext }}
+    <span id="blog-pager-older-link">
+      <a href="{{ .Paginator.Next.URL }}">Older Posts &#8250;</a>
+    </span>
+    {{ end }}
+    <div style="clear:both;"></div>
+  </div>
+  {{ end }}
+
+</div>
+{{ end }}

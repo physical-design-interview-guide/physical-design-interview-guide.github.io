@@ -1,0 +1,9 @@
+User-agent: Mediapartners-Google
+Disallow:
+
+User-agent: *
+Allow: /categories/
+Disallow: /tags/
+Allow: /
+
+Sitemap: https://physical-design-interview-guide.github.io/sitemap.xml
