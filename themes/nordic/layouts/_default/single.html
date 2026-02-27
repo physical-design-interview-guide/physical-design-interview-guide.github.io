@@ -1,54 +1,72 @@
 {{ define "main" }}
-<article class="post hentry">
+
+<!-- Breadcrumb — SEO + UX -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <a href="{{ .Site.BaseURL }}">Home</a>
+  {{ with .Params.categories }}
+    {{ range first 1 . }}
+      &rsaquo; <a href="/categories/{{ . | urlize }}/">{{ . }}</a>
+    {{ end }}
+  {{ end }}
+  &rsaquo; <span>{{ .Title | truncate 50 }}</span>
+</nav>
+
+<article class="post hentry" itemscope itemtype="https://schema.org/Article">
 <div class="index-box">
 
-  <!-- Post header -->
   <header class="entry-header">
     <h1 class="post-title entry-title" itemprop="headline">{{ .Title }}</h1>
-
     <div class="entry-meta">
       on <a href="{{ .Permalink }}" rel="bookmark">
-        <span class="published">{{ .Date.Format "January 02, 2006" }}</span>
+        <time class="published" datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">
+          {{ .Date.Format "January 02, 2006" }}
+        </time>
       </a>&nbsp;
       {{ with .Params.categories }}
       in
       {{ range . }}
-        <a href="/categories/{{ . | urlize }}/" rel="tag">{{ . }}</a>
+        <a href="/categories/{{ . | urlize }}/" rel="tag" itemprop="articleSection">{{ . }}</a>
       {{ end }}&nbsp;
       {{ end }}
-      with <a href="#comments">No comments</a>
     </div>
   </header>
 
-  <!-- Post body -->
   <div class="post-body entry-content" itemprop="articleBody">
     {{ .Content }}
   </div>
 
-  <!-- ===== AD BELOW POST (one script, device-conditional via JS) ===== -->
-  <div id="post-ad-container"
-       data-desktop-src="https://pl28748027.effectivegatecpm.com/91a7dc313767ee1279685304c23cc0ac/invoke.js"
-       data-mobile-key="{{ .Site.Params.adsterra_mobile_post_key }}"
-       data-mobile-src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_mobile_post_key }}/invoke.js"
-       style="clear:both; margin:25px 0 15px; text-align:center;">
+  <!-- Post ad — loads directly, no JS dependency -->
+  <div style="clear:both; margin:25px 0 15px; text-align:center;">
+    <script>
+      atOptions = {
+        'key'    : '{{ .Site.Params.adsterra_mobile_post_key }}',
+        'format' : 'iframe',
+        'height' : 250,
+        'width'  : 300,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_mobile_post_key }}/invoke.js"></script>
   </div>
 
-  <!-- Share buttons -->
   <div class="post-share pbtsharethisbutt">
     Share:
     <a href="https://www.facebook.com/share.php?u={{ .Permalink }}"
-       target="_blank" rel="nofollow" title="Share on Facebook">
+       target="_blank" rel="nofollow noopener" title="Share on Facebook">
       <i class="fa fa-facebook"></i>
     </a>
-    <a href="https://twitter.com/home?status={{ .Title | urlize }}+--+{{ .Permalink }}"
-       target="_blank" rel="nofollow" title="Tweet This!">
+    <a href="https://twitter.com/intent/tweet?text={{ .Title | urlize }}&url={{ .Permalink }}"
+       target="_blank" rel="nofollow noopener" title="Tweet This!">
       <i class="fa fa-twitter"></i>
+    </a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink }}"
+       target="_blank" rel="nofollow noopener" title="Share on LinkedIn">
+      <i class="fa fa-linkedin"></i>
     </a>
   </div>
 
   <div style="clear:both;"></div>
 
-  <!-- Prev / Next post navigation -->
   <div class="blog-pager" id="blog-pager" style="margin-top:20px;">
     {{ with .PrevInSection }}
     <span id="blog-pager-newer-link">
@@ -64,16 +82,24 @@
     <div style="clear:both;"></div>
   </div>
 
-  <!-- Comments section -->
+  <!-- ===== COMMENTS via Giscus ===== -->
   <div id="comments">
-    <h4>Comments</h4>
-    <p style="font-family:'Dosis',sans-serif;">
-      Comments are not yet enabled on this Hugo site.
-      To add comments, integrate
-      <a href="https://disqus.com" target="_blank">Disqus</a> or
-      <a href="https://giscus.app" target="_blank">Giscus</a> (GitHub-based, free).
-    </p>
-    <!-- PASTE YOUR DISQUS/GISCUS SNIPPET HERE when ready -->
+    <script src="https://giscus.app/client.js"
+            data-repo="physical-design-interview-guide/physical-design-interview-guide.github.io"
+            data-repo-id="R_kgDORaXRBg"
+            data-category="Comments"
+            data-category-id="DIC_kwDORaXRBs4C3WjA"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="light"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
   </div>
 
 </div>
