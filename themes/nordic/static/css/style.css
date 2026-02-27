@@ -278,14 +278,20 @@ html:not([data-theme="dark"]) .theme-toggle .moon { display: none; }
   margin-right: 25px;
   box-sizing: border-box;
   flex-shrink: 0;
-  overflow: hidden;   /* ad wider than sidebar clips instead of overflowing */
+  overflow: hidden;
+}
+/* Force any ad iframe/script inside sidebar to not exceed sidebar width */
+.sidebar .widget iframe,
+.sidebar .widget ins,
+.sidebar .widget > div {
+  max-width: 100% !important;
+  width: 100% !important;
 }
 .sidebar .widget {
   border: 3px solid var(--border);
   margin-bottom: 15px;
   padding: 10px;
   box-sizing: border-box;
-  overflow: hidden;
 }
 .sidebar .widget h2 {
   font-size: 1.875rem;
