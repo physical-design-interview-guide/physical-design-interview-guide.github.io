@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="blog-posts">
 
-  <h1 class="category-page-title">{{ .Title }}</h1>
+  {{/* Issue 3: No big title heading — active tab already shows which category */}}
 
   {{ range .Paginator.Pages }}
   <div class="post-outer">
@@ -39,12 +39,12 @@
   {{ if gt .Paginator.TotalPages 1 }}
   <div class="blog-pager" id="blog-pager">
     {{ if .Paginator.HasPrev }}
-    <span id="blog-pager-newer-link">
+    <span class="blog-pager-newer-link">
       <a href="{{ .Paginator.Prev.URL }}">&#8249; Newer Posts</a>
     </span>
     {{ end }}
     {{ if .Paginator.HasNext }}
-    <span id="blog-pager-older-link">
+    <span class="blog-pager-older-link">
       <a href="{{ .Paginator.Next.URL }}">Older Posts &#8250;</a>
     </span>
     {{ end }}

@@ -1,6 +1,8 @@
 # Hugo build output — never commit this
 public/
 resources/
+/content/posts
+/helper
 .hugo_build.lock
 
 # OS junk

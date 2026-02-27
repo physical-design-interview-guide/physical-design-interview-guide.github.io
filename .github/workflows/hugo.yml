@@ -3,8 +3,6 @@ name: Deploy Hugo site to GitHub Pages
 on:
   push:
     branches: [main]
-  # Also rebuild when the private content repo pushes
-  # (requires setting up a webhook — instructions in README)
   workflow_dispatch:
 
 permissions:
@@ -26,11 +24,12 @@ jobs:
       - name: Checkout private content repo into content/posts
         uses: actions/checkout@v4
         with:
-          # Your PRIVATE repo that holds the markdown posts
-          # Format: your-github-username/your-private-repo-name
           repository: physical-design-interview-guide/pd-content
           token: ${{ secrets.CONTENT_REPO_TOKEN }}
           path: content/posts
+
+      - name: Remove git metadata from posts folder (prevents Hugo confusion)
+        run: rm -rf content/posts/.git content/posts/.gitignore
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3

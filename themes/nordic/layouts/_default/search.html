@@ -1,34 +1,31 @@
 {{ define "main" }}
 <div class="search-results">
-  <h1>Search Results</h1>
-
-  <div class="search-box-page">
-    <form action="/search/" method="get">
-      <input type="search" name="q" value="{{ .Params.q }}" placeholder="Search posts..." autofocus/>
-      <button type="submit">Search</button>
-    </form>
-  </div>
 
   <div id="search-results-list">
     <p>Searching...</p>
   </div>
+
 </div>
 
 <script>
 (function() {
   var query = new URLSearchParams(window.location.search).get('q') || '';
   var container = document.getElementById('search-results-list');
+
   if (!query.trim()) {
-    container.innerHTML = '<p>Enter a search term above.</p>';
+    container.innerHTML = '<p>Enter a search term in the search box above.</p>';
     return;
   }
 
-  fetch('/index.json')
+  /* Use absolute URL so it works on deployed site too */
+  var indexUrl = '{{ .Site.BaseURL }}index.json';
+
+  fetch(indexUrl)
     .then(function(r) { return r.json(); })
     .then(function(posts) {
       var q = query.toLowerCase();
       var results = posts.filter(function(p) {
-        return (p.title && p.title.toLowerCase().indexOf(q) !== -1) ||
+        return (p.title   && p.title.toLowerCase().indexOf(q)   !== -1) ||
                (p.summary && p.summary.toLowerCase().indexOf(q) !== -1) ||
                (p.categories && p.categories.join(' ').toLowerCase().indexOf(q) !== -1);
       });
@@ -42,14 +39,16 @@
       results.forEach(function(p) {
         html += '<div class="search-result-item">' +
           '<h2><a href="' + p.permalink + '">' + p.title + '</a></h2>' +
-          '<div class="meta">' + p.date + (p.categories ? ' &nbsp;|&nbsp; ' + p.categories.join(', ') : '') + '</div>' +
+          '<div class="meta">' + p.date +
+            (p.categories ? ' &nbsp;|&nbsp; ' + p.categories.join(', ') : '') +
+          '</div>' +
           '<p>' + (p.summary || '').substring(0, 200) + '...</p>' +
           '</div>';
       });
       container.innerHTML = html;
     })
-    .catch(function() {
-      container.innerHTML = '<p>Search failed. Please try again.</p>';
+    .catch(function(e) {
+      container.innerHTML = '<p>Search failed. Please try again. (' + e + ')</p>';
     });
 })();
 </script>
