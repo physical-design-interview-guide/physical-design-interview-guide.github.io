@@ -1,7 +1,33 @@
 {{ define "main" }}
 <div class="error-404">
-  <h1>404 ~ Page Not Found!</h1>
-  <p>The page you were looking for doesn't exist.</p>
-  <a href="{{ .Site.BaseURL }}">← Back to Home</a>
+
+  <h1>Page Moved or Not Found</h1>
+
+  <p>
+    If you came from <strong>physical-design-interview-questions.blogspot.com</strong>,
+    this post has moved to our new site. Use the search below to find it,
+    or browse by topic using the menu above.
+  </p>
+
+  <div class="error-search">
+    <form action="/search/" method="get">
+      <input type="search" name="q" placeholder="Search for your topic..."/>
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <div class="error-links">
+    <p>Or jump directly to a topic:</p>
+    <div class="error-categories">
+      {{ range .Site.Menus.main }}
+        {{ if and (ne .Name "Home") (ne .Name "About Me") (ne .Name "Privacy Policy") }}
+        <a href="{{ .URL }}">{{ .Name }}</a>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+
+  <p><a href="{{ .Site.BaseURL }}">← Back to Home</a></p>
+
 </div>
 {{ end }}
