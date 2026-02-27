@@ -1,0 +1,25 @@
+# Hugo build output — never commit this
+public/
+resources/
+.hugo_build.lock
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor temp files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node (if you ever add any JS tooling)
+node_modules/
+
+# Logs
+*.log
+
+# Zip files (your local downloads)
+*.zip

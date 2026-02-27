@@ -1,6 +1,6 @@
 <header class="site-header" id="masthead" role="banner">
 
-  <!-- ---- Branding: logo + title + description ---- -->
+  <!-- Branding -->
   <div class="site-branding">
     <div id="header-inner">
       <a class="logo-link" href="{{ .Site.BaseURL }}">
@@ -16,50 +16,50 @@
         {{ else }}
           <p class="site-title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></p>
         {{ end }}
-        <h2 class="site-description">{{ .Site.Params.description }}</h2>
+        <p class="site-description">{{ .Site.Params.description }}</p>
       </div>
     </div>
-  </div><!-- .site-branding -->
+  </div>
 
-  <!-- ---- Navigation ---- -->
+  <!-- Navigation -->
   <nav class="main-navigation" id="site-navigation" role="navigation">
-    <!-- Hamburger for mobile -->
-    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-      <i class="fa fa-bars"></i>
-    </button>
 
-    <!-- Tab pills — generated from hugo.toml [menu.main] -->
-    <ul id="primary-menu">
-      {{ range .Site.Menus.main }}
-        <li{{ if $.IsMenuCurrent "main" . }} class="current"{{ end }}>
-          <a href="{{ .URL }}">{{ .Name }}</a>
-        </li>
-      {{ end }}
-    </ul>
+    <!-- Mobile hamburger (shown only on small screens) -->
+    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">☰</button>
 
-    <!-- Dark / light toggle -->
-    <button class="theme-toggle"
-            aria-label="Toggle dark mode"
-            onclick="window.toggleTheme && window.toggleTheme()"
-            type="button">
-      <span class="sun" aria-hidden="true">☀️</span>
-      <span class="moon" aria-hidden="true">🌙</span>
-    </button>
+    <!-- nav-inner: border wraps ONLY around this box — pills + toggle + search -->
+    <div class="nav-inner">
 
-    <!-- Search icon -->
-    <button class="search-toggle" aria-label="Search" type="button">
-      <i class="fa fa-search"></i>
-    </button>
-  </nav><!-- #site-navigation -->
+      <!-- Tab pills -->
+      <ul id="primary-menu">
+        {{ range .Site.Menus.main }}
+          <li{{ if $.IsMenuCurrent "main" . }} class="current"{{ end }}>
+            <a href="{{ .URL }}">{{ .Name }}</a>
+          </li>
+        {{ end }}
+      </ul>
 
-  <!-- Search box (hidden until toggle clicked) -->
+      <!-- Dark/light toggle — inside the border, right after pills -->
+      <button class="theme-toggle"
+              aria-label="Toggle dark mode"
+              onclick="window.toggleTheme && window.toggleTheme()"
+              type="button">
+        <span class="sun" aria-hidden="true">☀️</span>
+        <span class="moon" aria-hidden="true">🌙</span>
+      </button>
+
+      <!-- Search icon — inside the border -->
+      <button class="search-toggle" aria-label="Search" type="button">🔍</button>
+
+    </div><!-- .nav-inner -->
+  </nav>
+
+  <!-- Search box (slides open below nav when icon clicked) -->
   <div class="search-box-wrapper" id="search-container">
     <form action="/search/" method="get" role="search">
-      <input type="search"
-             name="q"
-             placeholder="Search..."
-             aria-label="Search posts"/>
+      <input type="search" name="q" id="search-input" placeholder="Search posts..." aria-label="Search"/>
+      <button type="submit">Search</button>
     </form>
   </div>
 
-</header><!-- #masthead -->
+</header>

@@ -1,6 +1,6 @@
 /* ================================================
    Physical Design Interview Guide — Hugo Theme
-   Faithfully ported from Blogger Nordic theme
+   Ported from Blogger Nordic theme
    ================================================ */
 
 /* ---------- CSS Variables (light mode) ---------- */
@@ -40,7 +40,7 @@ html[data-theme="dark"] {
   --surface-hover:#1f2937;
 }
 
-/* ---------- Reset / Normalize ---------- */
+/* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { font-family: sans-serif; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
 body { margin: 0; background: var(--bg); color: var(--text); overflow-x: hidden;
@@ -65,8 +65,7 @@ p  { margin-bottom: 1.5em; }
 h1,h2,h3,h4,h5,h6 {
   clear: right; font-weight: 700;
   font-family: 'Amatic SC', sans-serif;
-  color: var(--text);
-  word-break: break-word;
+  color: var(--text); word-break: break-word;
 }
 h1 { font-size: 4rem; }
 h2 { font-size: 2.5rem; }
@@ -76,16 +75,13 @@ h5 { font-size: 1.625rem; }
 h6 { font-size: 1.4375rem; }
 
 /* ---------- Links ---------- */
-a { text-decoration: none; color: var(--link); background-color: transparent; }
+a { text-decoration: none; color: var(--link); }
 a:visited { color: var(--link-visited); }
 a:hover, a:focus, a:active { text-decoration: underline; color: var(--link-hover); }
 
 /* ================================================
-   LAYOUT — mirrors Blogger's two-column structure
+   HEADER
    ================================================ */
-.site-wrapper { width: 100%; }
-
-/* ---- Header ---- */
 .site-header { width: 100%; background: var(--surface); }
 
 .site-branding {
@@ -103,33 +99,20 @@ a:hover, a:focus, a:active { text-decoration: underline; color: var(--link-hover
 }
 .logo-link {
   position: absolute;
-  left: 0;
-  top: 50%;
+  left: 0; top: 50%;
   transform: translateY(-50%);
 }
 .header-logo {
-  height: auto;
-  max-height: 80px;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
+  height: auto; max-height: 80px; width: auto; max-width: 100%;
+  object-fit: contain; display: block;
 }
 .titlewrapper { text-align: center; }
 .site-title {
-  margin: 0;
-  font-size: 3.5rem;
-  font-weight: bold;
-  line-height: 1.2;
-  font-family: 'Amatic SC', sans-serif;
+  margin: 0; font-size: 3.5rem; font-weight: bold;
+  line-height: 1.2; font-family: 'Amatic SC', sans-serif;
 }
 .site-title a { color: var(--text); text-decoration: none; }
-.site-description {
-  margin: 5px 0 0;
-  font-size: 1.5rem;
-  color: var(--text);
-  font-family: 'Amatic SC', sans-serif;
-}
+.site-description { margin: 5px 0 0; font-size: 1.5rem; color: var(--text); font-family: 'Amatic SC', sans-serif; }
 
 @media (max-width: 870px) {
   #header-inner { flex-direction: column; }
@@ -137,33 +120,43 @@ a:hover, a:focus, a:active { text-decoration: underline; color: var(--link-hover
   .header-logo { max-height: 60px; }
 }
 
-/* ---- Navigation bar ---- */
+/* ================================================
+   NAVIGATION — border wraps ONLY around the pill row
+   ================================================ */
 .main-navigation {
   width: 100%;
+  background: var(--surface);
+  padding: 0;
+}
+
+/* This inner wrapper is what gets the border — 
+   it only spans as wide as its content (pills + buttons) */
+.nav-inner {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0;
-  padding: 0 25px;
-  background: var(--surface);
+  /* Constrain to content width so borders don't span full page */
+  width: fit-content;
+  margin: 0 auto;
+  border-top: 3px solid var(--border);
+  border-bottom: 3px solid var(--border);
+  padding: 6px 8px;
+  gap: 6px;
 }
 
-/* Tab pills — mirrors .PageList ul li a */
-.main-navigation ul {
+/* Tab pills */
+.nav-inner ul {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
-  padding: 8px 0;
-  gap: 8px;
+  padding: 0;
+  gap: 6px;
   justify-content: center;
-  flex: 1;
-  /*border-top: 3px solid var(--border);
-  border-bottom: 3px solid var(--border); */
 }
-.main-navigation ul li { margin: 0; }
-.main-navigation ul li a {
+.nav-inner ul li { margin: 0; }
+.nav-inner ul li a {
   display: inline-block;
   padding: 8px 12px;
   background: var(--surface-2);
@@ -175,11 +168,72 @@ a:hover, a:focus, a:active { text-decoration: underline; color: var(--link-hover
   font-size: 1rem;
   text-transform: uppercase;
 }
-.main-navigation ul li a:hover  { background: var(--surface-hover); text-decoration: none; }
-.main-navigation ul li a.active,
-.main-navigation ul li.current > a { background: var(--accent); color: var(--on-accent); }
+.nav-inner ul li a:hover  { background: var(--surface-hover); text-decoration: none; }
+.nav-inner ul li a.active,
+.nav-inner ul li.current > a { background: var(--accent); color: var(--on-accent); }
 
-/* Hamburger — mobile */
+/* Dark/light toggle — sits right after the pills inside the border */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  flex: 0 0 auto;
+  color: var(--text);
+  padding: 0;
+}
+html[data-theme="dark"]       .theme-toggle .sun  { display: none; }
+html:not([data-theme="dark"]) .theme-toggle .moon { display: none; }
+
+/* Search toggle — also inside the border */
+.search-toggle {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 4px;
+  color: var(--text);
+  font-size: 18px;
+  flex: 0 0 auto;
+  background: transparent;
+  border: none;
+}
+
+/* Search box drops below nav */
+.search-box-wrapper {
+  display: none;
+  width: 100%;
+  padding: 8px 25px;
+  background: var(--surface);
+  border-bottom: 3px solid var(--border);
+}
+.search-box-wrapper.open { display: flex; align-items: center; gap: 8px; }
+.search-box-wrapper form { display: flex; width: 100%; max-width: 600px; margin: 0 auto; gap: 8px; }
+.search-box-wrapper input[type="search"] {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 1rem;
+  font-family: 'Dosis', sans-serif;
+  background: var(--input-bg);
+  color: var(--input-text);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+.search-box-wrapper button[type="submit"] {
+  padding: 8px 16px;
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'Dosis', sans-serif;
+}
+.search-box-wrapper button[type="submit"]:hover { background: var(--surface-hover); }
+
+/* Hamburger — mobile only */
 .menu-toggle {
   display: none;
   cursor: pointer;
@@ -190,67 +244,20 @@ a:hover, a:focus, a:active { text-decoration: underline; color: var(--link-hover
   padding: 0.5rem 1rem;
 }
 
-/* Dark/light toggle button */
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px; height: 40px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  flex: 0 0 auto;
-  color: var(--text);
-}
-html[data-theme="dark"]     .theme-toggle .sun  { display: none; }
-html:not([data-theme="dark"]) .theme-toggle .moon { display: none; }
-
-/* Search toggle */
-.search-toggle {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  padding: 0 8px;
-  color: var(--text);
-  font-size: 20px;
-  flex: 0 0 auto;
-  background: transparent;
-  border: none;
-}
-.search-box-wrapper {
-  display: none;
-  width: 100%;
-  padding: 8px 25px;
-  background: var(--surface);
-  border-bottom: 3px solid var(--border);
-}
-.search-box-wrapper.open { display: block; }
-.search-box-wrapper input[type="search"] {
-  width: 100%;
-  max-width: 500px;
-  display: block;
-  margin: 0 auto;
-  padding: 8px 12px;
-  font-size: 1rem;
-  font-family: 'Dosis', sans-serif;
-  background: var(--input-bg);
-  color: var(--input-text);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-}
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .menu-toggle { display: block; }
-  .main-navigation ul { display: none; padding: 10px 0; }
-  .main-navigation.toggled ul { display: flex; flex-direction: column; width: 100%; }
-  .main-navigation ul li a { display: block; width: 100%; border-radius: 0; }
+  .nav-inner { width: 100%; border-left: none; border-right: none; }
+  .nav-inner ul { display: none; width: 100%; flex-direction: column; }
+  .main-navigation.toggled .nav-inner ul { display: flex; }
+  .nav-inner ul li a { display: block; width: 100%; border-radius: 0; }
 }
 
-/* ---- Ad strip below header ---- */
+/* ---- Ad strip ---- */
 .header-ad-wrapper { text-align: center; margin: 20px auto 30px; width: 100%; clear: both; }
 
-/* ---- Content area: two columns ---- */
+/* ================================================
+   TWO-COLUMN LAYOUT
+   ================================================ */
 .site-content { width: 100%; }
 .content-area {
   display: flex;
@@ -279,13 +286,13 @@ html:not([data-theme="dark"]) .theme-toggle .moon { display: none; }
   margin-bottom: 1em;
 }
 
-/* Dynamic posts list in sidebar */
+/* Dynamic posts list — no indent */
 #dynamic-posts-list {
   min-height: 350px;
   max-height: 2100px;
   overflow-y: auto;
-  padding: 0 10px 0 0;   /* no left padding — removes indent */
-  margin: 0;             /* remove default ul margin */
+  padding: 0;
+  margin: 0;
 }
 #dynamic-posts-list li { padding: 4px 0; list-style: none; margin: 0; padding-left: 0; }
 #dynamic-posts-list li a         { color: var(--link); }
@@ -297,70 +304,45 @@ html:not([data-theme="dark"]) .theme-toggle .moon { display: none; }
   .sidebar { width: 100%; margin-right: 0; margin-bottom: 25px; }
 }
 
-/* Main content column */
+/* Main column */
 .site-main {
   width: calc(100% - 305px);
   max-width: none;
   margin: 0;
   background: var(--surface);
 }
-
 @media screen and (max-width: 960px) {
   .site-main { width: 100%; }
 }
 
-/* ---- Post card (index page) ---- */
+/* ================================================
+   POST CARDS
+   ================================================ */
 .post-outer { margin-bottom: 0; }
-
 .post.hentry {
   border: 3px solid var(--border);
   padding: 0 2rem;
   margin-bottom: 1.5em;
   background: var(--surface);
 }
-
 @media screen and (max-width: 600px) {
   .post.hentry { padding: 5px; }
 }
 
-/* Date header */
-h2.date-header { margin: 10px 0; display: none; }   /* hidden like blogger */
-.post-date {
-  font-family: 'Dosis', sans-serif;
-  font-size: 0.875rem;
-  color: var(--text);
-  margin-bottom: 0.5em;
-}
+.post-date { font-family: 'Dosis', sans-serif; font-size: 0.875rem; color: var(--text); margin-bottom: 0.5em; }
 
-/* Post title */
-.entry-title {
-  margin: 0 0 1.5rem;
-  font-size: 2.5rem;
-  line-height: 1.3em;
-  color: var(--text);
-}
+.entry-title { margin: 0 0 1.5rem; font-size: 2.5rem; line-height: 1.3em; color: var(--text); }
 .entry-title a { color: var(--text); }
 .entry-title a:hover { color: var(--teal); text-decoration: none; }
 
-@media screen and (max-width: 680px) {
-  .entry-title { font-size: 2.2rem; }
-}
+@media screen and (max-width: 680px) { .entry-title { font-size: 2.2rem; } }
 
-/* Post meta */
-.entry-meta {
-  margin-bottom: 2rem;
-  padding: 0;
-  font-family: 'Dosis', sans-serif;
-  font-size: 1rem;
-}
+.entry-meta { margin-bottom: 2rem; padding: 0; font-family: 'Dosis', sans-serif; font-size: 1rem; }
 .entry-meta a { font-weight: 700; }
 
-/* Post body */
 .entry-content { margin: 1.5em 0 0; }
 .entry-content a { text-decoration: underline; }
-.entry-content p,
-.entry-content ul,
-.entry-content ol { font-size: 1.125rem; line-height: 1.6em; }
+.entry-content p, .entry-content ul, .entry-content ol { font-size: 1.125rem; line-height: 1.6em; }
 .entry-content blockquote p { font-size: 1.5rem; }
 .entry-content h1 { font-size: 4rem; }
 .entry-content h2 { font-size: 2.5rem; }
@@ -374,141 +356,66 @@ h2.date-header { margin: 10px 0; display: none; }   /* hidden like blogger */
   .entry-content p, .entry-content ul, .entry-content ol { font-size: 1rem; }
 }
 
-/* Category label badges */
-.post-categories { margin: 0.5em 0 1em; }
-.post-categories a {
-  display: inline-block;
-  padding: 3px 10px;
-  background: var(--surface-2);
-  color: var(--text);
-  border-radius: 4px;
-  font-size: 0.875rem;
-  font-family: 'Dosis', sans-serif;
-  margin-right: 5px;
-  text-decoration: none;
-}
-.post-categories a:hover { background: var(--surface-hover); }
-
-/* Share buttons */
-.post-share { overflow: hidden; padding: 15px 0 5px; margin: 0; float: left; }
+/* Share + Read More */
+.post-share { overflow: hidden; padding: 15px 0 5px; float: left; }
 .post-share a { padding: 0 5px; color: var(--text); }
 .post-share a:hover { color: var(--teal); }
-
-/* Read More button */
-.read-more {
-  display: inline-block;
-  float: right;
-  margin-top: 15px;
-  padding-right: 0;
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--link);
-  text-decoration: none;
-}
+.read-more { display: inline-block; float: right; margin-top: 15px; font-weight: 700; font-size: 1rem; color: var(--link); }
 .read-more:hover { color: var(--teal); text-decoration: underline; }
 .sr-only { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
-/* ---- Pagination ---- */
-.blog-pager {
-  text-align: center;
-  padding: 5px;
-  margin: 10px 0 20px;
-}
-.blog-pager a {
-  display: inline-block;
-  padding: 8px 20px;
-  background: var(--surface-2);
-  color: var(--text);
-  border-radius: 3px;
-  margin: 0 5px;
-  text-decoration: none;
-  font-family: 'Dosis', sans-serif;
-}
+/* Pagination */
+.blog-pager { text-align: center; padding: 5px; margin: 10px 0 20px; }
+.blog-pager a { display: inline-block; padding: 8px 20px; background: var(--surface-2); color: var(--text); border-radius: 3px; margin: 0 5px; text-decoration: none; font-family: 'Dosis', sans-serif; }
 .blog-pager a:hover { background: var(--surface-hover); }
 .blog-pager-newer-link { float: left; }
 .blog-pager-older-link { float: right; }
 
-/* ---- Comments ---- */
-#comments {
-  padding: 2rem;
-  margin-bottom: 20px;
-  border: 3px solid var(--border);
-}
+/* Comments */
+#comments { padding: 2rem; margin-bottom: 20px; border: 3px solid var(--border); }
 #comments h4 { font-size: 1.375rem; margin-bottom: 10px; }
 
-/* ---- Footer ---- */
-.site-footer {
-  clear: both;
-  width: 100%;
-  padding: 2em;
-  font-size: 0.875rem;
-  color: var(--text);
-  background: var(--surface);
-  max-width: none;
-  margin: 0 auto;
-}
-#supplementary {
-  background-color: var(--surface);
-  border: 3px solid var(--border);
-}
-.footer-widgets {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-}
-.footer-widgets .widget {
-  min-width: 250px;
-  padding: 25px;
-}
-.footer-widgets .widget h2 {
-  font-size: 1.875rem;
-  border-bottom: 2px solid var(--border);
-  margin-bottom: 1em;
-}
+/* ================================================
+   SEARCH PAGE
+   ================================================ */
+.search-results { padding: 1rem 0; }
+.search-results h1 { font-family: 'Amatic SC', sans-serif; font-size: 2.5rem; margin-bottom: 1rem; }
+.search-result-item { border: 3px solid var(--border); padding: 1rem 2rem; margin-bottom: 1.5em; }
+.search-result-item h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+.search-result-item h2 a { color: var(--text); }
+.search-result-item h2 a:hover { color: var(--teal); }
+.search-result-item .meta { font-family: 'Dosis', sans-serif; font-size: 0.875rem; margin-bottom: 0.5rem; }
+.search-box-page { margin-bottom: 2rem; }
+.search-box-page form { display: flex; gap: 8px; max-width: 500px; }
+.search-box-page input { flex: 1; padding: 8px 12px; font-family: 'Dosis', sans-serif; border: 1px solid var(--border); background: var(--input-bg); color: var(--input-text); border-radius: 3px; }
+.search-box-page button { padding: 8px 16px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 3px; cursor: pointer; font-family: 'Dosis', sans-serif; }
 
-/* Popular posts in footer */
+/* ================================================
+   FOOTER
+   ================================================ */
+.site-footer { clear: both; width: 100%; padding: 2em; font-size: 0.875rem; color: var(--text); background: var(--surface); }
+#supplementary { background-color: var(--surface); border: 3px solid var(--border); }
+.footer-widgets { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
+.footer-widgets .widget { min-width: 250px; padding: 25px; }
+.footer-widgets .widget h2 { font-size: 1.875rem; border-bottom: 2px solid var(--border); margin-bottom: 1em; }
 .popular-posts ul { list-style: none; margin: 0; padding: 0; }
 .popular-posts li { padding: 6px 0; border-bottom: 1px solid var(--surface-2); }
 .popular-posts li a { font-weight: 700; color: var(--text); }
-
-/* Site info bar */
-.site-info {
-  text-align: center;
-  padding: 20px 0;
-  border-bottom: 3px solid var(--border);
-}
+.site-info { text-align: center; padding: 20px 0; border-bottom: 3px solid var(--border); }
 .site-info a { color: var(--text); }
 .site-info a:hover { color: var(--teal); }
 
-@media screen and (max-width: 879px) {
-  .footer-widgets .widget { width: 100%; }
-}
+@media screen and (max-width: 879px) { .footer-widgets .widget { width: 100%; } }
 
-/* ---- Disable text selection (matches original) ---- */
-body {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-/* But allow selection in post content for readability on Hugo */
-.entry-content {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-}
+/* Disable text selection */
+body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+.entry-content { -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text; }
 
-/* ---- Taxonomy / category list page ---- */
-.category-page-title {
-  font-family: 'Amatic SC', sans-serif;
-  font-size: 2.5rem;
-  padding: 1rem 0 0.5rem;
-  border-bottom: 3px solid var(--border);
-  margin-bottom: 1.5rem;
-}
+/* Category page title */
+.category-page-title { font-family: 'Amatic SC', sans-serif; font-size: 2.5rem; padding: 1rem 0 0.5rem; border-bottom: 3px solid var(--border); margin-bottom: 1.5rem; }
 
-/* ---- 404 page ---- */
+/* 404 */
 .error-404 { padding: 2rem; }
+
+/* date-header hidden */
+h2.date-header { display: none; }
