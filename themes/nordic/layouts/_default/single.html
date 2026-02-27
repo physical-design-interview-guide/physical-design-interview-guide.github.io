@@ -35,18 +35,37 @@
     {{ .Content }}
   </div>
 
-  <!-- Post ad — loads directly, no JS dependency -->
+  <!-- Post ad: desktop 728x90, mobile 300x250 — each hidden on the other screen size -->
   <div style="clear:both; margin:25px 0 15px; text-align:center;">
-    <script>
-      atOptions = {
-        'key'    : '{{ .Site.Params.adsterra_mobile_post_key }}',
-        'format' : 'iframe',
-        'height' : 250,
-        'width'  : 300,
-        'params' : {}
-      };
-    </script>
-    <script src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_mobile_post_key }}/invoke.js"></script>
+
+    <!-- Desktop post ad (728x90) — hidden on mobile -->
+    <div class="desktop-only">
+      <script>
+        atOptions = {
+          'key'    : '{{ .Site.Params.adsterra_desktop_post_key }}',
+          'format' : 'iframe',
+          'height' : 90,
+          'width'  : 728,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_desktop_post_key }}/invoke.js"></script>
+    </div>
+
+    <!-- Mobile post ad (300x250) — hidden on desktop -->
+    <div class="mobile-only">
+      <script>
+        atOptions = {
+          'key'    : '{{ .Site.Params.adsterra_mobile_post_key }}',
+          'format' : 'iframe',
+          'height' : 250,
+          'width'  : 300,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_mobile_post_key }}/invoke.js"></script>
+    </div>
+
   </div>
 
   <div class="post-share pbtsharethisbutt">

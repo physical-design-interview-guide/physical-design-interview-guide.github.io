@@ -301,7 +301,7 @@ html:not([data-theme="dark"]) .theme-toggle .moon { display: none; }
 
 /* Dynamic posts widget — constrain the whole widget box, list scrolls inside */
 #dynamic-posts-list-container {
-  max-height: 85vh;    /* desktop: ~65% of screen height, scrollable */
+  max-height: 65vh;    /* desktop: ~65% of screen height, scrollable */
   display: flex;
   flex-direction: column;
 }
@@ -504,6 +504,14 @@ body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
 
 /* date-header hidden */
 h2.date-header { display: none; }
+
+/* ---- Responsive ad visibility ---- */
+.mobile-only  { display: none; }
+.desktop-only { display: block; }
+@media screen and (max-width: 768px) {
+  .mobile-only  { display: block; }
+  .desktop-only { display: none;  }
+}
 
 /* ================================================
    ABOUT & PRIVACY PAGES
