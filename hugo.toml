@@ -3,6 +3,9 @@ languageCode = "en-us"
 title = "Physical Design Interview Guide"
 theme = "nordic"
 paginate = 6
+
+[pagination]
+  pagerSize = 6
 enableRobotsTXT = true
 summaryLength = 60
 

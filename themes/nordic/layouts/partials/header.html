@@ -24,37 +24,39 @@
   <!-- Navigation -->
   <nav class="main-navigation" id="site-navigation" role="navigation">
 
-    <!-- Mobile hamburger (shown only on small screens) -->
+    <!-- Mobile hamburger -->
     <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">☰</button>
 
-    <!-- nav-inner: border wraps ONLY around this box — pills + toggle + search -->
     <div class="nav-inner">
-
-      <!-- Tab pills -->
+      <!-- Single ul contains pills + toggle + search so hamburger captures all -->
       <ul id="primary-menu">
         {{ range .Site.Menus.main }}
           <li{{ if $.IsMenuCurrent "main" . }} class="current"{{ end }}>
             <a href="{{ .URL }}">{{ .Name }}</a>
           </li>
         {{ end }}
+
+        <!-- Theme toggle as a menu item -->
+        <li class="nav-btn-item">
+          <button class="theme-toggle"
+                  aria-label="Toggle dark mode"
+                  onclick="window.toggleTheme && window.toggleTheme()"
+                  type="button">
+            <span class="sun" aria-hidden="true">☀️</span>
+            <span class="moon" aria-hidden="true">🌙</span>
+          </button>
+        </li>
+
+        <!-- Search toggle as a menu item -->
+        <li class="nav-btn-item">
+          <button class="search-toggle" aria-label="Search" type="button">🔍</button>
+        </li>
       </ul>
+    </div>
 
-      <!-- Dark/light toggle — inside the border, right after pills -->
-      <button class="theme-toggle"
-              aria-label="Toggle dark mode"
-              onclick="window.toggleTheme && window.toggleTheme()"
-              type="button">
-        <span class="sun" aria-hidden="true">☀️</span>
-        <span class="moon" aria-hidden="true">🌙</span>
-      </button>
-
-      <!-- Search icon — inside the border -->
-      <button class="search-toggle" aria-label="Search" type="button">🔍</button>
-
-    </div><!-- .nav-inner -->
   </nav>
 
-  <!-- Search box (slides open below nav when icon clicked) -->
+  <!-- Search box -->
   <div class="search-box-wrapper" id="search-container">
     <form action="/search/" method="get" role="search">
       <input type="search" name="q" id="search-input" placeholder="Search posts..." aria-label="Search"/>
