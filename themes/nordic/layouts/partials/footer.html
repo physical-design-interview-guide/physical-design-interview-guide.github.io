@@ -2,60 +2,86 @@
 <div id="supplementary">
   <div class="footer-widgets" id="footer-widgets">
 
-    <!-- Popular posts widget -->
+    <!-- Popular posts — featured:true posts first, fallback to recent -->
     <div class="widget popular-posts">
       <h2>Popular Posts</h2>
       <ul>
-        {{ range first 3 (where .Site.RegularPages "Type" "posts") }}
-          <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ $featured := where .Site.RegularPages "Params.featured" true }}
+        {{ if $featured }}
+          {{ range first 8 $featured }}
+            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+          {{ end }}
+        {{ else }}
+          {{ range first 8 (where .Site.RegularPages "Type" "posts") }}
+            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+          {{ end }}
         {{ end }}
       </ul>
+      <div style="margin-top:10px;">
+        <a href="{{ .Site.BaseURL }}" style="font-weight:700; font-family:'Dosis',sans-serif;">
+          View all posts →
+        </a>
+      </div>
     </div>
 
-    <!-- Subscribe widget — your existing Mailchimp form -->
-    <div class="widget">
+    <!-- Subscribe widget — Mailchimp -->
+    <div class="widget footer-form-widget">
       <h2>Subscribe for more</h2>
+      <p style="font-size:0.9rem; margin-bottom:1rem;">
+        Get new Physical Design interview questions delivered to your inbox.
+      </p>
       <div id="mc_embed_signup">
         <form action="https://blogspot.us8.list-manage.com/subscribe/post?u=f8ac6f0c8c94ac766b4de9c2a&amp;id=4365930274&amp;f_id=00f37fe1f0"
               method="post"
               id="mc-embedded-subscribe-form"
               name="mc-embedded-subscribe-form"
               target="_blank">
-          <div>
-            <label for="mce-EMAIL">Email Address <span>*</span></label>
-            <input type="email" name="EMAIL" id="mce-EMAIL" required/>
+          <div class="footer-form-row">
+            <label for="mce-EMAIL">Email Address</label>
+            <input type="email" name="EMAIL" id="mce-EMAIL"
+                   placeholder="you@example.com" required/>
           </div>
-          <!-- bot protection -->
+          <!-- Mailchimp bot protection — do not remove -->
           <div style="position:absolute;left:-5000px;" aria-hidden="true">
             <input type="text" name="b_f8ac6f0c8c94ac766b4de9c2a_4365930274" tabindex="-1" value=""/>
           </div>
-          <div>
-            <input type="submit" value="Subscribe" name="subscribe"/>
+          <div class="footer-form-row">
+            <input type="submit" value="Subscribe" name="subscribe" class="footer-btn"/>
           </div>
         </form>
       </div>
     </div>
 
-    <!-- Contact / Submit questions widget -->
-    <div class="widget">
-      <h2>Submit your questions</h2>
-      <form name="contact-form" action="mailto:your@email.com" method="post">
-        <p>
-          <label>Name<br/>
-            <input type="text" name="name" size="30"/>
-          </label>
-        </p>
-        <p>
-          <label>Email <strong>*</strong><br/>
-            <input type="email" name="email" size="30" required/>
-          </label>
-        </p>
-        <p>
-          <label>Message <strong>*</strong><br/>
-            <textarea name="message" rows="5" cols="25" required></textarea>
-          </label>
-        </p>
-        <p><input type="submit" value="Send"/></p>
+    <!-- Submit question — Formspree (works on static sites, free up to 50/month) -->
+    <div class="widget footer-form-widget">
+      <h2>Submit your question</h2>
+      <p style="font-size:0.9rem; margin-bottom:1rem;">
+        Have a Physical Design interview question we haven't covered? Send it below.
+      </p>
+      <!-- Replace YOUR_FORMSPREE_ID below:
+           1. Go to formspree.io → sign up free
+           2. New form → copy the form ID (looks like xpzvwgkr)
+           3. Replace YOUR_FORMSPREE_ID with it -->
+      <form action="https://api.web3forms.com/submit"
+            method="POST">
+            <input type="hidden" name="access_key" value="69144377-d588-4eab-8c4e-cb9fadd8e207">
+        <div class="footer-form-row">
+          <label for="contact-name">Your Name</label>
+          <input type="text" id="contact-name" name="name" placeholder="Name"/>
+        </div>
+        <div class="footer-form-row">
+          <label for="contact-email">Email <strong>*</strong></label>
+          <input type="email" id="contact-email" name="email"
+                 placeholder="you@example.com" required/>
+        </div>
+        <div class="footer-form-row">
+          <label for="contact-msg">Question / Message <strong>*</strong></label>
+          <textarea id="contact-msg" name="message" rows="4"
+                    placeholder="Your Physical Design interview question..." required></textarea>
+        </div>
+        <div class="footer-form-row">
+          <button type="submit" class="footer-btn">Send Question</button>
+        </div>
       </form>
     </div>
 
@@ -70,8 +96,10 @@
   <a href="{{ .Site.BaseURL }}posts/index.xml"
      aria-label="RSS feed"
      target="_blank" rel="alternate">
-    <i class="fa fa-rss" aria-hidden="true"></i>
+    <i class="fa fa-rss" aria-hidden="true"></i> RSS
   </a>
+  &nbsp;|&nbsp;
+  <a href="{{ .Site.BaseURL }}privacy-policy/">Privacy Policy</a>
 </div>
 
 </footer><!-- #colophon -->

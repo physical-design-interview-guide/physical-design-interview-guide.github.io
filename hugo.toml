@@ -79,10 +79,10 @@ summaryLength = 60
     name   = "About Me"
     url    = "/about/"
     weight = 13
-  [[menu.main]]
-    name   = "Privacy Policy"
-    url    = "/privacy-policy/"
-    weight = 14
+#  [[menu.main]]
+#    name   = "Privacy Policy"
+#    url    = "/privacy-policy/"
+#    weight = 14
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]

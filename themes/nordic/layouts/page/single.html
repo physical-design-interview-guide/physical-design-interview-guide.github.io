@@ -1,0 +1,110 @@
+{{ define "main" }}
+
+<!-- Breadcrumb — SEO + UX -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <a href="{{ .Site.BaseURL }}">Home</a>
+  {{ with .Params.categories }}
+    {{ range first 1 . }}
+      &rsaquo; <a href="/categories/{{ . | urlize }}/">{{ . }}</a>
+    {{ end }}
+  {{ end }}
+  &rsaquo; <span>{{ .Title | truncate 50 }}</span>
+</nav>
+
+<article class="post hentry" itemscope itemtype="https://schema.org/Article">
+<div class="index-box">
+
+  <header class="entry-header">
+    <h1 class="post-title entry-title" itemprop="headline">{{ .Title }}</h1>
+    <div class="entry-meta">
+      on <a href="{{ .Permalink }}" rel="bookmark">
+        <time class="published" datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">
+          {{ .Date.Format "January 02, 2006" }}
+        </time>
+      </a>&nbsp;
+      {{ with .Params.categories }}
+      in
+      {{ range . }}
+        <a href="/categories/{{ . | urlize }}/" rel="tag" itemprop="articleSection">{{ . }}</a>
+      {{ end }}&nbsp;
+      {{ end }}
+    </div>
+  </header>
+
+  <div class="post-body entry-content" itemprop="articleBody">
+    {{ .Content }}
+  </div>
+
+  <div id="post-ad-container"
+       data-desktop-src="https://pl28748027.effectivegatecpm.com/91a7dc313767ee1279685304c23cc0ac/invoke.js"
+       data-mobile-key="{{ .Site.Params.adsterra_mobile_post_key }}"
+       data-mobile-src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_mobile_post_key }}/invoke.js"
+       style="clear:both; margin:25px 0 15px; text-align:center;">
+  </div>
+
+  <div class="post-share pbtsharethisbutt">
+    Share:
+    <a href="https://www.facebook.com/share.php?u={{ .Permalink }}"
+       target="_blank" rel="nofollow noopener" title="Share on Facebook">
+      <i class="fa fa-facebook"></i>
+    </a>
+    <a href="https://twitter.com/intent/tweet?text={{ .Title | urlize }}&url={{ .Permalink }}"
+       target="_blank" rel="nofollow noopener" title="Tweet This!">
+      <i class="fa fa-twitter"></i>
+    </a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink }}"
+       target="_blank" rel="nofollow noopener" title="Share on LinkedIn">
+      <i class="fa fa-linkedin"></i>
+    </a>
+  </div>
+
+  <div style="clear:both;"></div>
+
+  <div class="blog-pager" id="blog-pager" style="margin-top:20px;">
+    {{ with .PrevInSection }}
+    <span id="blog-pager-newer-link">
+      <a class="blog-pager-newer-link" href="{{ .Permalink }}">&#8249; {{ .Title }}</a>
+    </span>
+    {{ end }}
+    {{ with .NextInSection }}
+    <span id="blog-pager-older-link">
+      <a class="blog-pager-older-link" href="{{ .Permalink }}">{{ .Title }} &#8250;</a>
+    </span>
+    {{ end }}
+    <a class="home-link" href="{{ .Site.BaseURL }}">Home</a>
+    <div style="clear:both;"></div>
+  </div>
+
+  <!-- ===== COMMENTS via Giscus ===== -->
+  <!-- FREE, no ads, guests can comment via GitHub (free account),
+       all comments stored in your GitHub repo's Discussions tab.
+       SETUP (one time):
+       1. Go to giscus.app
+       2. Enter your repo: physical-design-interview-guide/physical-design-interview-guide.github.io
+       3. Enable Discussions on that repo: Settings → Features → tick Discussions
+       4. On giscus.app, choose mapping: "pathname", theme: "light"
+       5. Copy the data-repo-id and data-category-id values shown
+       6. Replace REPO_ID and CATEGORY_ID below -->
+  <div id="comments">
+    <h4>Comments</h4>
+    <script src="https://giscus.app/client.js"
+            data-repo="physical-design-interview-guide/physical-design-interview-guide.github.io"
+            data-repo-id="R_kgDORaXRBg"
+            data-category="Comments"
+            data-category-id="DIC_kwDORaXRBs4C3WjA"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="light"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+</div>
+</article>
+{{ end }}
