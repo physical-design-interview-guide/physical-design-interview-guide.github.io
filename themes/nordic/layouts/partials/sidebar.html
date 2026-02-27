@@ -1,18 +1,24 @@
 <div class="widget-area sidebar" id="secondary" role="complementary">
 
-  <!-- Sidebar ad — desktop only, no async so atOptions loads before script -->
-  <div class="widget desktop-only">
-    <script>
-      atOptions = {
-        'key'    : '4261f622d3640c08cc16ff44391bea90',
-        'format' : 'iframe',
-        'height' : 50,
-        'width'  : 320,
-        'params' : {}
-      };
-    </script>
-    <script src="https://www.highperformanceformat.com/4261f622d3640c08cc16ff44391bea90/invoke.js"></script>
-  </div>
+  <!-- Sidebar ad — desktop only, injected via JS to avoid atOptions conflict with other ads -->
+  <div class="widget" id="sidebar-ad-slot"></div>
+  <script>
+  (function(){
+    if (window.innerWidth <= 768) return; /* skip on mobile — sidebar is hidden anyway */
+    var slot = document.getElementById('sidebar-ad-slot');
+    if (!slot) return;
+    atOptions = {
+      'key'    : '4261f622d3640c08cc16ff44391bea90',
+      'format' : 'iframe',
+      'height' : 50,
+      'width'  : 320,
+      'params' : {}
+    };
+    var s = document.createElement('script');
+    s.src = 'https://www.highperformanceformat.com/4261f622d3640c08cc16ff44391bea90/invoke.js';
+    slot.appendChild(s);
+  })();
+  </script>
 
   <!-- Dynamic posts list — populated by main.js via /index.json -->
   <div class="widget" id="dynamic-posts-list-container">

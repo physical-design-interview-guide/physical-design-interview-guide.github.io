@@ -275,19 +275,24 @@
 
   {{ partial "header.html" . }}
 
-  <!-- Header ad — desktop only (728x90), hidden on mobile -->
-  <div class="header-ad-wrapper desktop-only">
-    <script>
-      atOptions = {
-        'key'    : '{{ .Site.Params.adsterra_desktop_header_key }}',
-        'format' : 'iframe',
-        'height' : 90,
-        'width'  : 728,
-        'params' : {}
-      };
-    </script>
-    <script src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_desktop_header_key }}/invoke.js"></script>
-  </div>
+  <!-- Header ad — desktop 728x90 / mobile 320x50, loaded via JS to avoid atOptions conflict -->
+  <div class="header-ad-wrapper" id="header-ad-slot" style="text-align:center; margin:10px auto;"></div>
+  <script>
+  (function(){
+    var slot = document.getElementById('header-ad-slot');
+    if (!slot) return;
+    var isMobile = window.innerWidth <= 768;
+    var key = isMobile
+      ? '4261f622d3640c08cc16ff44391bea90'
+      : '{{ .Site.Params.adsterra_desktop_header_key }}';
+    var h = isMobile ? 50  : 90;
+    var w = isMobile ? 320 : 728;
+    atOptions = { 'key': key, 'format': 'iframe', 'height': h, 'width': w, 'params': {} };
+    var s = document.createElement('script');
+    s.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
+    slot.appendChild(s);
+  })();
+  </script>
 
   <div class="site-content" id="content">
     <div class="content-area" id="primary">
