@@ -35,11 +35,18 @@
     {{ .Content }}
   </div>
 
-  <div id="post-ad-container"
-       data-desktop-src="https://pl28748027.effectivegatecpm.com/91a7dc313767ee1279685304c23cc0ac/invoke.js"
-       data-mobile-key="{{ .Site.Params.adsterra_mobile_post_key }}"
-       data-mobile-src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_mobile_post_key }}/invoke.js"
-       style="clear:both; margin:25px 0 15px; text-align:center;">
+  <!-- Post ad — loads directly, no JS dependency -->
+  <div style="clear:both; margin:25px 0 15px; text-align:center;">
+    <script>
+      atOptions = {
+        'key'    : '{{ .Site.Params.adsterra_mobile_post_key }}',
+        'format' : 'iframe',
+        'height' : 250,
+        'width'  : 300,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_mobile_post_key }}/invoke.js"></script>
   </div>
 
   <div class="post-share pbtsharethisbutt">
@@ -87,22 +94,22 @@
        6. Replace REPO_ID and CATEGORY_ID below -->
   <div id="comments">
     <h4>Comments</h4>
-    <script src="https://giscus.app/client.js"
-            data-repo="physical-design-interview-guide/physical-design-interview-guide.github.io"
-            data-repo-id="R_kgDORaXRBg"
-            data-category="Comments"
-            data-category-id="DIC_kwDORaXRBs4C3WjA"
-            data-mapping="pathname"
-            data-strict="0"
-            data-reactions-enabled="1"
-            data-emit-metadata="0"
-            data-input-position="top"
-            data-theme="light"
-            data-lang="en"
-            data-loading="lazy"
-            crossorigin="anonymous"
-            async>
-    </script>
+<script src="https://giscus.app/client.js"
+        data-repo="physical-design-interview-guide/physical-design-interview-guide.github.io"
+        data-repo-id="R_kgDORaXRBg"
+        data-category="Comments"
+        data-category-id="DIC_kwDORaXRBs4C3WjA"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
   </div>
 
 </div>

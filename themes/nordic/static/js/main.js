@@ -12,6 +12,14 @@
     var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
+    // Sync Giscus comments iframe to match site theme
+    var giscus = document.querySelector('iframe.giscus-frame');
+    if (giscus) {
+      giscus.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: next } } },
+        'https://giscus.app'
+      );
+    }
   };
 })();
 
