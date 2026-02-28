@@ -40,7 +40,7 @@
   <script>
   if (window.innerWidth > 768) {
     /* Desktop: 4:1 native banner via effectivegatecpm */
-    document.write('<sc'+'ript>atOptions={\'key\':\'{{ .Site.Params.adsterra_desktop_post_key }}\',\'format\':\'iframe\',\'height\':90,\'width\':728,\'params\':{}}<\/sc'+'ript>');
+    document.write('<sc'+'ript>atOptions={\'key\':\'{{ .Site.Params.adsterra_desktop_post_key }}\',\'format\':\'iframe\',\'height\'250,\'width\':1200,\'params\':{}}<\/sc'+'ript>');
     document.write('<sc'+'ript src="https://pl28748027.effectivegatecpm.com/{{ .Site.Params.adsterra_desktop_post_key }}/invoke.js"><\/sc'+'ript>');
   } else {
     /* Mobile: 300x250 */
@@ -64,23 +64,39 @@
        target="_blank" rel="nofollow noopener" title="Share on LinkedIn">
       <i class="fa fa-linkedin"></i>
     </a>
+    <button class="copy-link-btn" onclick="copyPostLink(this)" title="Copy link">
+      <i class="fa fa-link"></i>
+    </button>
   </div>
+  <script>
+  function copyPostLink(btn) {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      btn.title = 'Copied!';
+      btn.innerHTML = '<i class="fa fa-check"></i>';
+      setTimeout(function() {
+        btn.title = 'Copy link';
+        btn.innerHTML = '<i class="fa fa-link"></i>';
+      }, 2000);
+    });
+  }
+  </script>
 
   <div style="clear:both;"></div>
 
-  <div class="blog-pager" id="blog-pager" style="margin-top:20px;">
-    {{ with .PrevInSection }}
-    <span id="blog-pager-newer-link">
-      <a class="blog-pager-newer-link" href="{{ .Permalink }}">&#8249; {{ .Title }}</a>
-    </span>
-    {{ end }}
-    {{ with .NextInSection }}
-    <span id="blog-pager-older-link">
-      <a class="blog-pager-older-link" href="{{ .Permalink }}">{{ .Title }} &#8250;</a>
-    </span>
-    {{ end }}
-    <a class="home-link" href="{{ .Site.BaseURL }}">Home</a>
-    <div style="clear:both;"></div>
+  <div class="post-nav" id="blog-pager">
+    <div class="post-nav-prev">
+      {{ with .PrevInSection }}
+        <a href="{{ .Permalink }}" title="{{ .Title }}">&#8249; {{ .Title }}</a>
+      {{ end }}
+    </div>
+    <div class="post-nav-home">
+      <a href="{{ .Site.BaseURL }}">Home</a>
+    </div>
+    <div class="post-nav-next">
+      {{ with .NextInSection }}
+        <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }} &#8250;</a>
+      {{ end }}
+    </div>
   </div>
 
   <!-- ===== COMMENTS via Giscus ===== -->
