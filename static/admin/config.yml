@@ -4,10 +4,8 @@ backend:
   branch: main
   base_url: https://sveltia-cms-auth.gbnavapara.workers.dev
 
-# Media uploads go to the PUBLIC repo since GitHub Pages serves from there
-# Images will be accessible at /img/posts/filename.jpg on your live site
-media_folder: "../physical-design-interview-guide.github.io/static/img/posts"
-public_folder: "/img/posts"
+# Images stored in pd-content repo under /images folder
+media_folder: "images"
 
 # Slug format — just the title, no date prefix
 slug:

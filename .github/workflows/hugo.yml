@@ -31,6 +31,14 @@ jobs:
       - name: Remove git metadata from posts folder (prevents Hugo confusion)
         run: rm -rf content/posts/.git content/posts/.gitignore
 
+      - name: Copy images from content repo to static folder
+        run: |
+          if [ -d "content/posts/images" ]; then
+            mkdir -p static/img/posts
+            cp -r content/posts/images/. static/img/posts/
+            echo "Copied images from pd-content/images/ to static/img/posts/"
+          fi
+
       - name: Convert images to WebP and resize for web
         run: |
           sudo apt-get install -y webp imagemagick -q
