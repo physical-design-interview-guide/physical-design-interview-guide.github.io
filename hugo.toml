@@ -11,10 +11,18 @@ summaryLength = 60
 
 [params]
   description = "The Ultimate Guide to Physical Design Interview Questions"
-  logo = "/img/physical-design-interview-guide.jpg"
-  favicon = "/img/physical-design-interview-guide.jpg"
+  logo = "/img/physical-design-interview-guide-small.jpg"
+  favicon = "/img/physical-design-interview-guide-small.jpg"
   defaultTheme = "light"   # "light" or "dark"
   
+  author       = "Gautam"
+  authorBio    = "VLSI Physical Design Engineer with industry experience"
+  siteLanguage = "en-US"
+  # Social (used in footer/schema — fill in yours)
+  twitter      = ""
+  linkedin     = ""
+
+
 [taxonomies]
   category = "categories"
 
@@ -84,3 +92,8 @@ summaryLength = 60
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true   # allows raw HTML in markdown posts
+      
+[sitemap]
+  changefreq = "weekly"
+  priority   = 0.8
+  filename   = "sitemap.xml"

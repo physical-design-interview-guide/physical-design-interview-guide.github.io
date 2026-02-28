@@ -181,6 +181,13 @@ function loadPostAds() {
 window.addEventListener('load', function () {
   loadPostAds();
 
-  /* Monetag loaded directly in baseof.html for bot verification */
+  /* Fix ad iframes missing title — Adsterra injects iframes without title attr */
+  setTimeout(function() {
+    document.querySelectorAll('iframe:not([title])').forEach(function(f, i) {
+      f.setAttribute('title', 'Advertisement ' + (i + 1));
+      f.setAttribute('aria-label', 'Advertisement');
+    });
+  }, 2000);
 
+  /* Monetag loaded directly in baseof.html for bot verification */
 });

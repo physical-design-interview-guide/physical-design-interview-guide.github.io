@@ -15,7 +15,7 @@
   --link-visited: #555555;
   --input-bg:     #ffffff;
   --input-text:   #111111;
-  --accent:       #4285f4;
+  --accent:       #1a56cc;
   --on-accent:    #ffffff;
   --highlight-bg: #fff9c0;
   --surface-hover:#e5e7eb;
@@ -34,7 +34,7 @@ html[data-theme="dark"] {
   --link-hover:   #67e8f9;
   --input-bg:     #111827;
   --input-text:   #e5e7eb;
-  --accent:       #4285f4;
+  --accent:       #1a56cc;
   --on-accent:    #ffffff;
   --highlight-bg: #4b3f0a;
   --surface-hover:#1f2937;
@@ -315,7 +315,7 @@ html:not([data-theme="dark"]) .theme-toggle .moon { display: none; }
 }
 @media screen and (max-width: 960px) {
   #dynamic-posts-list-container {
-    max-height: 180px; /* mobile: 3-4 posts */
+    max-height: 200px; /* mobile: 3-4 posts */
   }
 }
 #dynamic-posts-list li { padding: 4px 0; list-style: none; margin: 0; padding-left: 0; }
@@ -551,6 +551,13 @@ body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
 
 /* date-header hidden */
 h2.date-header { display: none; }
+
+/* Blogger image links — add aria-label via attr, hide decorative separators */
+.post-body .separator a:not([aria-label]) { display: block; }
+.post-body .separator img { max-width: 100%; height: auto; }
+
+/* Fix ad iframe accessibility — add title after Adsterra injects iframes */
+/* Done via JS in main.js */
 
 /* ---- Ad slot visibility ---- */
 .ad-header-desktop { display: block; }   /* 728x90 header — desktop only */

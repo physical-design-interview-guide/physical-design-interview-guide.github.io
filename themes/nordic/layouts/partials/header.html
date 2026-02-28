@@ -4,11 +4,14 @@
   <div class="site-branding">
     <div id="header-inner">
       <a class="logo-link" href="{{ .Site.BaseURL }}">
-        <img class="header-logo"
-             src="{{ .Site.Params.logo }}"
-             alt="{{ .Site.Title }} Logo"
-             width="80" height="80"
-             fetchpriority="high"/>
+        <picture>
+          <source srcset="/img/physical-design-interview-guide.webp" type="image/webp"/>
+          <img class="header-logo"
+               src="/img/physical-design-interview-guide-small.jpg"
+               alt="{{ .Site.Title }} Logo"
+               width="80" height="80"
+               fetchpriority="high"/>
+        </picture>
       </a>
       <div class="titlewrapper">
         {{ if .IsHome }}
