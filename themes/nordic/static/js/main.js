@@ -182,7 +182,7 @@ window.addEventListener('load', function () {
   loadPostAds();
 
   /* Infolinks deferred */
-  var infoEl = document.getElementById('infolinks-container');
+  //var infoEl = document.getElementById('infolinks-container');
   if (infoEl) {
     var s = document.createElement('script');
     s.async = true; s.defer = true;
@@ -190,12 +190,18 @@ window.addEventListener('load', function () {
     infoEl.appendChild(s);
   }
 
-  /* Monetag deferred */
-  var monetagEl = document.getElementById('monetag-container');
-  if (monetagEl) {
-    var ms = document.createElement('script');
-    ms.dataset.zone = monetagEl.dataset.zone;
-    ms.src = 'https://nap5k.com/tag.min.js';
-    monetagEl.appendChild(ms);
+  /* Monetag vignette — desktop only. To disable: change true to false */
+  var MONETAG_ENABLED = true;
+  if (MONETAG_ENABLED && window.innerWidth > 768) {
+    /* Ad 1: original zone 10628900 */
+    var ms1 = document.createElement('script');
+    ms1.dataset.zone = '10628900';
+    ms1.src = 'https://nap5k.com/tag.min.js';
+    document.body.appendChild(ms1);
+    /* Ad 2: vignette zone 10628885 */
+    var ms2 = document.createElement('script');
+    ms2.dataset.zone = '10628885';
+    ms2.src = 'https://gizokraijaw.net/vignette.min.js';
+    document.body.appendChild(ms2);
   }
 });

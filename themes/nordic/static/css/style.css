@@ -301,7 +301,7 @@ html:not([data-theme="dark"]) .theme-toggle .moon { display: none; }
 
 /* Dynamic posts widget — constrain the whole widget box, list scrolls inside */
 #dynamic-posts-list-container {
-  max-height: 65vh;    /* desktop: ~65% of screen height, scrollable */
+  max-height: 85vh;    /* desktop: ~65% of screen height, scrollable */
   display: flex;
   flex-direction: column;
 }
