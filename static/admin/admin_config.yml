@@ -1,0 +1,73 @@
+backend:
+  name: github
+  repo: physical-design-interview-guide/pd-content
+  branch: main
+
+# No media uploads needed — posts are text only
+media_folder: ""
+
+# Slug format — just the title, no date prefix
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: ""
+    create: true
+    slug: "{{slug}}"          # filename = slugified title, no date
+    editor:
+      preview: false
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        hint: "Write as a question e.g. Why does timing degrade after CTS?"
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        default: ""
+
+      - label: "Category"
+        name: "categories"
+        widget: "select"
+        multiple: true
+        options:
+          - "General-Concepts"
+          - "Pre-PnR"
+          - "Floorplan"
+          - "Power-Plan"
+          - "Placement"
+          - "CTS"
+          - "Routing"
+          - "ECO"
+          - "STA"
+          - "Signal-Integrity"
+          - "Physical-Verification"
+
+      - label: "Featured"
+        name: "featured"
+        widget: "boolean"
+        default: false
+        hint: "Show in Popular Posts widget"
+
+      - label: "Description"
+        name: "description"
+        widget: "string"
+        required: false
+        hint: "Optional: 1-2 sentence SEO description"
+
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+        default: false
+
+      - label: "Content"
+        name: "body"
+        widget: "markdown"
