@@ -181,15 +181,6 @@ function loadPostAds() {
 window.addEventListener('load', function () {
   loadPostAds();
 
-  /* Infolinks deferred */
-  //var infoEl = document.getElementById('infolinks-container');
-  if (infoEl) {
-    var s = document.createElement('script');
-    s.async = true; s.defer = true;
-    s.src = 'https://resources.infolinks.com/js/infolinks_main.js';
-    infoEl.appendChild(s);
-  }
-
   /* Monetag vignette — desktop only. To disable: change true to false */
   var MONETAG_ENABLED = true;
   if (MONETAG_ENABLED && window.innerWidth > 768) {

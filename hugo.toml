@@ -14,14 +14,7 @@ summaryLength = 60
   logo = "/img/physical-design-interview-guide.jpg"
   favicon = "/img/physical-design-interview-guide.jpg"
   defaultTheme = "light"   # "light" or "dark"
-
-  # Your ad network keys — paste here, used in templates
-  adsterra_desktop_header_key = "0da8ef57a8c60e7790c1a312bcedb88f"
-  adsterra_desktop_post_key   = "91a7dc313767ee1279685304c23cc0ac"  # effectivegatecpm
-  adsterra_mobile_post_key    = "3520767e659da30b3c945eb2073db7db"
-  infolinks_pid               = "3443689"
-  monetag_zone                = "10628900"
-
+  
 [taxonomies]
   category = "categories"
 

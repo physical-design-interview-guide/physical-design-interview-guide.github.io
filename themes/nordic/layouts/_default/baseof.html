@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="monetag" content="6d3b996c6cee4cae26ed6dee36808d42">
 
   <!-- ===================== TITLE ===================== -->
   <title>
@@ -261,12 +262,6 @@
     gtag('config', 'G-WBY3XDZW01', { 'anonymize_ip': true });
   </script>
 
-  <!-- Infolinks config -->
-  <script>
-    var infolinks_pid  = {{ .Site.Params.infolinks_pid }};
-    var infolinks_wsid = 0;
-  </script>
-
 </head>
 
 <body>
@@ -276,12 +271,16 @@
 
   <!-- ══ HEADER AD: 728x90 DESKTOP ONLY ══ -->
   <div style="text-align:center; margin:10px auto;">
-  <script>
-  if (window.innerWidth > 768) {
-    document.write('<sc'+'ript>atOptions = {\'key\':\'{{ .Site.Params.adsterra_desktop_header_key }}\',\'format\':\'iframe\',\'height\':90,\'width\':728,\'params\':{}}<\/sc'+'ript>');
-    document.write('<sc'+'ript src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_desktop_header_key }}/invoke.js"><\/sc'+'ript>');
-  }
-  </script>
+<script>
+  atOptions = {
+    'key' : '0da8ef57a8c60e7790c1a312bcedb88f',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/0da8ef57a8c60e7790c1a312bcedb88f/invoke.js"></script>
   </div>
 
   <div class="site-content" id="content">
@@ -298,7 +297,6 @@
 </div>
 
 <script src="/js/main.js"></script>
-<div id="infolinks-container" style="display:none"></div>
 
 </body>
 </html>
