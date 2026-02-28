@@ -184,14 +184,14 @@ window.addEventListener('load', function () {
   /* Monetag vignette — desktop only. To disable: change true to false */
   var MONETAG_ENABLED = true;
   if (MONETAG_ENABLED && window.innerWidth > 768) {
-    /* Ad 1: original zone 10628900 */
+    /* Ad 1: original zone 10663808 */
     var ms1 = document.createElement('script');
-    ms1.dataset.zone = '10628900';
+    ms1.dataset.zone = '10663808';
     ms1.src = 'https://nap5k.com/tag.min.js';
     document.body.appendChild(ms1);
-    /* Ad 2: vignette zone 10628885 */
+    /* Ad 2: vignette zone 10663817 */
     var ms2 = document.createElement('script');
-    ms2.dataset.zone = '10628885';
+    ms2.dataset.zone = '10663817';
     ms2.src = 'https://gizokraijaw.net/vignette.min.js';
     document.body.appendChild(ms2);
   }
