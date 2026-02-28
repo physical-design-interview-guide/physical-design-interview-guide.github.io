@@ -6,6 +6,7 @@ backend:
 
 # Images stored in pd-content repo under /images folder
 media_folder: "images"
+public_folder: "/images"
 
 # Slug format — just the title, no date prefix
 slug:
