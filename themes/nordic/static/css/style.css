@@ -40,6 +40,30 @@ html[data-theme="dark"] {
   --surface-hover:#1f2937;
 }
 
+
+@font-face {
+  font-family: 'FontAwesome';
+  font-display: block;
+  src: url('/fonts/fontawesome-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Amatic SC';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('/fonts/amatic-sc-v28-latin-regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Amatic SC';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url('/fonts/amatic-sc-v28-latin-700.woff2') format('woff2');
+}
+
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { font-family: sans-serif; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
