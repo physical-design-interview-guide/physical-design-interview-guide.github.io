@@ -275,21 +275,31 @@
 
   {{ partial "header.html" . }}
 
-  <!-- Header ad — desktop 728x90 / mobile 320x50, loaded via JS to avoid atOptions conflict -->
+  <!-- Header ad — DESKTOP ONLY 728x90, skipped on mobile -->
   <div class="header-ad-wrapper" id="header-ad-slot" style="text-align:center; margin:10px auto;"></div>
   <script>
   (function(){
+    if (window.innerWidth <= 768) return; /* desktop only */
     var slot = document.getElementById('header-ad-slot');
     if (!slot) return;
-    var isMobile = window.innerWidth <= 768;
-    var key = isMobile
-      ? '4261f622d3640c08cc16ff44391bea90'
-      : '{{ .Site.Params.adsterra_desktop_header_key }}';
-    var h = isMobile ? 50  : 90;
-    var w = isMobile ? 320 : 728;
-    atOptions = { 'key': key, 'format': 'iframe', 'height': h, 'width': w, 'params': {} };
+    atOptions = { 'key': '{{ .Site.Params.adsterra_desktop_header_key }}', 'format': 'iframe', 'height': 90, 'width': 728, 'params': {} };
     var s = document.createElement('script');
-    s.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
+    s.src = 'https://www.highperformanceformat.com/{{ .Site.Params.adsterra_desktop_header_key }}/invoke.js';
+    slot.appendChild(s);
+  })();
+  </script>
+
+  <!-- Mobile-only ad (320x50) shown BELOW sidebar on mobile instead of header -->
+  <div id="mobile-top-ad-slot" style="text-align:center; margin:8px auto; display:none;"></div>
+  <script>
+  (function(){
+    if (window.innerWidth > 768) return; /* mobile only */
+    var slot = document.getElementById('mobile-top-ad-slot');
+    if (!slot) return;
+    slot.style.display = 'block';
+    atOptions = { 'key': '4261f622d3640c08cc16ff44391bea90', 'format': 'iframe', 'height': 50, 'width': 320, 'params': {} };
+    var s = document.createElement('script');
+    s.src = 'https://www.highperformanceformat.com/4261f622d3640c08cc16ff44391bea90/invoke.js';
     slot.appendChild(s);
   })();
   </script>

@@ -49,12 +49,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- Active nav tab highlight ---------- */
   var currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+  var highlightedAny = false;
+
   document.querySelectorAll('.main-navigation ul li a').forEach(function (link) {
     var linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/+$/, '') || '/';
     if (linkPath === currentPath || (linkPath !== '/' && currentPath.indexOf(linkPath) === 0)) {
       link.classList.add('active');
+      highlightedAny = true;
     }
   });
+
+  /* On a post page no category tab matches — restore last visited category tab */
+  if (!highlightedAny && currentPath.indexOf('/posts/') !== -1) {
+    var lastCat = localStorage.getItem('lastLabel'); /* e.g. "cts" */
+    if (lastCat) {
+      document.querySelectorAll('.main-navigation ul li a').forEach(function (link) {
+        var linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/+$/, '');
+        /* match /categories/cts → lastLabel "cts" */
+        if (linkPath.indexOf('/categories/' + lastCat) !== -1) {
+          link.classList.add('active');
+        }
+      });
+    }
+  }
 
   /* ---------- Dynamic posts sidebar ---------- */
   loadDynamicPostsWidget();

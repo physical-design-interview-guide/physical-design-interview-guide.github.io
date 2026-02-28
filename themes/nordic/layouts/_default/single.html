@@ -35,22 +35,26 @@
     {{ .Content }}
   </div>
 
-  <!-- Post ad — one ad injected via JS: desktop 728x90, mobile 300x250 -->
+  <!-- Post ad — desktop 728x90 (effectivegatecpm), mobile 300x250 (highperformanceformat) -->
   <div style="clear:both; margin:25px 0 15px; text-align:center;" id="post-ad-slot"></div>
   <script>
   (function(){
     var slot = document.getElementById('post-ad-slot');
     if (!slot) return;
     var isMobile = window.innerWidth <= 768;
-    var key = isMobile
-      ? '{{ .Site.Params.adsterra_mobile_post_key }}'
-      : '{{ .Site.Params.adsterra_desktop_post_key }}';
-    var h = isMobile ? 250 : 90;
-    var w = isMobile ? 300 : 728;
-    atOptions = { 'key': key, 'format': 'iframe', 'height': h, 'width': w, 'params': {} };
-    var s = document.createElement('script');
-    s.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
-    slot.appendChild(s);
+    if (isMobile) {
+      /* Mobile: 300x250 via highperformanceformat */
+      atOptions = { 'key': '{{ .Site.Params.adsterra_mobile_post_key }}', 'format': 'iframe', 'height': 250, 'width': 300, 'params': {} };
+      var s = document.createElement('script');
+      s.src = 'https://www.highperformanceformat.com/{{ .Site.Params.adsterra_mobile_post_key }}/invoke.js';
+      slot.appendChild(s);
+    } else {
+      /* Desktop: 728x90 via effectivegatecpm (different network, different URL) */
+      atOptions = { 'key': '{{ .Site.Params.adsterra_desktop_post_key }}', 'format': 'iframe', 'height': 90, 'width': 728, 'params': {} };
+      var s = document.createElement('script');
+      s.src = 'https://pl28748027.effectivegatecpm.com/{{ .Site.Params.adsterra_desktop_post_key }}/invoke.js';
+      slot.appendChild(s);
+    }
   })();
   </script>
 
