@@ -35,24 +35,19 @@
     {{ .Content }}
   </div>
 
-  <!-- ══ POST ADS ══
-       Desktop: 4:1 native banner via effectivegatecpm — hidden on mobile
-       Mobile:  300x250 via highperformanceformat — hidden on desktop -->
-
+  <!-- ══ POST ADS: desktop=4:1 native via effectivegatecpm, mobile=300x250 ══ -->
   <div style="clear:both; margin:25px 0 15px; text-align:center;">
-
-    <!-- Desktop 4:1 native banner — CSS hides on mobile -->
-    <div class="ad-desktop-post">
-      <script>atOptions = {'key':'{{ .Site.Params.adsterra_desktop_post_key }}','format':'iframe','height':90,'width':728,'params':{}};</script>
-      <script src="https://pl28748027.effectivegatecpm.com/{{ .Site.Params.adsterra_desktop_post_key }}/invoke.js"></script>
-    </div>
-
-    <!-- Mobile 300x250 — CSS hides on desktop -->
-    <div class="ad-mobile-post">
-      <script>atOptions = {'key':'{{ .Site.Params.adsterra_mobile_post_key }}','format':'iframe','height':250,'width':300,'params':{}};</script>
-      <script src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_mobile_post_key }}/invoke.js"></script>
-    </div>
-
+  <script>
+  if (window.innerWidth > 768) {
+    /* Desktop: 4:1 native banner via effectivegatecpm */
+    document.write('<sc'+'ript>atOptions={\'key\':\'{{ .Site.Params.adsterra_desktop_post_key }}\',\'format\':\'iframe\',\'height\':90,\'width\':728,\'params\':{}}<\/sc'+'ript>');
+    document.write('<sc'+'ript src="https://pl28748027.effectivegatecpm.com/{{ .Site.Params.adsterra_desktop_post_key }}/invoke.js"><\/sc'+'ript>');
+  } else {
+    /* Mobile: 300x250 */
+    document.write('<sc'+'ript>atOptions={\'key\':\'{{ .Site.Params.adsterra_mobile_post_key }}\',\'format\':\'iframe\',\'height\':250,\'width\':300,\'params\':{}}<\/sc'+'ript>');
+    document.write('<sc'+'ript src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_mobile_post_key }}/invoke.js"><\/sc'+'ript>');
+  }
+  </script>
   </div>
 
   <div class="post-share pbtsharethisbutt">

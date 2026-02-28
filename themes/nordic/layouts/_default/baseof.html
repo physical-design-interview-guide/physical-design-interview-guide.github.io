@@ -275,11 +275,14 @@
 
   {{ partial "header.html" . }}
 
-  <!-- ══ HEADER AD: 728x90 desktop only ══
-       CSS hides on mobile. Script still runs but iframe is hidden — standard practice. -->
-  <div class="ad-header-desktop" style="text-align:center; margin:10px auto;">
-    <script>atOptions = {'key':'{{ .Site.Params.adsterra_desktop_header_key }}','format':'iframe','height':90,'width':728,'params':{}};</script>
-    <script src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_desktop_header_key }}/invoke.js"></script>
+  <!-- ══ HEADER AD: 728x90 DESKTOP ONLY ══ -->
+  <div style="text-align:center; margin:10px auto;">
+  <script>
+  if (window.innerWidth > 768) {
+    document.write('<sc'+'ript>atOptions = {\'key\':\'{{ .Site.Params.adsterra_desktop_header_key }}\',\'format\':\'iframe\',\'height\':90,\'width\':728,\'params\':{}}<\/sc'+'ript>');
+    document.write('<sc'+'ript src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_desktop_header_key }}/invoke.js"><\/sc'+'ript>');
+  }
+  </script>
   </div>
 
   <div class="site-content" id="content">

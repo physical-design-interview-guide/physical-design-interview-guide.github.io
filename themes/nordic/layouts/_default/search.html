@@ -1,51 +1,92 @@
 {{ define "main" }}
 <div class="search-results">
-
-  <div id="search-results-list">
-    <p>Searching...</p>
-  </div>
-
+  <div id="search-results-list"><p>Searching...</p></div>
+  <div id="search-pagination"></div>
 </div>
 
 <script>
 (function() {
+  var PER_PAGE = 6;
+  var currentPage = 1;
+  var allResults = [];
   var query = new URLSearchParams(window.location.search).get('q') || '';
-  var container = document.getElementById('search-results-list');
+  var container  = document.getElementById('search-results-list');
+  var pagination = document.getElementById('search-pagination');
 
   if (!query.trim()) {
     container.innerHTML = '<p>Enter a search term in the search box above.</p>';
     return;
   }
 
-  /* Use absolute URL so it works on deployed site too */
-  var indexUrl = '{{ .Site.BaseURL }}index.json';
+  function renderPage(page) {
+    currentPage = page;
+    var start = (page - 1) * PER_PAGE;
+    var end   = start + PER_PAGE;
+    var slice = allResults.slice(start, end);
+    var total = allResults.length;
+    var totalPages = Math.ceil(total / PER_PAGE);
 
-  fetch(indexUrl)
+    var html = '<p>Found ' + total + ' result(s) for "<strong>' + query + '</strong>" — page ' + page + ' of ' + totalPages + '</p>';
+    slice.forEach(function(p) {
+      html += '<div class="search-result-item">' +
+        '<h2><a href="' + p.permalink + '">' + p.title + '</a></h2>' +
+        '<div class="meta">' + p.date +
+          (p.categories ? ' &nbsp;|&nbsp; ' + p.categories.join(', ') : '') +
+        '</div>' +
+        '<p>' + (p.summary || '').substring(0, 200) + '...</p>' +
+        '</div>';
+    });
+    container.innerHTML = html;
+
+    /* Pagination buttons */
+    var pager = '';
+    if (totalPages > 1) {
+      pager += '<div class="blog-pager">';
+      if (page > 1) {
+        pager += '<span class="blog-pager-newer-link"><a href="#" data-page="' + (page-1) + '">&#8249; Previous</a></span>';
+      }
+      /* Page numbers */
+      pager += '<span class="search-page-numbers">';
+      for (var i = 1; i <= totalPages; i++) {
+        if (i === page) {
+          pager += '<strong style="margin:0 4px; padding:4px 8px; background:var(--accent); color:var(--on-accent); border-radius:3px;">' + i + '</strong>';
+        } else {
+          pager += '<a href="#" data-page="' + i + '" style="margin:0 4px; padding:4px 8px; background:var(--surface-2); border-radius:3px;">' + i + '</a>';
+        }
+      }
+      pager += '</span>';
+      if (page < totalPages) {
+        pager += '<span class="blog-pager-older-link"><a href="#" data-page="' + (page+1) + '">Next &#8250;</a></span>';
+      }
+      pager += '<div style="clear:both;"></div></div>';
+    }
+    pagination.innerHTML = pager;
+
+    /* Attach click handlers to page links */
+    pagination.querySelectorAll('a[data-page]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo(0, 0);
+        renderPage(parseInt(this.getAttribute('data-page')));
+      });
+    });
+  }
+
+  fetch('{{ .Site.BaseURL }}index.json')
     .then(function(r) { return r.json(); })
     .then(function(posts) {
       var q = query.toLowerCase();
-      var results = posts.filter(function(p) {
-        return (p.title   && p.title.toLowerCase().indexOf(q)   !== -1) ||
-               (p.summary && p.summary.toLowerCase().indexOf(q) !== -1) ||
+      allResults = posts.filter(function(p) {
+        return (p.title      && p.title.toLowerCase().indexOf(q)            !== -1) ||
+               (p.summary    && p.summary.toLowerCase().indexOf(q)          !== -1) ||
                (p.categories && p.categories.join(' ').toLowerCase().indexOf(q) !== -1);
       });
 
-      if (results.length === 0) {
+      if (allResults.length === 0) {
         container.innerHTML = '<p>No results found for "<strong>' + query + '</strong>".</p>';
         return;
       }
-
-      var html = '<p>Found ' + results.length + ' result(s) for "<strong>' + query + '</strong>":</p>';
-      results.forEach(function(p) {
-        html += '<div class="search-result-item">' +
-          '<h2><a href="' + p.permalink + '">' + p.title + '</a></h2>' +
-          '<div class="meta">' + p.date +
-            (p.categories ? ' &nbsp;|&nbsp; ' + p.categories.join(', ') : '') +
-          '</div>' +
-          '<p>' + (p.summary || '').substring(0, 200) + '...</p>' +
-          '</div>';
-      });
-      container.innerHTML = html;
+      renderPage(1);
     })
     .catch(function(e) {
       container.innerHTML = '<p>Search failed. Please try again. (' + e + ')</p>';
