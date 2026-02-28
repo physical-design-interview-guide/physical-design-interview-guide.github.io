@@ -35,21 +35,22 @@
     {{ .Content }}
   </div>
 
-  <!-- ══ POST ADS: desktop=4:1 native via effectivegatecpm, mobile=300x250 ══ -->
+  <!-- ══ POST ADS ══ -->
   <div style="clear:both; margin:25px 0 15px; text-align:center;">
-  <script>
-  if (window.innerWidth > 768) {
-    /* Desktop: 4:1 native banner via effectivegatecpm */
-    document.write('<sc'+'ript>atOptions={\'key\':\'{{ .Site.Params.adsterra_desktop_post_key }}\',\'format\':\'iframe\',\'height\'250,\'width\':1200,\'params\':{}}<\/sc'+'ript>');
-    document.write('<sc'+'ript src="https://pl28748027.effectivegatecpm.com/{{ .Site.Params.adsterra_desktop_post_key }}/invoke.js"><\/sc'+'ript>');
-  } else {
-    /* Mobile: 300x250 */
-    document.write('<sc'+'ript>atOptions={\'key\':\'{{ .Site.Params.adsterra_mobile_post_key }}\',\'format\':\'iframe\',\'height\':250,\'width\':300,\'params\':{}}<\/sc'+'ript>');
-    document.write('<sc'+'ript src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_mobile_post_key }}/invoke.js"><\/sc'+'ript>');
-  }
-  </script>
-  </div>
 
+    <!-- Desktop: native banner — hidden on mobile via CSS -->
+    <div class="ad-desktop-post">
+      <script async="async" data-cfasync="false" src="https://pl28748027.effectivegatecpm.com/91a7dc313767ee1279685304c23cc0ac/invoke.js"></script>
+      <div id="container-91a7dc313767ee1279685304c23cc0ac"></div>
+    </div>
+
+    <!-- Mobile: 300x250 — hidden on desktop via CSS -->
+    <div class="ad-mobile-post">
+      <script>atOptions = {'key':'3520767e659da30b3c945eb2073db7db','format':'iframe','height':250,'width':300,'params':{}};</script>
+      <script src="https://www.highperformanceformat.com/3520767e659da30b3c945eb2073db7db/invoke.js"></script>
+    </div>
+
+  </div>
   <div class="post-share pbtsharethisbutt">
     Share:
     <a href="https://www.facebook.com/share.php?u={{ .Permalink }}"

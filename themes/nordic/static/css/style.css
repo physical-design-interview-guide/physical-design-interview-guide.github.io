@@ -553,18 +553,14 @@ body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
 h2.date-header { display: none; }
 
 /* ---- Ad slot visibility ---- */
-/* Header ad: desktop only */
-.ad-header-desktop { display: block; }
-@media screen and (max-width: 768px) {
-  .ad-header-desktop { display: none; }
-}
+.ad-header-desktop { display: block; }   /* 728x90 header — desktop only */
+.ad-desktop-post   { display: block; }   /* native banner below post — desktop only */
+.ad-mobile-post    { display: none;  }   /* 300x250 below post — mobile only */
 
-/* Post ads: each shows on its breakpoint only */
-.ad-desktop-post { display: block; }
-.ad-mobile-post  { display: none;  }
 @media screen and (max-width: 768px) {
-  .ad-desktop-post { display: none;  }
-  .ad-mobile-post  { display: block; }
+  .ad-header-desktop { display: none;  }
+  .ad-desktop-post   { display: none;  }
+  .ad-mobile-post    { display: block; }
 }
 
 /* ================================================
