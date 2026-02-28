@@ -576,6 +576,11 @@ body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
 /* date-header hidden */
 h2.date-header { display: none; }
 
+/* Post images via {{< img >}} shortcode */
+.post-image { margin: 1.5rem 0; text-align: center; }
+.post-image img { max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+.post-image figcaption { font-size: 0.85rem; color: var(--text-muted); margin-top: 6px; font-style: italic; }
+
 /* Blogger image links — add aria-label via attr, hide decorative separators */
 .post-body .separator a:not([aria-label]) { display: block; }
 .post-body .separator img { max-width: 100%; height: auto; }

@@ -31,6 +31,22 @@ jobs:
       - name: Remove git metadata from posts folder (prevents Hugo confusion)
         run: rm -rf content/posts/.git content/posts/.gitignore
 
+      - name: Convert images to WebP and resize for web
+        run: |
+          sudo apt-get install -y webp imagemagick -q
+          mkdir -p static/img/posts
+          for img in static/img/posts/*.{jpg,jpeg,png,JPG,JPEG,PNG}; do
+            [ -f "$img" ] || continue
+            base="${img%.*}"
+            webp_file="${base}.webp"
+            # Only convert if webp doesn't exist or source is newer
+            if [ ! -f "$webp_file" ] || [ "$img" -nt "$webp_file" ]; then
+              # Resize to max 1200px wide, convert to WebP at quality 82
+              convert "$img" -resize "1200x1200>" -quality 82 "$webp_file"
+              echo "Converted: $img → $webp_file"
+            fi
+          done
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:

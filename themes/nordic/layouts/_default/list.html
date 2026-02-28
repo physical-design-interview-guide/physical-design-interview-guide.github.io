@@ -7,7 +7,7 @@
     <div class="index-box">
 
       <!-- Date header (hidden via CSS like Blogger, kept for semantics) -->
-      <div class="post-date">{{ .Date.Format "02/01/2006" }}</div>
+      <div class="post-date">{{ .Date.Format "02-01-2006" }}</div>
 
       <!-- Post title -->
       <header class="entry-header">
@@ -18,7 +18,7 @@
         <!-- Meta: date + category labels -->
         <div class="entry-meta">
           on <a href="{{ .Permalink }}" rel="bookmark">
-            <span class="published">{{ .Date.Format "January 02, 2006" }}</span>
+            <span class="published">{{ .Date.Format "02-01-2006" }}</span>
           </a>&nbsp;
           {{ with .Params.categories }}
           in

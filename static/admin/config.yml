@@ -4,8 +4,10 @@ backend:
   branch: main
   base_url: https://sveltia-cms-auth.gbnavapara.workers.dev
 
-# No media uploads needed — posts are text only
-media_folder: ""
+# Media uploads go to the PUBLIC repo since GitHub Pages serves from there
+# Images will be accessible at /img/posts/filename.jpg on your live site
+media_folder: "../physical-design-interview-guide.github.io/static/img/posts"
+public_folder: "/img/posts"
 
 # Slug format — just the title, no date prefix
 slug:
@@ -31,7 +33,7 @@ collections:
         name: "date"
         widget: "datetime"
         format: "YYYY-MM-DD"
-        date_format: "YYYY-MM-DD"
+        date_format: "DD-MM-YYYY"
         time_format: false
         default: ""
 
@@ -72,3 +74,5 @@ collections:
       - label: "Content"
         name: "body"
         widget: "markdown"
+        modes: ["rich_text", "raw"]  # rich_text = visual editor, raw = markdown
+
