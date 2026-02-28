@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <!-- Monetag verification + ads — must be in HTML source for Monetag bot to detect -->
+  <!-- Monetag verification  -->
   <meta name="monetag" content="6d3b996c6cee4cae26ed6dee36808d42">
-  <script>(function(s){s.dataset.zone='10663808',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-  <script>(function(s){s.dataset.zone='10663817',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
 
   <!-- ===================== TITLE ===================== -->
   <title>
@@ -274,16 +273,12 @@
 
   <!-- ══ HEADER AD: 728x90 DESKTOP ONLY ══ -->
   <div style="text-align:center; margin:10px auto;">
-    <script>
-      atOptions = {
-        'key' : 'a556badf1d02842a03fc9c3e1695d93d',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    </script>
-    <script src="https://www.highperformanceformat.com/a556badf1d02842a03fc9c3e1695d93d/invoke.js"></script>
+  <script>
+  if (window.innerWidth > 768) {
+    document.write('<scr'+'ipt>atOptions={\'key\':\'a556badf1d02842a03fc9c3e1695d93d\',\'format\':\'iframe\',\'height\':90,\'width\':728,\'params\':{}}<\/scr'+'ipt>');
+    document.write('<scr'+'ipt src="https://www.highperformanceformat.com/a556badf1d02842a03fc9c3e1695d93d/invoke.js"><\/scr'+'ipt>');
+  }
+  </script>
   </div>
 
   <div class="site-content" id="content">
@@ -300,6 +295,12 @@
 </div>
 
 <script src="/js/main.js"></script>
-
+<!-- Monetag — desktop only -->
+    <script>
+    if (window.innerWidth > 768) {
+      (function(s){s.dataset.zone='10663808',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+      (function(s){s.dataset.zone='10663817',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+    }
+    </script>
 </body>
 </html>
