@@ -1,0 +1,3 @@
+google.com, pub-1130040610224479, DIRECT, f08c47fec0942fa0
+adsterra.com, 5634059, DIRECT
+monetag.com, 6d3b996c6cee4cae26ed6dee36808d42, DIRECT
