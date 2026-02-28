@@ -505,12 +505,19 @@ body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
 /* date-header hidden */
 h2.date-header { display: none; }
 
-/* ---- Responsive ad visibility ---- */
-.mobile-only  { display: none; }
-.desktop-only { display: block; }
+/* ---- Ad slot visibility ---- */
+/* Header ad: desktop only */
+.ad-header-desktop { display: block; }
 @media screen and (max-width: 768px) {
-  .mobile-only  { display: block; }
-  .desktop-only { display: none;  }
+  .ad-header-desktop { display: none; }
+}
+
+/* Post ads: each shows on its breakpoint only */
+.ad-desktop-post { display: block; }
+.ad-mobile-post  { display: none;  }
+@media screen and (max-width: 768px) {
+  .ad-desktop-post { display: none;  }
+  .ad-mobile-post  { display: block; }
 }
 
 /* ================================================

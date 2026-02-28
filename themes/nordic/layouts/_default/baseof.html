@@ -275,34 +275,12 @@
 
   {{ partial "header.html" . }}
 
-  <!-- Header ad — DESKTOP ONLY 728x90, skipped on mobile -->
-  <div class="header-ad-wrapper" id="header-ad-slot" style="text-align:center; margin:10px auto;"></div>
-  <script>
-  (function(){
-    if (window.innerWidth <= 768) return; /* desktop only */
-    var slot = document.getElementById('header-ad-slot');
-    if (!slot) return;
-    atOptions = { 'key': '{{ .Site.Params.adsterra_desktop_header_key }}', 'format': 'iframe', 'height': 90, 'width': 728, 'params': {} };
-    var s = document.createElement('script');
-    s.src = 'https://www.highperformanceformat.com/{{ .Site.Params.adsterra_desktop_header_key }}/invoke.js';
-    slot.appendChild(s);
-  })();
-  </script>
-
-  <!-- Mobile-only ad (320x50) shown BELOW sidebar on mobile instead of header -->
-  <div id="mobile-top-ad-slot" style="text-align:center; margin:8px auto; display:none;"></div>
-  <script>
-  (function(){
-    if (window.innerWidth > 768) return; /* mobile only */
-    var slot = document.getElementById('mobile-top-ad-slot');
-    if (!slot) return;
-    slot.style.display = 'block';
-    atOptions = { 'key': '4261f622d3640c08cc16ff44391bea90', 'format': 'iframe', 'height': 50, 'width': 320, 'params': {} };
-    var s = document.createElement('script');
-    s.src = 'https://www.highperformanceformat.com/4261f622d3640c08cc16ff44391bea90/invoke.js';
-    slot.appendChild(s);
-  })();
-  </script>
+  <!-- ══ HEADER AD: 728x90 desktop only ══
+       CSS hides on mobile. Script still runs but iframe is hidden — standard practice. -->
+  <div class="ad-header-desktop" style="text-align:center; margin:10px auto;">
+    <script>atOptions = {'key':'{{ .Site.Params.adsterra_desktop_header_key }}','format':'iframe','height':90,'width':728,'params':{}};</script>
+    <script src="https://www.highperformanceformat.com/{{ .Site.Params.adsterra_desktop_header_key }}/invoke.js"></script>
+  </div>
 
   <div class="site-content" id="content">
     <div class="content-area" id="primary">

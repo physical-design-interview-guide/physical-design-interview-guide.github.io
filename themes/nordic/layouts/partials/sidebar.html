@@ -1,20 +1,12 @@
 <div class="widget-area sidebar" id="secondary" role="complementary">
 
-  <!-- Sidebar ad — desktop only (320x50), skipped on mobile -->
-  <div class="widget" id="sidebar-ad-slot"></div>
-  <script>
-  (function(){
-    if (window.innerWidth <= 768) return;
-    var slot = document.getElementById('sidebar-ad-slot');
-    if (!slot) return;
-    atOptions = { 'key': '4261f622d3640c08cc16ff44391bea90', 'format': 'iframe', 'height': 50, 'width': 320, 'params': {} };
-    var s = document.createElement('script');
-    s.src = 'https://www.highperformanceformat.com/4261f622d3640c08cc16ff44391bea90/invoke.js';
-    slot.appendChild(s);
-  })();
-  </script>
+  <!-- ══ SIDEBAR AD: 320x50 always visible at top ══ -->
+  <div class="widget" style="text-align:center; overflow:hidden;">
+    <script>atOptions = {'key':'4261f622d3640c08cc16ff44391bea90','format':'iframe','height':50,'width':320,'params':{}};</script>
+    <script src="https://www.highperformanceformat.com/4261f622d3640c08cc16ff44391bea90/invoke.js"></script>
+  </div>
 
-  <!-- Dynamic posts list — populated by main.js via /index.json -->
+  <!-- Dynamic posts list -->
   <div class="widget" id="dynamic-posts-list-container">
     <h2 id="dynamic-list-title">All Questions</h2>
     <ul id="dynamic-posts-list">
