@@ -2,6 +2,7 @@ backend:
   name: github
   repo: physical-design-interview-guide/pd-content
   branch: main
+  base_url: https://sveltia-cms-auth.gbnavapara.workers.dev
 
 # No media uploads needed — posts are text only
 media_folder: ""
