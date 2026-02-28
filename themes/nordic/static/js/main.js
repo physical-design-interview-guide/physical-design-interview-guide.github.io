@@ -74,7 +74,12 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ---------- Dynamic posts sidebar ---------- */
-  loadDynamicPostsWidget();
+  /* Use requestIdleCallback so 24KB index.json fetch doesn't block render */
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadDynamicPostsWidget, { timeout: 3000 });
+  } else {
+    setTimeout(loadDynamicPostsWidget, 500);
+  }
 
   /* ---------- Copyright year ---------- */
   var yr = document.getElementById('creditsyear');
