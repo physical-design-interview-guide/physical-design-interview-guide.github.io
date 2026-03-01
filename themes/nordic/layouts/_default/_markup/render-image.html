@@ -1,0 +1,23 @@
+{{/* Render hook — applies to ALL markdown images automatically
+     Converts: ![alt](/images/file.jpg)
+     Into: <picture> with WebP source + lazy loading
+*/}}
+{{ $src := .Destination }}
+{{ $alt := .PlainText }}
+{{ $title := .Title }}
+
+{{/* Build WebP path */}}
+{{ $webp := replaceRE `\.(jpg|jpeg|png|JPG|JPEG|PNG)$` ".webp" $src }}
+
+<figure class="post-image">
+  <picture>
+    <source srcset="{{ $webp }}" type="image/webp"/>
+    <img src="{{ $src }}"
+         alt="{{ $alt }}"
+         {{ with $title }}title="{{ . }}"{{ end }}
+         loading="lazy"
+         decoding="async"
+         style="max-width:100%; height:auto; border-radius:4px;"/>
+  </picture>
+  {{ with $title }}<figcaption>{{ . }}</figcaption>{{ end }}
+</figure>
