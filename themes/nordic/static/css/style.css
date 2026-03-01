@@ -41,12 +41,13 @@ html[data-theme="dark"] {
 }
 
 
+/* Override Font Awesome CDN font with self-hosted file — faster, no external font request */
 @font-face {
   font-family: 'FontAwesome';
-  font-display: block;
   src: url('/fonts/fontawesome-webfont.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 
 @font-face {
@@ -325,7 +326,7 @@ html:not([data-theme="dark"]) .theme-toggle .moon { display: none; }
 
 /* Dynamic posts widget — constrain the whole widget box, list scrolls inside */
 #dynamic-posts-list-container {
-  max-height: 85vh;    /* desktop: ~65% of screen height, scrollable */
+  max-height: 90vh;    /* desktop: ~65% of screen height, scrollable */
   display: flex;
   flex-direction: column;
 }
@@ -339,7 +340,7 @@ html:not([data-theme="dark"]) .theme-toggle .moon { display: none; }
 }
 @media screen and (max-width: 960px) {
   #dynamic-posts-list-container {
-    max-height: 200px; /* mobile: 3-4 posts */
+    max-height: 220px; /* mobile: 3-4 posts */
   }
 }
 #dynamic-posts-list li { padding: 4px 0; list-style: none; margin: 0; padding-left: 0; }
@@ -575,6 +576,14 @@ body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
 
 /* date-header hidden */
 h2.date-header { display: none; }
+
+/* Disable text selection and copy on post content */
+.entry-content {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
 /* Post images via {{< img >}} shortcode */
 .post-image { margin: 1.5rem 0; text-align: center; }

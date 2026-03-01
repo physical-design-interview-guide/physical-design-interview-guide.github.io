@@ -1,4 +1,10 @@
 {{ define "main" }}
+<script>
+document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; });
+document.addEventListener('keydown', function(e){
+  if(e.ctrlKey && ['c','a','x','u','s'].indexOf(e.key) > -1){ e.preventDefault(); return false; }
+});
+</script>
 
 <!-- Breadcrumb — SEO + UX -->
 <nav class="breadcrumb" aria-label="breadcrumb">

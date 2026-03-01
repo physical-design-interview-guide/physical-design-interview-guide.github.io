@@ -196,3 +196,11 @@ window.addEventListener('load', function () {
 
   /* Monetag loaded directly in baseof.html for bot verification */
 });
+
+/* Disable right-click and copy — runs immediately, before DOM ready check */
+document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && (e.key === 'c' || e.key === 'a' || e.key === 'x' || e.key === 'u')) {
+    e.preventDefault();
+  }
+});
