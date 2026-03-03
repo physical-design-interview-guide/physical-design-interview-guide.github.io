@@ -64,6 +64,10 @@ jobs:
       - name: Build site
         run: hugo --minify
 
+      - name: Copy site maps
+        run: |
+          cp public/sitemap.xml public/sitemap_pages.xml
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
