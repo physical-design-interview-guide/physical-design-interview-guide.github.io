@@ -95,6 +95,6 @@ jobs:
           key-location: 'https://physical-design-interview-guide.github.io/${{ secrets.INDEXNOW_KEY }}.txt'
           endpoint: api.indexnow.org
           limit: 200
-          since: 10
-          since-unit: year
-          need-lastmod: false
+          since: 1
+          since-unit: day
+          lastmod-required: false
