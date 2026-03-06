@@ -66,6 +66,9 @@ jobs:
 
       - name: Create IndexNow key file in public folder
         run: echo "${{ secrets.INDEXNOW_KEY }}" > public/${{ secrets.INDEXNOW_KEY }}.txt
+        
+      - name: debug check key
+        run: ls public/*.txt
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
