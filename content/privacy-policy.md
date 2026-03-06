@@ -3,6 +3,9 @@ title: "Privacy Policy"
 date: 2025-08-01
 draft: false
 description: "Privacy Policy for Physical Design Interview Guide"
+robots: "noindex, nofollow"
+sitemap:
+    disable: true
 ---
 
 <div class="privacy-page">

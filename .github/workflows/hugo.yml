@@ -66,9 +66,6 @@ jobs:
 
       - name: Create IndexNow key file in public folder
         run: echo "${{ secrets.INDEXNOW_KEY }}" > public/${{ secrets.INDEXNOW_KEY }}.txt
-        
-      - name: debug check key
-        run: ls public/*.txt
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -98,6 +95,6 @@ jobs:
           key-location: 'https://physical-design-interview-guide.github.io/${{ secrets.INDEXNOW_KEY }}.txt'
           endpoint: api.indexnow.org
           limit: 200
-          since: 1
-          since-unit: day
+          since: 10
+          since-unit: year
           lastmod-required: false
