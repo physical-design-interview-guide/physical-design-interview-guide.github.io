@@ -1,9 +1,14 @@
 {{ define "main" }}
 <script>
-document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; });
-document.addEventListener('keydown', function(e){
-  if(e.ctrlKey && ['c','a','x','u','s'].indexOf(e.key) > -1){ e.preventDefault(); return false; }
-});
+/* Skip copy protection for bots/crawlers */
+var ua = navigator.userAgent.toLowerCase();
+var isBot = /bot|crawler|spider|bingbot|googlebot|slurp|duckduck|baidu|yandex/.test(ua);
+if (!isBot) {
+  document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; });
+  document.addEventListener('keydown', function(e){
+    if(e.ctrlKey && ['c','a','x','u','s'].indexOf(e.key) > -1){ e.preventDefault(); return false; }
+  });
+}
 </script>
 
 <!-- Breadcrumb — SEO + UX -->
