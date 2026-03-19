@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="blog-posts">
 
-  {{/* Issue 3: No big title heading — active tab already shows which category */}}
+  <h1 class="category-page-title">{{ .Title }} Interview Questions</h1>
 
   {{ range .Paginator.Pages }}
   <div class="post-outer">
