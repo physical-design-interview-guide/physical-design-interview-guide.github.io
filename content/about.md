@@ -3,6 +3,7 @@ title: "About Me"
 date: 2025-08-01
 draft: false
 description: "About Me — Physical Design Engineer and creator of Physical Design Interview Guide"
+robots: "noindex"
 sitemap:
     disable: true
 ---
