@@ -268,6 +268,89 @@
     gtag('config', 'G-WBY3XDZW01', { 'anonymize_ip': true });
   </script>
 
+
+  <!-- Cookie Consent CSS -->
+  <style>
+    #cookie-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #1a1a2e;
+      color: #e2e8f0;
+      padding: 16px 24px;
+      z-index: 99999;
+      font-size: 13px;
+      line-height: 1.5;
+      border-top: 3px solid var(--accent, #4285f4);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+    }
+    #cookie-banner a { color: #7dd3fc; text-decoration: underline; }
+    #cookie-banner p { margin: 0; flex: 1; min-width: 200px; }
+    .cookie-btn-wrap { display: flex; gap: 8px; flex-shrink: 0; }
+    #cookie-accept {
+      background: var(--accent, #4285f4);
+      color: #fff;
+      border: none;
+      padding: 9px 22px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    #cookie-manage {
+      background: transparent;
+      color: #94a3b8;
+      border: 1px solid #4a5568;
+      padding: 9px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    #cookie-manage-panel {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #1a1a2e;
+      border-top: 3px solid var(--accent, #4285f4);
+      padding: 20px 24px;
+      z-index: 99999;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+    }
+    #cookie-manage-panel h3 { margin: 0 0 12px; color: #e2e8f0; font-size: 15px; }
+    .cookie-option { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #2d2d3d; color: #e2e8f0; font-size: 13px; }
+    .cookie-option:last-of-type { border-bottom: none; }
+    .cookie-option span { color: #64748b; font-size: 12px; margin-left: 8px; }
+    .cookie-toggle { position: relative; width: 40px; height: 22px; flex-shrink: 0; }
+    .cookie-toggle input { opacity: 0; width: 0; height: 0; }
+    .cookie-slider {
+      position: absolute; inset: 0;
+      background: #4a5568; border-radius: 22px; cursor: pointer;
+      transition: 0.3s;
+    }
+    .cookie-slider:before {
+      content: ''; position: absolute;
+      width: 16px; height: 16px;
+      left: 3px; bottom: 3px;
+      background: white; border-radius: 50%;
+      transition: 0.3s;
+    }
+    input:checked + .cookie-slider { background: var(--accent, #4285f4); }
+    input:checked + .cookie-slider:before { transform: translateX(18px); }
+    input:disabled + .cookie-slider { opacity: 0.6; cursor: not-allowed; }
+    #cookie-save {
+      margin-top: 14px;
+      background: var(--accent, #4285f4);
+      color: #fff; border: none;
+      padding: 9px 22px; border-radius: 4px;
+      cursor: pointer; font-size: 13px; font-weight: 600;
+    }
+  </style>
 </head>
 
 <body>
@@ -310,5 +393,90 @@ window.addEventListener('load', function() {
 });
 </script>
 
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner">
+  <p>
+    We use cookies for analytics and personalised ads to keep this site free.
+    See our <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms</a>.
+  </p>
+  <div class="cookie-btn-wrap">
+    <button id="cookie-manage" onclick="showCookiePanel()">Manage</button>
+    <button id="cookie-accept" onclick="acceptAllCookies()">Accept All</button>
+  </div>
+</div>
+
+<!-- Cookie Manage Panel -->
+<div id="cookie-manage-panel">
+  <h3>Manage Cookie Preferences</h3>
+  <div class="cookie-option">
+    <div>
+      <strong>Essential cookies</strong>
+      <span>Theme preference, cookie consent — required for the site to work</span>
+    </div>
+    <label class="cookie-toggle">
+      <input type="checkbox" checked disabled/>
+      <span class="cookie-slider"></span>
+    </label>
+  </div>
+  <div class="cookie-option">
+    <div>
+      <strong>Analytics cookies</strong>
+      <span>Google Analytics — helps us understand how visitors use the site</span>
+    </div>
+    <label class="cookie-toggle">
+      <input type="checkbox" id="toggle-analytics" checked/>
+      <span class="cookie-slider"></span>
+    </label>
+  </div>
+  <div class="cookie-option">
+    <div>
+      <strong>Personalised advertising</strong>
+      <span>Adsterra, Monetag, Google AdSense — ads tailored to your interests</span>
+    </div>
+    <label class="cookie-toggle">
+      <input type="checkbox" id="toggle-ads" checked/>
+      <span class="cookie-slider"></span>
+    </label>
+  </div>
+  <button id="cookie-save" onclick="saveCookiePrefs()">Save Preferences</button>
+</div>
+
+<script>
+(function() {
+  var consent = localStorage.getItem('cookieConsent');
+  if (!consent) {
+    document.getElementById('cookie-banner').style.display = 'flex';
+  } else {
+    var prefs = JSON.parse(consent);
+    if (!prefs.analytics) window['ga-disable-G-WBY3XDZW01'] = true;
+  }
+})();
+
+function acceptAllCookies() {
+  var prefs = { analytics: true, ads: true };
+  localStorage.setItem('cookieConsent', JSON.stringify(prefs));
+  document.getElementById('cookie-banner').style.display = 'none';
+  document.getElementById('cookie-manage-panel').style.display = 'none';
+}
+
+function showCookiePanel() {
+  var prefs = JSON.parse(localStorage.getItem('cookieConsent') || '{"analytics":true,"ads":true}');
+  document.getElementById('toggle-analytics').checked = prefs.analytics !== false;
+  document.getElementById('toggle-ads').checked = prefs.ads !== false;
+  document.getElementById('cookie-banner').style.display = 'none';
+  document.getElementById('cookie-manage-panel').style.display = 'block';
+}
+
+function saveCookiePrefs() {
+  var prefs = {
+    analytics: document.getElementById('toggle-analytics').checked,
+    ads: document.getElementById('toggle-ads').checked
+  };
+  localStorage.setItem('cookieConsent', JSON.stringify(prefs));
+  if (!prefs.analytics) window['ga-disable-G-WBY3XDZW01'] = true;
+  document.getElementById('cookie-manage-panel').style.display = 'none';
+}
+</script>
 </body>
 </html>

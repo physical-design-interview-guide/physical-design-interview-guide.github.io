@@ -3,16 +3,14 @@ title: "About Me"
 date: 2025-08-01
 draft: false
 description: "About Me — Physical Design Engineer and creator of Physical Design Interview Guide"
-robots: "noindex"
-sitemap:
-    disable: true
+robots: "noindex, follow"
 ---
 
 <div class="about-page">
 
 <h2>Hey There</h2>
 
-<p>I'm a Physical Design Engineer with 10+ years of experience.</p>
+<p>I'm Gautam, Physical Design Engineer with 10+ years of experience.</p>
 
 <h2>Why this blog?</h2>
 
