@@ -271,85 +271,123 @@
 
   <!-- Cookie Consent CSS -->
   <style>
-    #cookie-banner {
+    /* Overlay backdrop */
+    #cookie-overlay {
+      display: none;
       position: fixed;
-      bottom: 0; left: 0; right: 0;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 99998;
+      backdrop-filter: blur(2px);
+    }
+    /* Centered modal banner */
+    #cookie-banner {
+      display: none;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(560px, 92vw);
       background: #1a1a2e;
       color: #e2e8f0;
-      padding: 16px 24px;
+      padding: 36px 36px 28px;
       z-index: 99999;
-      font-size: 13px;
-      line-height: 1.5;
-      border-top: 3px solid var(--accent, #4285f4);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+      font-size: 15px;
+      line-height: 1.6;
+      border-radius: 12px;
+      border-top: 4px solid var(--accent, #4285f4);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    #cookie-banner .cookie-icon {
+      font-size: 36px;
+      display: block;
+      margin-bottom: 12px;
+    }
+    #cookie-banner h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #f1f5f9;
     }
     #cookie-banner a { color: #7dd3fc; text-decoration: underline; }
-    #cookie-banner p { margin: 0; flex: 1; min-width: 200px; }
-    .cookie-btn-wrap { display: flex; gap: 8px; flex-shrink: 0; }
+    #cookie-banner p { margin: 0 0 24px; color: #cbd5e1; }
+    .cookie-btn-wrap { display: flex; gap: 10px; flex-wrap: wrap; }
     #cookie-accept {
       background: var(--accent, #4285f4);
       color: #fff;
       border: none;
-      padding: 9px 22px;
-      border-radius: 4px;
+      padding: 12px 28px;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 600;
-      white-space: nowrap;
+      flex: 1;
+      min-width: 140px;
     }
+    #cookie-accept:hover { opacity: 0.9; }
     #cookie-manage {
       background: transparent;
       color: #94a3b8;
       border: 1px solid #4a5568;
-      padding: 9px 16px;
-      border-radius: 4px;
+      padding: 12px 20px;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 14px;
       white-space: nowrap;
     }
+    #cookie-manage:hover { border-color: #7dd3fc; color: #e2e8f0; }
+
+    /* Manage panel — also centered modal */
     #cookie-manage-panel {
       display: none;
       position: fixed;
-      bottom: 0; left: 0; right: 0;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(560px, 92vw);
       background: #1a1a2e;
-      border-top: 3px solid var(--accent, #4285f4);
-      padding: 20px 24px;
+      border-top: 4px solid var(--accent, #4285f4);
+      border-radius: 12px;
+      padding: 28px 32px;
       z-index: 99999;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      max-height: 90vh;
+      overflow-y: auto;
     }
-    #cookie-manage-panel h3 { margin: 0 0 12px; color: #e2e8f0; font-size: 15px; }
-    .cookie-option { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #2d2d3d; color: #e2e8f0; font-size: 13px; }
+    #cookie-manage-panel h3 { margin: 0 0 16px; color: #f1f5f9; font-size: 18px; }
+    .cookie-option { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #2d2d3d; color: #e2e8f0; font-size: 14px; gap: 12px; }
     .cookie-option:last-of-type { border-bottom: none; }
-    .cookie-option span { color: #64748b; font-size: 12px; margin-left: 8px; }
-    .cookie-toggle { position: relative; width: 40px; height: 22px; flex-shrink: 0; }
+    .cookie-option .cookie-label strong { display: block; margin-bottom: 2px; }
+    .cookie-option span { color: #64748b; font-size: 12px; display: block; margin-top: 2px; }
+    .cookie-toggle { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
     .cookie-toggle input { opacity: 0; width: 0; height: 0; }
     .cookie-slider {
       position: absolute; inset: 0;
-      background: #4a5568; border-radius: 22px; cursor: pointer;
+      background: #4a5568; border-radius: 24px; cursor: pointer;
       transition: 0.3s;
     }
     .cookie-slider:before {
       content: ''; position: absolute;
-      width: 16px; height: 16px;
+      width: 18px; height: 18px;
       left: 3px; bottom: 3px;
       background: white; border-radius: 50%;
       transition: 0.3s;
     }
     input:checked + .cookie-slider { background: var(--accent, #4285f4); }
-    input:checked + .cookie-slider:before { transform: translateX(18px); }
+    input:checked + .cookie-slider:before { transform: translateX(20px); }
     input:disabled + .cookie-slider { opacity: 0.6; cursor: not-allowed; }
+    .cookie-panel-btns { display: flex; gap: 10px; margin-top: 20px; }
     #cookie-save {
-      margin-top: 14px;
       background: var(--accent, #4285f4);
       color: #fff; border: none;
-      padding: 9px 22px; border-radius: 4px;
-      cursor: pointer; font-size: 13px; font-weight: 600;
+      padding: 12px 28px; border-radius: 6px;
+      cursor: pointer; font-size: 15px; font-weight: 600; flex: 1;
     }
+    #cookie-back {
+      background: transparent;
+      color: #94a3b8;
+      border: 1px solid #4a5568;
+      padding: 12px 20px; border-radius: 6px;
+      cursor: pointer; font-size: 14px;
+    }
+    #cookie-back:hover { border-color: #7dd3fc; color: #e2e8f0; }
   </style>
 </head>
 
@@ -394,15 +432,21 @@ window.addEventListener('load', function() {
 </script>
 
 
+<!-- Cookie Consent Overlay -->
+<div id="cookie-overlay"></div>
+
 <!-- Cookie Consent Banner -->
 <div id="cookie-banner">
+  <span class="cookie-icon">🍪</span>
+  <h2>We value your privacy</h2>
   <p>
     We use cookies for analytics and personalised ads to keep this site free.
+    Google Analytics is required to help us understand how the site is used.
     See our <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms</a>.
   </p>
   <div class="cookie-btn-wrap">
-    <button id="cookie-manage" onclick="showCookiePanel()">Manage</button>
-    <button id="cookie-accept" onclick="acceptAllCookies()">Accept All</button>
+    <button id="cookie-manage" onclick="showCookiePanel()">Manage Preferences</button>
+    <button id="cookie-accept" onclick="acceptAllCookies()">Accept &amp; Continue</button>
   </div>
 </div>
 
@@ -410,7 +454,7 @@ window.addEventListener('load', function() {
 <div id="cookie-manage-panel">
   <h3>Manage Cookie Preferences</h3>
   <div class="cookie-option">
-    <div>
+    <div class="cookie-label">
       <strong>Essential cookies</strong>
       <span>Theme preference, cookie consent — required for the site to work</span>
     </div>
@@ -420,17 +464,17 @@ window.addEventListener('load', function() {
     </label>
   </div>
   <div class="cookie-option">
-    <div>
+    <div class="cookie-label">
       <strong>Analytics cookies</strong>
-      <span>Google Analytics — helps us understand how visitors use the site</span>
+      <span>Google Analytics — required to understand how visitors use the site</span>
     </div>
     <label class="cookie-toggle">
-      <input type="checkbox" id="toggle-analytics" checked/>
+      <input type="checkbox" id="toggle-analytics" checked disabled/>
       <span class="cookie-slider"></span>
     </label>
   </div>
   <div class="cookie-option">
-    <div>
+    <div class="cookie-label">
       <strong>Personalised advertising</strong>
       <span>Adsterra, Monetag, Google AdSense — ads tailored to your interests</span>
     </div>
@@ -439,43 +483,61 @@ window.addEventListener('load', function() {
       <span class="cookie-slider"></span>
     </label>
   </div>
-  <button id="cookie-save" onclick="saveCookiePrefs()">Save Preferences</button>
+  <div class="cookie-panel-btns">
+    <button id="cookie-back" onclick="showCookieBanner()">← Back</button>
+    <button id="cookie-save" onclick="saveCookiePrefs()">Save Preferences</button>
+  </div>
 </div>
 
 <script>
 (function() {
+  // GA4 is always enabled — no opt-out
+  // Only show banner if user has never consented
   var consent = localStorage.getItem('cookieConsent');
   if (!consent) {
-    document.getElementById('cookie-banner').style.display = 'flex';
-  } else {
-    var prefs = JSON.parse(consent);
-    if (!prefs.analytics) window['ga-disable-G-WBY3XDZW01'] = true;
+    document.getElementById('cookie-overlay').style.display = 'block';
+    document.getElementById('cookie-banner').style.display = 'block';
   }
+  // No ga-disable logic — GA4 is mandatory
 })();
 
+function showOverlay() {
+  document.getElementById('cookie-overlay').style.display = 'block';
+}
+function hideOverlay() {
+  document.getElementById('cookie-overlay').style.display = 'none';
+}
+
 function acceptAllCookies() {
-  var prefs = { analytics: true, ads: true };
+  var prefs = { analytics: true, ads: true, ts: Date.now() };
   localStorage.setItem('cookieConsent', JSON.stringify(prefs));
   document.getElementById('cookie-banner').style.display = 'none';
   document.getElementById('cookie-manage-panel').style.display = 'none';
+  hideOverlay();
 }
 
 function showCookiePanel() {
   var prefs = JSON.parse(localStorage.getItem('cookieConsent') || '{"analytics":true,"ads":true}');
-  document.getElementById('toggle-analytics').checked = prefs.analytics !== false;
   document.getElementById('toggle-ads').checked = prefs.ads !== false;
   document.getElementById('cookie-banner').style.display = 'none';
   document.getElementById('cookie-manage-panel').style.display = 'block';
+  showOverlay();
+}
+
+function showCookieBanner() {
+  document.getElementById('cookie-manage-panel').style.display = 'none';
+  document.getElementById('cookie-banner').style.display = 'block';
 }
 
 function saveCookiePrefs() {
   var prefs = {
-    analytics: document.getElementById('toggle-analytics').checked,
-    ads: document.getElementById('toggle-ads').checked
+    analytics: true,  // GA4 always on
+    ads: document.getElementById('toggle-ads').checked,
+    ts: Date.now()
   };
   localStorage.setItem('cookieConsent', JSON.stringify(prefs));
-  if (!prefs.analytics) window['ga-disable-G-WBY3XDZW01'] = true;
   document.getElementById('cookie-manage-panel').style.display = 'none';
+  hideOverlay();
 }
 </script>
 </body>
