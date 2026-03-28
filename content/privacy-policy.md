@@ -36,7 +36,6 @@ robots: "noindex, follow"
 <h2>Your Rights</h2>
 <ul>
   <li>You can decline non-essential cookies using the cookie consent banner</li>
-  <li>You can opt out of Google Analytics using the browser add-on linked above</li>
   <li>You can opt out of personalised advertising via Google Ads Settings</li>
   <li>You can request deletion of any data you submitted via our contact form</li>
 </ul>

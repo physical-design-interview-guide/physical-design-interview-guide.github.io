@@ -17,12 +17,7 @@ robots: "noindex, follow"
 <p>All content on this Site is provided for educational and informational purposes to help engineers prepare for VLSI Physical Design interviews.</p>
 <ul>
   <li>You may read and reference content for personal, non-commercial use</li>
-  <li>You may not copy, reproduce, or republish content without prior written permission</li>
-  <li>You may not use content for commercial purposes</li>
 </ul>
-
-<h2>Intellectual Property</h2>
-<p>All content including text, images, and code examples is the property of Physical Design Interview Guide and is protected by applicable copyright laws.</p>
 
 <h2>Disclaimer</h2>
 <p>The information on this Site is for general educational purposes. While we strive for accuracy, interview questions and answers reflect general industry knowledge and may vary by company. We are not responsible for any outcomes based on content from this Site.</p>
