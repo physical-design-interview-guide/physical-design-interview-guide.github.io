@@ -92,6 +92,8 @@ summaryLength = 60
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true   # allows raw HTML in markdown posts
+    [markup.goldmark.extensions]
+      table = true
       
 [sitemap]
   changefreq = "weekly"
